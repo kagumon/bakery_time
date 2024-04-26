@@ -1,8 +1,9 @@
-import 'package:bakery_time/view/enterView.dart';
-import 'package:bakery_time/view/loadingview.dart';
+import 'package:bakery_time/static_page/agreeView.dart';
+import 'package:bakery_time/static_page/enterView.dart';
+import 'package:bakery_time/static_page/loadingView.dart';
 import 'package:bakery_time/view/loginView.dart';
+import 'package:bakery_time/view/signupView.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../view/albumView.dart';
 
 void main() {
@@ -24,9 +25,11 @@ class _MyappState extends State<Myapp> {
       initialRoute: '/loading',
       routes: {
         '/loading': (context) => const LoadingView(),
+        '/agree': (context) => const AgreeView(),
         '/enter': (context) => const EnterView(),
         '/index': (context) => const AlbumView(),
         '/login': (context) => const LoginView(),
+        '/signup': (context) => const SignupView(),
       },
       home: const LoadingView()
     );

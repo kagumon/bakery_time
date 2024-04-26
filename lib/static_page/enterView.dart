@@ -33,7 +33,7 @@ class _EnterViewState extends State<EnterView> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: ()=>{Navigator.of(context).pushNamed('/siunup')},
+                  onTap: ()=>{Navigator.of(context).pushNamed('/agree')},
                   child: Container(
                     margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                     width: double.infinity,

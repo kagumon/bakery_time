@@ -8,8 +8,8 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final idTextController = TextEditingController();
-  final pwTextController = TextEditingController();
+  final _idTextController = TextEditingController();
+  final _pwTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,13 +25,12 @@ class _LoginViewState extends State<LoginView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
-                  controller: idTextController,
-                  border: Border.all(width: 0),
+                  controller: _idTextController,
                   decoration: textInputStyle(Icons.people),
                 ),
                 const SizedBox(height: 5,),
                 TextField(
-                  controller: pwTextController,
+                  controller: _pwTextController,
                   decoration: textInputStyle(Icons.vpn_key),
                 ),
                 GestureDetector(

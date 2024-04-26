@@ -23,9 +23,12 @@ class _LoadingViewState extends State<LoadingView> {
         color: const Color.fromRGBO(134, 95, 87, 1),
         child: Stack(
           children: [
-            GestureDetector(
-              onTap: ()=>{Navigator.of(context).pushNamed('/enter')},
-              child: const Text("로그인 안됨"),
+            Positioned(
+              top: 100,
+              child: GestureDetector(
+                onTap: ()=>{Navigator.of(context).pushNamedAndRemoveUntil("/enter", (route) => false)},
+                child: const Text("로그인 안됨"),
+              ), 
             ),
             circleBox(deviceWidth * (-0.8), deviceWidth * (-0.9), deviceWidth * 1.5, const Color.fromRGBO(206, 183, 176, 1)),
             circleBox(deviceWidth * (0.3), deviceWidth * (-0.7), deviceWidth * 1.5, const Color.fromRGBO(228, 218, 215, 1)),
