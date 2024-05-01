@@ -1,3 +1,4 @@
+import 'package:bakery_time/widget/UtilWidgets.dart';
 import 'package:flutter/material.dart';
 
 class SuccessSignupView extends StatefulWidget {
@@ -46,32 +47,19 @@ InputDecoration textInputStyle() {
       border: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
       ),
-      fillColor: Color.fromRGBO(255, 255, 255, 1),
+      fillColor: colorPrimaryWhite,
       filled: true);
 }
 
 BoxDecoration loginButtonStyle() {
   return const BoxDecoration(
     borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    color: Color.fromRGBO(158, 78, 28, 1),
+    color: colorPrimary900,
   );
 }
 
 TextStyle loginButtonTextStyle() {
   return const TextStyle(
-    color: Color.fromRGBO(255, 255, 255, 1),
-  );
-}
-
-BoxDecoration signupButtonStyle() {
-  return const BoxDecoration(
-    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    color: Color.fromRGBO(255, 233, 220, 1),
-  );
-}
-
-TextStyle signupButtonTextStyle() {
-  return const TextStyle(
-    color: Color.fromRGBO(158, 78, 28, 1),
+    color: colorPrimaryWhite,
   );
 }

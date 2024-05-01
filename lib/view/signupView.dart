@@ -17,8 +17,9 @@ class _SignupViewState extends State<SignupView> {
   final TextEditingController _jumin1TextController = TextEditingController();
   final TextEditingController _jumin2TextController = TextEditingController();
   final TextEditingController _hpnoTextController = TextEditingController();
-  final TextEditingController _mvnmTextController = TextEditingController();
   final FocusNode _jumin2FocusNode = FocusNode();
+  final List<String> _mvnmArray = ["SKT", "KT", "LGU+", "알뜰SKT", "알뜰KT", "알뜰LGU+"];
+  String _mvnmValue = "SKT";
   bool _visiableJumin = false;
   bool _visiableHpno = false;
   bool _visiableMvnm = false;
@@ -89,16 +90,23 @@ class _SignupViewState extends State<SignupView> {
                 visible: _visiableMvnm,
                 child: Column(
                   children: [
-                    TextField(
-                      style: const TextStyle(fontSize: 18),
-                      decoration: textInputStyle(hint: "통신사"),
-                      controller: _mvnmTextController,
-                      onChanged: (_) => {
+                    DropdownButton(
+                      underline: Container(height: 1, color: colorPrimary900,),
+                      isExpanded: true,
+                      value: _mvnmValue,
+                      items: _mvnmArray.map((value) {
+                        return DropdownMenuItem(value: value, child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(value),
+                        ),);
+                      }).toList(),
+                      onChanged: (value)=> {
                         setState(() {
                           _visiableHpno = true;
                           _explanText = "전화번호를 입력해주세요.";
+                          _mvnmValue=value!;
                         })
-                      },
+                      } 
                     ),
                     heightSizeBox(20),
                   ],
@@ -211,7 +219,7 @@ class _SignupViewState extends State<SignupView> {
         _jumin1TextController.text.isNotEmpty &&
         _jumin2TextController.text.isNotEmpty &&
         _hpnoTextController.text.isNotEmpty &&
-        _mvnmTextController.text.isNotEmpty) {
+        _mvnmValue != "") {
       return true;
     } else {
       return false;
