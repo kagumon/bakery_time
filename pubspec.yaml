@@ -65,6 +65,23 @@ flutter:
   assets:
     - assets/images/
 
+  fonts:
+    - family: euljiro
+      fonts:
+        - asset: assets/fonts/euljiro.ttf
+    - family: bongodicBold
+      fonts:
+        - asset: assets/fonts/NotoSansKR-Bold.ttf
+    - family: bongodicExtraBold
+      fonts:
+        - asset: assets/fonts/NotoSansKR-ExtraBold.ttf
+    - family: bongodicMedium
+      fonts:
+        - asset: assets/fonts/NotoSansKR-Medium.ttf
+    - family: bongodicRegular
+      fonts:
+        - asset: assets/fonts/NotoSansKR-Regular.ttf
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

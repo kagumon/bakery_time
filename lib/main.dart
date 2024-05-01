@@ -25,6 +25,7 @@ class _MyappState extends State<Myapp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData(
+            fontFamily: "bongodicMedium",
             scaffoldBackgroundColor: colorPrimaryWhite,
             appBarTheme: const AppBarTheme(color: colorPrimaryWhite)),
         debugShowCheckedModeBanner: false,

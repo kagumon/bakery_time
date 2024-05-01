@@ -1,5 +1,6 @@
 import 'package:bakery_time/widget/UtilWidgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class LoadingView extends StatefulWidget {
   const LoadingView({super.key});
@@ -21,19 +22,19 @@ class _LoadingViewState extends State<LoadingView> {
       width: double.infinity,
       height: double.infinity,
       color: colorPrimary800,
-      child: Stack(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Positioned(
-            top: 100,
-            child: GestureDetector(
-              onTap: () => {
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil("/enter", (route) => false)
-              },
-              child: const Text(
-                "로그인 안됨",
-                style: TextStyle(color: colorPrimaryWhite),
-              ),
+          const Text("베이커리타임", style: TextStyle(fontFamily: "euljiro", color: colorPrimaryWhite, fontSize: 40),),
+          const Text("시간을 굽다.", style: TextStyle(fontFamily: "euljiro", color: colorPrimaryWhite, fontSize: 30),),
+          GestureDetector(
+            onTap: () => {
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil("/enter", (route) => false)
+            },
+            child: const Text(
+              "(임시)로그인 안됨",
+              style: TextStyle(color: colorPrimaryWhite),
             ),
           ),
         ],

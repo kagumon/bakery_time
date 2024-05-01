@@ -16,8 +16,7 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       body: Column(
         children: [
-          Image.asset('assets/images/login_background.png'),
-          heightSizeBox(10),
+          emptyExpanded(),
           const Text("베이커리 타임", style: TextStyle(color: colorPrimary900, fontWeight: FontWeight.bold, fontSize: 30),),
           const Text("이제는 시간을 구울 시간", style: TextStyle(color: colorPrimary600, fontWeight: FontWeight.w700, fontSize: 20),),
           Container(
