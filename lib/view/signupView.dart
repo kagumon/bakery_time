@@ -18,7 +18,14 @@ class _SignupViewState extends State<SignupView> {
   final TextEditingController _jumin2TextController = TextEditingController();
   final TextEditingController _hpnoTextController = TextEditingController();
   final FocusNode _jumin2FocusNode = FocusNode();
-  final List<String> _mvnmArray = ["SKT", "KT", "LGU+", "알뜰SKT", "알뜰KT", "알뜰LGU+"];
+  final List<String> _mvnmArray = [
+    "SKT",
+    "KT",
+    "LGU+",
+    "알뜰SKT",
+    "알뜰KT",
+    "알뜰LGU+"
+  ];
   String _mvnmValue = "SKT";
   bool _visiableJumin = false;
   bool _visiableHpno = false;
@@ -91,23 +98,28 @@ class _SignupViewState extends State<SignupView> {
                 child: Column(
                   children: [
                     DropdownButton(
-                      underline: Container(height: 1, color: colorPrimary900,),
-                      isExpanded: true,
-                      value: _mvnmValue,
-                      items: _mvnmArray.map((value) {
-                        return DropdownMenuItem(value: value, child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(value),
-                        ),);
-                      }).toList(),
-                      onChanged: (value)=> {
-                        setState(() {
-                          _visiableHpno = true;
-                          _explanText = "전화번호를 입력해주세요.";
-                          _mvnmValue=value!;
-                        })
-                      } 
-                    ),
+                        underline: Container(
+                          height: 1,
+                          color: colorPrimary900,
+                        ),
+                        isExpanded: true,
+                        value: _mvnmValue,
+                        items: _mvnmArray.map((value) {
+                          return DropdownMenuItem(
+                            value: value,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(value),
+                            ),
+                          );
+                        }).toList(),
+                        onChanged: (value) => {
+                              setState(() {
+                                _visiableHpno = true;
+                                _explanText = "전화번호를 입력해주세요.";
+                                _mvnmValue = value!;
+                              })
+                            }),
                     heightSizeBox(20),
                   ],
                 )),

@@ -25,8 +25,16 @@ class _LoadingViewState extends State<LoadingView> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("베이커리타임", style: TextStyle(fontFamily: "euljiro", color: colorPrimaryWhite, fontSize: 40),),
-          const Text("시간을 굽다.", style: TextStyle(fontFamily: "euljiro", color: colorPrimaryWhite, fontSize: 30),),
+          const Text(
+            "베이커리타임",
+            style: TextStyle(
+                fontFamily: "euljiro", color: colorPrimaryWhite, fontSize: 40),
+          ),
+          const Text(
+            "시간을 굽다.",
+            style: TextStyle(
+                fontFamily: "euljiro", color: colorPrimaryWhite, fontSize: 30),
+          ),
           GestureDetector(
             onTap: () => {
               Navigator.of(context)

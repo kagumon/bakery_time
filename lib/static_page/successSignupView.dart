@@ -19,8 +19,16 @@ class _SuccessSignupViewState extends State<SuccessSignupView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Expanded(child: SizedBox.shrink()),
-            const Text("회원가입을 완료했습니다.", style: TextStyle(fontFamily: "euljiro", color: colorPrimary800, fontSize: 30),),
-            const Text("서비스 이용을 위해 로그인해주세요.", style: TextStyle(fontFamily: "euljiro", color: colorPrimary800, fontSize: 20),),
+            const Text(
+              "회원가입을 완료했습니다.",
+              style: TextStyle(
+                  fontFamily: "euljiro", color: colorPrimary800, fontSize: 30),
+            ),
+            const Text(
+              "서비스 이용을 위해 로그인해주세요.",
+              style: TextStyle(
+                  fontFamily: "euljiro", color: colorPrimary800, fontSize: 20),
+            ),
             const Expanded(child: SizedBox.shrink()),
             GestureDetector(
               onTap: () => {

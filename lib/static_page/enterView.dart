@@ -15,8 +15,16 @@ class _EnterViewState extends State<EnterView> {
       body: Column(
         children: [
           const Expanded(child: SizedBox.shrink()),
-          const Text("베이커리타임", style: TextStyle(fontFamily: "euljiro", color: colorPrimary800, fontSize: 40),),
-          const Text("시간을 굽다.", style: TextStyle(fontFamily: "euljiro", color: colorPrimary800, fontSize: 30),),
+          const Text(
+            "베이커리타임",
+            style: TextStyle(
+                fontFamily: "euljiro", color: colorPrimary800, fontSize: 40),
+          ),
+          const Text(
+            "시간을 굽다.",
+            style: TextStyle(
+                fontFamily: "euljiro", color: colorPrimary800, fontSize: 30),
+          ),
           const Expanded(child: SizedBox.shrink()),
           Container(
             padding: const EdgeInsets.all(50),

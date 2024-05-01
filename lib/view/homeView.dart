@@ -58,8 +58,7 @@ class _HomeViewState extends State<HomeView> {
                   pressedElevation: 0.0,
                 ),
                 thumbColor: colorPrimary500,
-                overlayColor: colorPrimary800
-                    .withOpacity(0.2),
+                overlayColor: colorPrimary800.withOpacity(0.2),
                 overlayShape:
                     const RoundSliderOverlayShape(overlayRadius: 17.0),
                 tickMarkShape: const RoundSliderTickMarkShape(),
@@ -86,8 +85,7 @@ class _HomeViewState extends State<HomeView> {
             const Expanded(child: SizedBox.shrink()),
             Text(
               "${(_timeSliderValue / 60).floor().toString().padLeft(2, '0')}:${(_timeSliderValue % 60).floor().toString().padLeft(2, '0')}",
-              style: const TextStyle(
-                  color: colorPrimary900, fontSize: 50),
+              style: const TextStyle(color: colorPrimary900, fontSize: 50),
             ),
             const Expanded(child: SizedBox.shrink()),
             GestureDetector(
@@ -95,13 +93,18 @@ class _HomeViewState extends State<HomeView> {
               child: Container(
                 height: 50,
                 decoration: startButtonDecoration(),
-                child: const Center(child: Text("베이킹 시작하기", style: TextStyle(color: colorPrimaryWhite),)),
+                child: const Center(
+                    child: Text(
+                  "베이킹 시작하기",
+                  style: TextStyle(color: colorPrimaryWhite),
+                )),
               ),
             ),
             heightSizeBox(20)
           ],
         ),
-      ),);
+      ),
+    );
   }
 }
 
@@ -110,10 +113,7 @@ BoxDecoration previewContainerDecoration() {
       borderRadius: BorderRadius.all(Radius.circular(10.0)),
       color: Colors.white,
       boxShadow: [
-        BoxShadow(
-            color: colorPrimary800,
-            blurRadius: 6.0,
-            spreadRadius: 2.0)
+        BoxShadow(color: colorPrimary800, blurRadius: 6.0, spreadRadius: 2.0)
       ]);
 }
 
