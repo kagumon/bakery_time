@@ -21,13 +21,17 @@ class _SuccessSignupViewState extends State<SuccessSignupView> {
             const Text("회원가입을 완료했습니다."),
             const Expanded(child: SizedBox.shrink()),
             GestureDetector(
-              onTap: ()=>{Navigator.of(context).pushNamedAndRemoveUntil("/login", (route) => false)},
+              onTap: () => {
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil("/login", (route) => false)
+              },
               child: Container(
                 margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                 width: double.infinity,
                 height: 50,
                 decoration: loginButtonStyle(),
-                child: Center(child: Text("로그인하러가기", style: loginButtonTextStyle())),
+                child: Center(
+                    child: Text("로그인하러가기", style: loginButtonTextStyle())),
               ),
             ),
           ],
@@ -39,12 +43,11 @@ class _SuccessSignupViewState extends State<SuccessSignupView> {
 
 InputDecoration textInputStyle() {
   return const InputDecoration(
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    ),
-    fillColor:  Color.fromRGBO(255, 255, 255, 1),
-    filled: true
-  );
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      ),
+      fillColor: Color.fromRGBO(255, 255, 255, 1),
+      filled: true);
 }
 
 BoxDecoration loginButtonStyle() {

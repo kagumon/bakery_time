@@ -8,8 +8,8 @@ class AlbumViewModel with ChangeNotifier {
   List<Album> get albumList => _albumList;
 
   AlbumViewModel() {
-     _albumRepository = AlbumRepository();
-     _getAlbumList();
+    _albumRepository = AlbumRepository();
+    _getAlbumList();
   }
 
   Future<void> _getAlbumList() async {

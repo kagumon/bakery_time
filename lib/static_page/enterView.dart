@@ -1,3 +1,4 @@
+import 'package:bakery_time/widget/UtilWidgets.dart';
 import 'package:flutter/material.dart';
 
 class EnterView extends StatefulWidget {
@@ -23,17 +24,21 @@ class _EnterViewState extends State<EnterView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: ()=>{Navigator.of(context).pushNamed('/login')},
+                  onTap: () => {Navigator.of(context).pushNamed('/login')},
                   child: Container(
                     margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                     width: double.infinity,
                     height: 50,
                     decoration: loginButtonStyle(),
-                    child: Center(child: Text("로그인", style: loginButtonTextStyle())),
+                    child: const Center(
+                        child: Text("로그인",
+                            style: TextStyle(
+                              color: colorPrimaryWhite,
+                            ))),
                   ),
                 ),
                 GestureDetector(
-                  onTap: ()=>{Navigator.of(context).pushNamed('/agree')},
+                  onTap: () => {Navigator.of(context).pushNamed('/agree')},
                   child: Container(
                     margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                     width: double.infinity,
@@ -53,36 +58,29 @@ class _EnterViewState extends State<EnterView> {
 
 InputDecoration textInputStyle() {
   return const InputDecoration(
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    ),
-    fillColor:  Color.fromRGBO(255, 255, 255, 1),
-    filled: true
-  );
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      ),
+      fillColor: Color.fromRGBO(255, 255, 255, 1),
+      filled: true);
 }
 
 BoxDecoration loginButtonStyle() {
   return const BoxDecoration(
     borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    color: Color.fromRGBO(158, 78, 28, 1),
-  );
-}
-
-TextStyle loginButtonTextStyle() {
-  return const TextStyle(
-    color: Color.fromRGBO(255, 255, 255, 1),
+    color: colorPrimary800,
   );
 }
 
 BoxDecoration signupButtonStyle() {
   return const BoxDecoration(
     borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    color: Color.fromRGBO(255, 233, 220, 1),
+    color: colorPrimary300,
   );
 }
 
 TextStyle signupButtonTextStyle() {
   return const TextStyle(
-    color: Color.fromRGBO(158, 78, 28, 1),
+    color: colorPrimary800,
   );
 }

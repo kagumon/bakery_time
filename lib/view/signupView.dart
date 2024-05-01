@@ -1,4 +1,8 @@
+import 'package:bakery_time/widget/UtilWidgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 class SignupView extends StatefulWidget {
   const SignupView({super.key});
@@ -8,135 +12,237 @@ class SignupView extends StatefulWidget {
 }
 
 class _SignupViewState extends State<SignupView> {
-  int _currentStep = 1;
   String _explanText = "이름을 입력해주세요.";
-  final TextEditingController _idTextController      = TextEditingController();
-  final TextEditingController _pwTextController      = TextEditingController();
-  final TextEditingController _pwCheckTextController = TextEditingController();
-  final TextEditingController _hpnoTextController    = TextEditingController();
-  final TextEditingController _nameTextController    = TextEditingController();
-  final FocusNode _idTextFocusNode      = FocusNode();
-  final FocusNode _pwTextFocusNode      = FocusNode();
-  final FocusNode _pwCheckTextFocusNode = FocusNode();
-  final FocusNode _hpnoTextFocusNode    = FocusNode();
-  final FocusNode _nameTextFocusNode    = FocusNode();
+  final TextEditingController _nameTextController = TextEditingController();
+  final TextEditingController _jumin1TextController = TextEditingController();
+  final TextEditingController _jumin2TextController = TextEditingController();
+  final TextEditingController _hpnoTextController = TextEditingController();
+  final TextEditingController _mvnmTextController = TextEditingController();
+  final FocusNode _jumin2FocusNode = FocusNode();
+  bool _visiableJumin = false;
+  bool _visiableHpno = false;
+  bool _visiableMvnm = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("회원가입"),),
+      appBar: AppBar(
+        title: Row(
+          children: [
+            emptyExpanded(),
+            const Icon(
+              Icons.looks_one,
+              color: colorPrimary800,
+            ),
+            const Icon(
+              Icons.looks_two,
+              color: colorPrimary800,
+            ),
+            const Icon(
+              Icons.looks_3,
+              color: colorPrimaryGrey,
+            ),
+            const Icon(
+              Icons.looks_4,
+              color: colorPrimaryGrey,
+            ),
+          ],
+        ),
+      ),
       body: Container(
-        padding: const EdgeInsets.only(left: 50, right: 50),
-        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.all(30),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(_explanText, style: explanTextStyle()),
+            heightSizeBox(40),
+            /*********************************/
+            /* 전화번호 입력                 */
+            /*********************************/
             Visibility(
-              visible: _currentStep >= 1,
-              child: TextField(
-                autofocus: true,
-                focusNode: _nameTextFocusNode,
-                controller: _nameTextController,
-                decoration: textInputStyle(Icons.people),
-                onSubmitted: (value) => {setState(() => (nextInputStep(context, _idTextFocusNode)))},
-              )
-            ),
-            const SizedBox(height: 5,),
+                visible: _visiableHpno,
+                child: Column(
+                  children: [
+                    TextField(
+                      maxLength: 11,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                      style: const TextStyle(fontSize: 18),
+                      decoration: textInputStyle(hint: "전화번호"),
+                      controller: _hpnoTextController,
+                      onSubmitted: (_) => {
+                        setState(() {
+                          FocusScope.of(context).unfocus();
+                          _explanText = "본인인증을 진행해주세요.";
+                        })
+                      },
+                    ),
+                    heightSizeBox(20),
+                  ],
+                )),
+            /*********************************/
+            /* 통신사 입력                   */
+            /*********************************/
             Visibility(
-              visible: _currentStep >= 2,
-              child: TextField(
-                controller: _idTextController,
-                focusNode: _idTextFocusNode,
-                decoration: textInputStyle(Icons.people),
-                onSubmitted: (value) => {setState(() => (nextInputStep(context, _pwTextFocusNode)))},
-              )
-            ),
-            const SizedBox(height: 5,),
+                visible: _visiableMvnm,
+                child: Column(
+                  children: [
+                    TextField(
+                      style: const TextStyle(fontSize: 18),
+                      decoration: textInputStyle(hint: "통신사"),
+                      controller: _mvnmTextController,
+                      onChanged: (_) => {
+                        setState(() {
+                          _visiableHpno = true;
+                          _explanText = "전화번호를 입력해주세요.";
+                        })
+                      },
+                    ),
+                    heightSizeBox(20),
+                  ],
+                )),
+            /*********************************/
+            /* 주민번호 입력                 */
+            /*********************************/
             Visibility(
-              visible: _currentStep >= 3,
-              child: TextField(
-                controller: _pwTextController,
-                focusNode: _pwTextFocusNode,
-                decoration: textInputStyle(Icons.people),
-                onSubmitted: (value) => {setState(() => (nextInputStep(context, _pwCheckTextFocusNode)))},
-              )
+                visible: _visiableJumin,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
+                            style: const TextStyle(fontSize: 18),
+                            decoration: textInputStyle(hint: "생년월일"),
+                            maxLength: 6,
+                            controller: _jumin1TextController,
+                            onChanged: (value) => {
+                              if (value.length == 6)
+                                {
+                                  FocusScope.of(context)
+                                      .requestFocus(_jumin2FocusNode)
+                                }
+                            },
+                          ),
+                        ),
+                        const Text(
+                          "  -  ",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        SizedBox(
+                          width: 38,
+                          child: TextField(
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
+                            style: const TextStyle(fontSize: 18),
+                            decoration: textInputStyle(hint: ""),
+                            maxLength: 1,
+                            focusNode: _jumin2FocusNode,
+                            controller: _jumin2TextController,
+                            onChanged: (value) => {
+                              if (value.length == 1)
+                                {
+                                  setState(() {
+                                    _visiableMvnm = true;
+                                    _explanText = "통신사를 선택해주세요.";
+                                  })
+                                }
+                            },
+                          ),
+                        ),
+                        widthSizeBox(3),
+                        for (int i = 0; i < 6; i++)
+                          circleContainer(r: 18, right: 3),
+                      ],
+                    ),
+                    heightSizeBox(20),
+                  ],
+                )),
+            /*********************************/
+            /* 이름 입력                     */
+            /*********************************/
+            TextField(
+              maxLength: 30,
+              style: const TextStyle(fontSize: 18),
+              decoration: textInputStyle(hint: "이름"),
+              autofocus: true,
+              controller: _nameTextController,
+              onSubmitted: (_) => {
+                setState(() {
+                  _visiableJumin = true;
+                  _explanText = "주민번호를 입력해주세요.";
+                })
+              },
             ),
-            const SizedBox(height: 5,),
-            Visibility(
-              visible: _currentStep >= 4,
-              child: TextField(
-                controller: _pwCheckTextController,
-                focusNode: _pwCheckTextFocusNode,
-                decoration: textInputStyle(Icons.people),
-                onSubmitted: (value) => {setState(() => (nextInputStep(context, null)))},
-              )
-            ),
-            const Expanded(child: SizedBox.shrink()),
+            emptyExpanded(),
             GestureDetector(
-              onTap: ()=>{
-                Navigator.of(context).pushNamedAndRemoveUntil("/success", (route) => false)
+              onTap: () => {
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil("/success", (route) => false)
               },
               child: Container(
                 margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                 width: double.infinity,
                 height: 50,
-                decoration: _currentStep <5 ? utabVerifyButtonStyle() : tabVerifyButtonStyle(),
-                child: const Center(child: Text("인증하기")),
+                decoration: nextButtonStyle(allInput()),
+                child: const Center(
+                    child: Text(
+                  "인증하기",
+                  style: TextStyle(color: Color(0xFFFFFFFF)),
+                )),
               ),
             ),
-            const SizedBox(height: 40,)
           ],
         ),
       ),
     );
   }
 
-  void nextInputStep(context, focusNode) {
-    if(focusNode==null) {
-      FocusScope.of(context).unfocus();
+  bool allInput() {
+    if (_nameTextController.text.isNotEmpty &&
+        _jumin1TextController.text.isNotEmpty &&
+        _jumin2TextController.text.isNotEmpty &&
+        _hpnoTextController.text.isNotEmpty &&
+        _mvnmTextController.text.isNotEmpty) {
+      return true;
     } else {
-      FocusScope.of(context).requestFocus(focusNode);
+      return false;
     }
-    if(_currentStep==1) {_explanText="아이디를 입력해주세요.";}
-    else if(_currentStep==2) {_explanText="비밀번호를 입력해주세요.";}
-    else if(_currentStep==3) {_explanText="비밀번호를 한 번 더 입력해주세요.";}
-    else if(_currentStep==4) {_explanText="알맞게 입력하셨다면 인증하기 버튼을 눌러주세요.";}
-    else {return;}
-    _currentStep+=1;
-    return;
   }
 }
 
-InputDecoration textInputStyle(IconData icon) {
+InputDecoration textInputStyle({required String hint}) {
   return InputDecoration(
-    border: const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+    counterText: '',
+    hintText: hint,
+    contentPadding: const EdgeInsets.only(left: 10, right: 10, bottom: 0),
+    enabledBorder: const UnderlineInputBorder(
+      borderSide: BorderSide(color: colorPrimary900),
     ),
-    fillColor:  Color.fromARGB(255, 255, 255, 255),
-    filled: true,
-    prefixIcon: Icon(icon),
+    focusedBorder: const UnderlineInputBorder(
+      borderSide: BorderSide(color: colorPrimary900),
+    ),
   );
 }
 
-BoxDecoration tabVerifyButtonStyle() {
-  return const BoxDecoration(
-    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    color: Color.fromRGBO(201, 114, 92, 1),
-  );
-}
-
-BoxDecoration utabVerifyButtonStyle() {
-  return const BoxDecoration(
-    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    color: Color.fromRGBO(210, 203, 201, 1),
+BoxDecoration nextButtonStyle(bool status) {
+  return BoxDecoration(
+    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+    color: status ? colorPrimary900 : colorPrimaryGrey,
   );
 }
 
 TextStyle explanTextStyle() {
   return const TextStyle(
-    color: Color.fromRGBO(158, 78, 28, 1),
+    color: colorPrimary900,
     fontSize: 24,
   );
 }

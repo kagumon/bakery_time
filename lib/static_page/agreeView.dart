@@ -1,3 +1,4 @@
+import 'package:bakery_time/widget/UtilWidgets.dart';
 import 'package:flutter/material.dart';
 
 class AgreeView extends StatefulWidget {
@@ -15,80 +16,175 @@ class _AgreeViewState extends State<AgreeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Image.asset('assets/images/login_background.png'),
-          const Text("BAKERY TIME"),
-          const Text("bake time warmly"),
-          Container(
-            padding: const EdgeInsets.all(50),
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    Checkbox(
-                      value: _agree1,
-                      onChanged: (value)=>{
-                        setState((){
-                          allCheck(); 
-                          _agree1=value!;
-                        })
-                      }
-                    ),
-                    const Text("개인정보 동의"),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                      value: _agree2,
-                      onChanged: (value)=>{
-                        setState((){
-                          allCheck(); 
-                          _agree2=value!;
-                        })
-                      }
-                    ),
-                    const Text("개인정보 동의"),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                      value: _agree3,
-                      onChanged: (value)=>{
-                        setState((){
-                          allCheck(); 
-                          _agree3=value!;
-                        })
-                      }
-                    ),
-                    const Text("개인정보 동의"),
-                  ],
-                ),
-                GestureDetector(
-                  onTap: ()=>{Navigator.of(context).pushNamed('/signup')},
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                    width: double.infinity,
-                    height: 50,
-                    decoration: allCheck() ? touchableButtonStyle() : untouchableButtonStyle(),
-                    child: const Center(child: Text("모두 동의합니다.")),
-                  ),
-                ),
-              ],
+      appBar: AppBar(
+        title: Row(
+          children: [
+            emptyExpanded(),
+            const Icon(
+              Icons.looks_one,
+              color: colorPrimary800,
             ),
-          ),
-          const Expanded(child: SizedBox.shrink()),
-        ],
+            const Icon(
+              Icons.looks_two,
+              color: colorPrimaryGrey,
+            ),
+            const Icon(
+              Icons.looks_3,
+              color: colorPrimaryGrey,
+            ),
+            const Icon(
+              Icons.looks_4,
+              color: colorPrimaryGrey,
+            ),
+          ],
+        ),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(30),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            emptyExpanded(),
+            const Text(
+              "베이커리 타임",
+              style: TextStyle(
+                  fontSize: 25,
+                  color: Color(0xFF4B2615),
+                  fontWeight: FontWeight.bold),
+            ),
+            const Text(
+              "서비스 이용에 동의해주세요.",
+              style: TextStyle(fontSize: 20),
+            ),
+            heightSizeBox(70),
+            Container(
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                color: Color(0xFFFAF5EB),
+              ),
+              child: ListTile(
+                leading: GestureDetector(
+                  child: Icon(
+                    Icons.verified,
+                    color: allCheck() ? colorPrimary900 : colorPrimaryGrey,
+                    size: 25,
+                  ),
+                  onTap: () => {
+                    setState(() {
+                      if (!allCheck()) {
+                        _agree1 = true;
+                        _agree2 = true;
+                        _agree3 = true;
+                      } else {
+                        _agree1 = false;
+                        _agree2 = false;
+                        _agree3 = false;
+                      }
+                    })
+                  },
+                ),
+                title: const Text('필수 약관 모두 동의'),
+                onTap: () {
+                  setState(() {
+                    if (!allCheck()) {
+                      _agree1 = true;
+                      _agree2 = true;
+                      _agree3 = true;
+                    } else {
+                      _agree1 = false;
+                      _agree2 = false;
+                      _agree3 = false;
+                    }
+                  });
+                },
+              ),
+            ),
+            heightSizeBox(10),
+            ListTile(
+              leading: GestureDetector(
+                child: Icon(
+                  Icons.verified,
+                  color: _agree1 ? colorPrimary900 : colorPrimaryGrey,
+                  size: 25,
+                ),
+                onTap: () => {
+                  setState(() {
+                    _agree1 = !_agree1;
+                  })
+                },
+              ),
+              title: const Text('(필수) 이용약관'),
+              onTap: () {
+                print('Q&A is clicked !');
+              },
+              trailing: const Icon(Icons.chevron_right),
+            ),
+            heightSizeBox(5),
+            ListTile(
+              leading: GestureDetector(
+                child: Icon(
+                  Icons.verified,
+                  color: _agree2 ? colorPrimary900 : colorPrimaryGrey,
+                  size: 25,
+                ),
+                onTap: () => {
+                  setState(() {
+                    _agree2 = !_agree2;
+                  })
+                },
+              ),
+              title: const Text('(필수) 개인정보 수집 및 이용'),
+              onTap: () {
+                print('Q&A is clicked !');
+              },
+              trailing: const Icon(Icons.chevron_right),
+            ),
+            heightSizeBox(5),
+            ListTile(
+              leading: GestureDetector(
+                child: Icon(
+                  Icons.verified,
+                  color: _agree3 ? colorPrimary900 : colorPrimaryGrey,
+                  size: 25,
+                ),
+                onTap: () => {
+                  setState(() {
+                    _agree3 = !_agree3;
+                  })
+                },
+              ),
+              title: const Text('(필수) 결제 약관'),
+              onTap: () {
+                print('Q&A is clicked !');
+              },
+              trailing: const Icon(Icons.chevron_right),
+            ),
+            emptyExpanded(),
+            GestureDetector(
+              onTap: () => {
+                if (allCheck()) {Navigator.of(context).pushNamed('/signup')}
+              },
+              child: Container(
+                margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                width: double.infinity,
+                height: 50,
+                decoration: nextButtonStyle(allCheck()),
+                child: const Center(
+                    child: Text("모두 동의합니다.",
+                        style: TextStyle(
+                            color: Color(0xFFFFFFFF),
+                            fontWeight: FontWeight.w800))),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   bool allCheck() {
-    if(_agree1 && _agree2 && _agree3) return true;
+    if (_agree1 && _agree2 && _agree3) return true;
     return false;
   }
 }
@@ -98,21 +194,15 @@ InputDecoration textInputStyle(IconData icon) {
     border: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10.0)),
     ),
-    fillColor:  const Color.fromRGBO(231, 212, 200, 1),
+    fillColor: colorPrimary100,
     filled: true,
     prefixIcon: Icon(icon),
   );
 }
 
-BoxDecoration touchableButtonStyle() {
-  return const BoxDecoration(
-    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    color: Color.fromRGBO(221, 83, 48, 1),
-  );
-}
-BoxDecoration untouchableButtonStyle() {
-  return const BoxDecoration(
-    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    color: Color.fromRGBO(165, 161, 160, 1),
+BoxDecoration nextButtonStyle(bool agreeState) {
+  return BoxDecoration(
+    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+    color: agreeState ? colorPrimary900 : colorPrimaryGrey,
   );
 }

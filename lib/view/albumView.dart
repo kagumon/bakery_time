@@ -16,24 +16,22 @@ class _AlbumViewState extends State<AlbumView> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<AlbumViewModel>(
-      create: (context) => AlbumViewModel(),
-      child: Scaffold(
-        appBar: null,
-        body: Consumer<AlbumViewModel>(
-          builder: (context, provider, child) {
-            albumList = provider.albumList;
-            return ListView.builder(
-              itemCount: albumList.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  padding: const EdgeInsets.all(15),
-                  child: Text("${albumList[index].id}:${albumList[index].title}"),
-                );
-              }
-            );
-          },
-        )
-      )
-    );
+        create: (context) => AlbumViewModel(),
+        child: Scaffold(
+            appBar: null,
+            body: Consumer<AlbumViewModel>(
+              builder: (context, provider, child) {
+                albumList = provider.albumList;
+                return ListView.builder(
+                    itemCount: albumList.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        padding: const EdgeInsets.all(15),
+                        child: Text(
+                            "${albumList[index].id}:${albumList[index].title}"),
+                      );
+                    });
+              },
+            )));
   }
 }

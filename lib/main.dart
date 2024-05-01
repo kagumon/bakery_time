@@ -5,6 +5,7 @@ import 'package:bakery_time/static_page/successSignupView.dart';
 import 'package:bakery_time/view/homeView.dart';
 import 'package:bakery_time/view/loginView.dart';
 import 'package:bakery_time/view/signupView.dart';
+import 'package:bakery_time/widget/UtilWidgets.dart';
 import 'package:flutter/material.dart';
 import '../view/albumView.dart';
 
@@ -23,22 +24,23 @@ class _MyappState extends State<Myapp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Flutter App",
-      initialRoute: '/loading',
-      routes: {
-        '/loading': (context) => const LoadingView(),
-        '/agree': (context) => const AgreeView(),
-        '/enter': (context) => const EnterView(),
-        '/index': (context) => const AlbumView(),
-        '/login': (context) => const LoginView(),
-        '/signup': (context) => const SignupView(),
-        '/success': (context) => const SuccessSignupView(),
-
-        '/home': (context) => const HomeView(),
-      },
-      home: const LoadingView()
-    );
+        theme: ThemeData(
+            scaffoldBackgroundColor: colorPrimaryWhite,
+            appBarTheme: const AppBarTheme(color: colorPrimaryWhite)),
+        debugShowCheckedModeBanner: false,
+        title: "Flutter App",
+        initialRoute: '/loading',
+        routes: {
+          '/loading': (context) => const LoadingView(),
+          '/agree': (context) => const AgreeView(),
+          '/enter': (context) => const EnterView(),
+          '/index': (context) => const AlbumView(),
+          '/login': (context) => const LoginView(),
+          '/signup': (context) => const SignupView(),
+          '/success': (context) => const SuccessSignupView(),
+          '/home': (context) => const HomeView(),
+        },
+        home: const LoadingView());
   }
 }
 

@@ -28,13 +28,18 @@ class _LoginViewState extends State<LoginView> {
                   controller: _idTextController,
                   decoration: textInputStyle(Icons.people),
                 ),
-                const SizedBox(height: 5,),
+                const SizedBox(
+                  height: 5,
+                ),
                 TextField(
                   controller: _pwTextController,
                   decoration: textInputStyle(Icons.vpn_key),
                 ),
                 GestureDetector(
-                  onTap: ()=>{Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false)},
+                  onTap: () => {
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil("/home", (route) => false)
+                  },
                   child: Container(
                     margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                     width: double.infinity,
@@ -44,7 +49,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: ()=>{print("login kakao")},
+                  onTap: () => {print("login kakao")},
                   child: Container(
                     margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                     width: double.infinity,
@@ -68,7 +73,7 @@ InputDecoration textInputStyle(IconData icon) {
     border: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10.0)),
     ),
-    fillColor:  const Color.fromRGBO(231, 212, 200, 1),
+    fillColor: const Color.fromRGBO(231, 212, 200, 1),
     filled: true,
     prefixIcon: Icon(icon),
   );

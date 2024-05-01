@@ -6,20 +6,20 @@ AppBar mainAppBarWidget() {
     elevation: 0.0,
     //leading: IconButton(
     //  icon: const Icon(Icons.menu),
-    //  onPressed: () { 
+    //  onPressed: () {
     //    print('menu button is clicked !');
     //   },
     //),
     actions: [
       IconButton(
         icon: const Icon(Icons.home),
-        onPressed: () { 
+        onPressed: () {
           print('home button is clicked !');
         },
       ),
       IconButton(
         icon: const Icon(Icons.search),
-        onPressed: () { 
+        onPressed: () {
           print('search button is clicked !');
         },
       ),
