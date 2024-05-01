@@ -34,7 +34,7 @@ class _LoginViewState extends State<LoginView> {
                   decoration: textInputStyle(Icons.vpn_key),
                 ),
                 GestureDetector(
-                  onTap: ()=>{print("login")},
+                  onTap: ()=>{Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false)},
                   child: Container(
                     margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                     width: double.infinity,

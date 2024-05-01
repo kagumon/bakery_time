@@ -1,6 +1,8 @@
 import 'package:bakery_time/static_page/agreeView.dart';
 import 'package:bakery_time/static_page/enterView.dart';
 import 'package:bakery_time/static_page/loadingView.dart';
+import 'package:bakery_time/static_page/successSignupView.dart';
+import 'package:bakery_time/view/homeView.dart';
 import 'package:bakery_time/view/loginView.dart';
 import 'package:bakery_time/view/signupView.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,7 @@ class _MyappState extends State<Myapp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Flutter App",
       initialRoute: '/loading',
       routes: {
@@ -30,6 +33,9 @@ class _MyappState extends State<Myapp> {
         '/index': (context) => const AlbumView(),
         '/login': (context) => const LoginView(),
         '/signup': (context) => const SignupView(),
+        '/success': (context) => const SuccessSignupView(),
+
+        '/home': (context) => const HomeView(),
       },
       home: const LoadingView()
     );

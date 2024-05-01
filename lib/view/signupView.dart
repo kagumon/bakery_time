@@ -10,11 +10,16 @@ class SignupView extends StatefulWidget {
 class _SignupViewState extends State<SignupView> {
   int _currentStep = 1;
   String _explanText = "이름을 입력해주세요.";
-  final _idTextController = TextEditingController();
-  final _pwTextController = TextEditingController();
-  final _pwCheckTextController = TextEditingController();
-  final _hpnoTextController = TextEditingController();
-  final _nameTextController = TextEditingController();
+  final TextEditingController _idTextController      = TextEditingController();
+  final TextEditingController _pwTextController      = TextEditingController();
+  final TextEditingController _pwCheckTextController = TextEditingController();
+  final TextEditingController _hpnoTextController    = TextEditingController();
+  final TextEditingController _nameTextController    = TextEditingController();
+  final FocusNode _idTextFocusNode      = FocusNode();
+  final FocusNode _pwTextFocusNode      = FocusNode();
+  final FocusNode _pwCheckTextFocusNode = FocusNode();
+  final FocusNode _hpnoTextFocusNode    = FocusNode();
+  final FocusNode _nameTextFocusNode    = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -31,43 +36,53 @@ class _SignupViewState extends State<SignupView> {
             Visibility(
               visible: _currentStep >= 1,
               child: TextField(
+                autofocus: true,
+                focusNode: _nameTextFocusNode,
                 controller: _nameTextController,
                 decoration: textInputStyle(Icons.people),
-                onSubmitted: (value) => {setState(() => (nextInputStep()))},
+                onSubmitted: (value) => {setState(() => (nextInputStep(context, _idTextFocusNode)))},
               )
             ),
+            const SizedBox(height: 5,),
             Visibility(
               visible: _currentStep >= 2,
               child: TextField(
                 controller: _idTextController,
+                focusNode: _idTextFocusNode,
                 decoration: textInputStyle(Icons.people),
-                onSubmitted: (value) => {setState(() => (nextInputStep()))},
+                onSubmitted: (value) => {setState(() => (nextInputStep(context, _pwTextFocusNode)))},
               )
             ),
+            const SizedBox(height: 5,),
             Visibility(
               visible: _currentStep >= 3,
               child: TextField(
                 controller: _pwTextController,
+                focusNode: _pwTextFocusNode,
                 decoration: textInputStyle(Icons.people),
-                onSubmitted: (value) => {setState(() => (nextInputStep()))},
+                onSubmitted: (value) => {setState(() => (nextInputStep(context, _pwCheckTextFocusNode)))},
               )
             ),
+            const SizedBox(height: 5,),
             Visibility(
               visible: _currentStep >= 4,
               child: TextField(
                 controller: _pwCheckTextController,
+                focusNode: _pwCheckTextFocusNode,
                 decoration: textInputStyle(Icons.people),
-                onSubmitted: (value) => {setState(() => (nextInputStep()))},
+                onSubmitted: (value) => {setState(() => (nextInputStep(context, null)))},
               )
             ),
             const Expanded(child: SizedBox.shrink()),
             GestureDetector(
-              onTap: ()=>{print("login")},
+              onTap: ()=>{
+                Navigator.of(context).pushNamedAndRemoveUntil("/success", (route) => false)
+              },
               child: Container(
                 margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                 width: double.infinity,
                 height: 50,
-                decoration: verifyButtonStyle(),
+                decoration: _currentStep <5 ? utabVerifyButtonStyle() : tabVerifyButtonStyle(),
                 child: const Center(child: Text("인증하기")),
               ),
             ),
@@ -78,7 +93,12 @@ class _SignupViewState extends State<SignupView> {
     );
   }
 
-  void nextInputStep() {
+  void nextInputStep(context, focusNode) {
+    if(focusNode==null) {
+      FocusScope.of(context).unfocus();
+    } else {
+      FocusScope.of(context).requestFocus(focusNode);
+    }
     if(_currentStep==1) {_explanText="아이디를 입력해주세요.";}
     else if(_currentStep==2) {_explanText="비밀번호를 입력해주세요.";}
     else if(_currentStep==3) {_explanText="비밀번호를 한 번 더 입력해주세요.";}
@@ -100,10 +120,17 @@ InputDecoration textInputStyle(IconData icon) {
   );
 }
 
-BoxDecoration verifyButtonStyle() {
+BoxDecoration tabVerifyButtonStyle() {
   return const BoxDecoration(
     borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    color: Color.fromRGBO(165, 161, 160, 1),
+    color: Color.fromRGBO(201, 114, 92, 1),
+  );
+}
+
+BoxDecoration utabVerifyButtonStyle() {
+  return const BoxDecoration(
+    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+    color: Color.fromRGBO(210, 203, 201, 1),
   );
 }
 
