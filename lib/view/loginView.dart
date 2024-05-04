@@ -22,6 +22,7 @@ class _LoginViewState extends State<LoginView> {
             style: TextStyle(
                 color: colorPrimary900,
                 fontWeight: FontWeight.bold,
+                fontFamily: "euljiro",
                 fontSize: 30),
           ),
           const Text(
@@ -29,6 +30,7 @@ class _LoginViewState extends State<LoginView> {
             style: TextStyle(
                 color: colorPrimary600,
                 fontWeight: FontWeight.w700,
+                fontFamily: "euljiro",
                 fontSize: 20),
           ),
           Container(

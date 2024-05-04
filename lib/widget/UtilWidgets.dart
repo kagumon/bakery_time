@@ -93,3 +93,4 @@ const Color colorDanger800 = Color(0xFF932136);
 const Color colorDanger900 = Color(0xFF7A1131);
 const Color colorPrimaryGrey = Color(0xFFCFCAC7);
 const Color colorPrimaryWhite = Color(0xFFFFFEFD);
+const Color colorPrimaryBlack = Color(0xFF1F1E1D);

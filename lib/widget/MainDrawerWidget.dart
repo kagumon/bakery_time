@@ -17,12 +17,7 @@ Drawer mainDrawerWidget() {
           onDetailsPressed: () {
             print('arrow is clicked');
           },
-          decoration: const BoxDecoration(
-              color: colorPrimary600,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(40.0),
-                bottomRight: Radius.circular(40.0),
-              )),
+          decoration: const BoxDecoration(color: colorPrimary800,),
         ),
         ListTile(
           leading: Icon(
