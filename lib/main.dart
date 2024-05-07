@@ -1,19 +1,17 @@
-import 'package:bakery_time/ad_manager.dart';
 import 'package:bakery_time/static_page/agreeView.dart';
 import 'package:bakery_time/static_page/enterView.dart';
 import 'package:bakery_time/static_page/loadingView.dart';
 import 'package:bakery_time/static_page/successSignupView.dart';
-import 'package:bakery_time/static_page/test.dart';
 import 'package:bakery_time/view/homeView.dart';
 import 'package:bakery_time/view/loginView.dart';
+import 'package:bakery_time/view/recordView.dart';
+import 'package:bakery_time/view/shopView.dart';
 import 'package:bakery_time/view/signupView.dart';
 import 'package:bakery_time/widget/UtilWidgets.dart';
 import 'package:flutter/material.dart';
 import '../view/albumView.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  AdManager.init();
   runApp(const Myapp());
 }
 
@@ -34,18 +32,39 @@ class _MyappState extends State<Myapp> {
             appBarTheme: const AppBarTheme(color: colorPrimaryWhite)),
         debugShowCheckedModeBanner: false,
         title: "Flutter App",
-        initialRoute: '/test',
+        initialRoute: '/loading',
         routes: {
           '/loading': (context) => const LoadingView(),
+
+          //회원가입 및 로그인
           '/agree': (context) => const AgreeView(),
           '/enter': (context) => const EnterView(),
           '/index': (context) => const AlbumView(),
           '/login': (context) => const LoginView(),
           '/signup': (context) => const SignupView(),
           '/success': (context) => const SuccessSignupView(),
+
+          //메인 컨텐츠
           '/home': (context) => const HomeView(),
-          '/test':(context) => const TestView(),
+          '/shop': (context) => const ShopView(),
+          '/record': (context) => const RecordView(),
         },
         home: const LoadingView());
   }
 }
+
+/*
+class Myapp extends StatelessWidget {
+  const Myapp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: ChangeNotifierProvider<AlbumViewModel>(
+        create:(context) => AlbumViewModel(),
+        child: const AlbumView()
+      )
+    );
+  }
+}
+*/

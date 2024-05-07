@@ -1,29 +1,23 @@
 import 'package:bakery_time/widget/UtilWidgets.dart';
 import 'package:flutter/material.dart';
 
-AppBar mainAppBarWidget() {
+AppBar mainAppBarWidget(BuildContext context) {
   return AppBar(
     backgroundColor: colorPrimary800,
     iconTheme: const IconThemeData(color: colorPrimaryWhite),
     centerTitle: true,
     elevation: 0.0,
-    //leading: IconButton(
-    //  icon: const Icon(Icons.menu),
-    //  onPressed: () {
-    //    print('menu button is clicked !');
-    //   },
-    //),
     actions: [
       IconButton(
         icon: const Icon(Icons.store),
         onPressed: () {
-          print('home button is clicked !');
+          Navigator.of(context).pushNamed('/shop');
         },
       ),
       IconButton(
         icon: const Icon(Icons.dashboard),
         onPressed: () {
-          print('search button is clicked !');
+          Navigator.of(context).pushNamed('/record');
         },
       ),
       widthSizeBox(15)
