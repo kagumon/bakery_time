@@ -1,4 +1,5 @@
-import 'package:bakery_time/widget/UtilWidgets.dart';
+import 'package:bakery_time/util/UtilWidgets.dart';
+import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -38,21 +39,21 @@ class _SignupViewState extends State<SignupView> {
         title: Row(
           children: [
             emptyExpanded(),
-            const Icon(
+            Icon(
               Icons.looks_one,
-              color: colorPrimary800,
+              color: signupStepIconActiveColor,
             ),
-            const Icon(
+            Icon(
               Icons.looks_two,
-              color: colorPrimary800,
+              color: signupStepIconActiveColor,
             ),
-            const Icon(
+            Icon(
               Icons.looks_3,
-              color: colorPrimaryGrey,
+              color: signupStepIconDisableColor,
             ),
-            const Icon(
+            Icon(
               Icons.looks_4,
-              color: colorPrimaryGrey,
+              color: signupStepIconDisableColor,
             ),
           ],
         ),
@@ -100,7 +101,7 @@ class _SignupViewState extends State<SignupView> {
                     DropdownButton(
                         underline: Container(
                           height: 1,
-                          color: colorPrimary900,
+                          color: signupDropdownButtonBorderColor,
                         ),
                         isExpanded: true,
                         value: _mvnmValue,
@@ -244,11 +245,11 @@ InputDecoration textInputStyle({required String hint}) {
     counterText: '',
     hintText: hint,
     contentPadding: const EdgeInsets.only(left: 10, right: 10, bottom: 0),
-    enabledBorder: const UnderlineInputBorder(
-      borderSide: BorderSide(color: colorPrimary900),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: signupTextInputBorderColor),
     ),
-    focusedBorder: const UnderlineInputBorder(
-      borderSide: BorderSide(color: colorPrimary900),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: signupTextInputBorderColor),
     ),
   );
 }
@@ -256,13 +257,13 @@ InputDecoration textInputStyle({required String hint}) {
 BoxDecoration nextButtonStyle(bool status) {
   return BoxDecoration(
     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-    color: status ? colorPrimary900 : colorPrimaryGrey,
+    color: status ? signupNextButtonTouchableColor : signupNextButtonUntouchableColor,
   );
 }
 
 TextStyle explanTextStyle() {
-  return const TextStyle(
-    color: colorPrimary900,
+  return TextStyle(
+    color: signupExplanTextColor,
     fontSize: 24,
   );
 }

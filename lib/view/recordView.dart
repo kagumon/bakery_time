@@ -1,5 +1,6 @@
+import 'package:bakery_time/util/UtilWidgets.dart';
 import 'package:bakery_time/widget/ShopAppbar.dart';
-import 'package:bakery_time/widget/UtilWidgets.dart';
+import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 
 class RecordView extends StatefulWidget {
@@ -30,7 +31,7 @@ class _RecordViewState extends State<RecordView> {
       { "price" : "500", "name" : "아이템 이름" }
     ];
     return Scaffold(
-      backgroundColor: colorPrimary100,
+      backgroundColor: mainAppBackgroundColor,
       appBar: cashAppBarWidget(context),
       body: Column(
         children: [
@@ -50,9 +51,9 @@ class _RecordViewState extends State<RecordView> {
                   }),
                 },
                 child: Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                    color: colorPrimary300
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(30.0)),
+                    color: recordCalendarPickerColor
                   ),
                   child: const Padding(
                     padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
@@ -72,9 +73,9 @@ class _RecordViewState extends State<RecordView> {
                   }),
                 },
                 child: Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                    color: colorPrimary300
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(30.0)),
+                    color: recordCalendarPickerColor
                   ),
                   child: const Padding(
                     padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
@@ -98,9 +99,9 @@ class _RecordViewState extends State<RecordView> {
                 itemCount: itemList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      color: colorPrimaryWhite,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                      color: recordItemConatinerBackgroundColor,
                     ),
                     child: Text(itemList[index]["name"] as String),
                   );
@@ -122,12 +123,12 @@ class _RecordViewState extends State<RecordView> {
               onTap: ()=>{setState(() {_selectTab(i);})},
               child: Container(
                 height: 40,
-                color: _tabList[i]["selected"] ? colorPrimary600 : colorPrimary300,
+                color: _tabList[i]["selected"] ? recordContentTypeActiveColor : recordContentTypeDisableColor,
                 child: Center(
                   child: Text(
                     _tabList[i]["title"],
                     style: TextStyle(
-                      color: _tabList[i]["selected"] ? colorPrimaryWhite : colorPrimary900
+                      color: _tabList[i]["selected"] ? themeWhite : themePrimaryColor
                     )
                   )
                 ),

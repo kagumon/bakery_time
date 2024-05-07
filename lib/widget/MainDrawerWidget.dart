@@ -1,28 +1,28 @@
-import 'package:bakery_time/widget/UtilWidgets.dart';
+import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 
 Drawer mainDrawerWidget(BuildContext context) {
   return Drawer(
-    backgroundColor: colorPrimaryWhite,
+    backgroundColor: drawerBackgroundColor,
     child: ListView(
       padding: EdgeInsets.zero,
       children: [
         UserAccountsDrawerHeader(
-          currentAccountPicture: const CircleAvatar(
+          currentAccountPicture: CircleAvatar(
             //backgroundImage: AssetImage('assets/me.png'),
-            backgroundColor: colorPrimaryWhite,
+            backgroundColor: drawerAvatarBackgroundColor,
           ),
           accountName: const Text('Mei'),
           accountEmail: const Text('meibin@aaaa.com'),
           onDetailsPressed: () {
             print('arrow is clicked');
           },
-          decoration: const BoxDecoration(color: colorPrimary800,),
+          decoration: BoxDecoration(color: drawerHeaderBackgroundColor,),
         ),
         ListTile(
           leading: Icon(
             Icons.home,
-            color: Colors.grey[850],
+            color: drawerListIconColor,
           ),
           title: const Text('홈'),
           onTap: () {
@@ -32,7 +32,7 @@ Drawer mainDrawerWidget(BuildContext context) {
         ListTile(
           leading: Icon(
             Icons.settings,
-            color: Colors.grey[850],
+            color: drawerListIconColor,
           ),
           title: const Text('상점'),
           onTap: () {
@@ -42,7 +42,7 @@ Drawer mainDrawerWidget(BuildContext context) {
         ListTile(
           leading: Icon(
             Icons.settings,
-            color: Colors.grey[850],
+            color: drawerListIconColor,
           ),
           title: const Text('둘러보기'),
           onTap: () {
@@ -52,7 +52,7 @@ Drawer mainDrawerWidget(BuildContext context) {
         ListTile(
           leading: Icon(
             Icons.settings,
-            color: Colors.grey[850],
+            color: drawerListIconColor,
           ),
           title: const Text('우리의 활동'),
           onTap: () {
@@ -62,7 +62,7 @@ Drawer mainDrawerWidget(BuildContext context) {
         ListTile(
           leading: Icon(
             Icons.question_answer,
-            color: Colors.grey[850],
+            color: drawerListIconColor,
           ),
           title: const Text('라이선스 정보'),
           onTap: () {

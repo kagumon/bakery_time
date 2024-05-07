@@ -1,8 +1,9 @@
 import 'dart:async';
 
+import 'package:bakery_time/util/UtilWidgets.dart';
 import 'package:bakery_time/widget/MainDrawerWidget.dart';
-import 'package:bakery_time/widget/UtilFunction.dart';
-import 'package:bakery_time/widget/UtilWidgets.dart';
+import 'package:bakery_time/util/UtilFunction.dart';
+import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bakery_time/widget/MainAppBarWidget.dart';
@@ -27,7 +28,7 @@ class _HomeViewState extends State<HomeView> {
       appBar: mainAppBarWidget(context),
       drawer: mainDrawerWidget(context),
       body: Container(
-        color: colorPrimary100,
+        color: mainAppBackgroundColor,
         padding: const EdgeInsets.all(30),
         child: Column(
           children: [
@@ -60,18 +61,18 @@ class _HomeViewState extends State<HomeView> {
               data: SliderTheme.of(context).copyWith(
                 trackHeight: 26.0,
                 trackShape: const RoundedRectSliderTrackShape(),
-                activeTrackColor: colorPrimary700,
-                inactiveTrackColor: colorPrimary300,
+                activeTrackColor: homeSliderActiveTrackColor,
+                inactiveTrackColor: homeSliderInactiveTrackColor,
                 thumbShape: const RoundSliderThumbShape(
                   enabledThumbRadius: 14.0,
                   pressedElevation: 0.0,
                 ),
-                thumbColor: colorPrimary500,
-                overlayColor: colorPrimary800.withOpacity(0.5),
+                thumbColor: homeSliderthumbColor,
+                overlayColor: homeSliderOverlayColor.withOpacity(0.5),
                 overlayShape:
                     const RoundSliderOverlayShape(overlayRadius: 20.0),
                 tickMarkShape: const RoundSliderTickMarkShape(),
-                inactiveTickMarkColor: colorPrimaryWhite,
+                inactiveTickMarkColor: homeSliderInactiveTickMarkColor,
               ),
               child: Slider(
                 max: _isRunning ? _targetTimer : (3*60*60).toDouble(),
@@ -89,7 +90,7 @@ class _HomeViewState extends State<HomeView> {
             ),
             const Expanded(child: SizedBox.shrink()),
             Text(secondFormatHHMMSS(_timerSeconds.floor()),
-              style: const TextStyle(color: colorPrimary900, fontSize: 50),
+              style: TextStyle(color: themePrimaryColor, fontSize: 50),
             ),
             const Expanded(child: SizedBox.shrink()),
             SizedBox(
@@ -131,9 +132,9 @@ class _HomeViewState extends State<HomeView> {
       onTap: () => {_startTimer()},
       child: Container(
         decoration: startButtonDecoration(),
-        child: const Center(
+        child: Center(
             child: Text("베이킹 시작하기",
-          style: TextStyle(color: colorPrimaryWhite),
+          style: TextStyle(color: themeWhite),
         )),
       ),
     );
@@ -142,29 +143,29 @@ class _HomeViewState extends State<HomeView> {
   Container timerRunningText() {
     return Container(
       decoration: startButtonDecoration(),
-      child: const Center(
+      child: Center(
           child: Text("시간을 굽는중이에요!",
-        style: TextStyle(color: colorPrimaryWhite),
+        style: TextStyle(color: themeWhite),
       )),
     );
   }
 }
 BoxDecoration previewContainerDecoration() {
-  return const BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-      color: colorPrimaryWhite,
+  return BoxDecoration(
+      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      color: homePriviewConatinerBackgroundColor,
       boxShadow: [
-        BoxShadow(color: colorPrimary800, blurRadius: 5.0, spreadRadius: 1.0)
+        BoxShadow(color: homePriviewConatinerBoxShadowColor, blurRadius: 5.0, spreadRadius: 1.0)
       ]);
 }
 
 BoxDecoration startButtonDecoration() {
-  return const BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-      color: colorPrimary800,
+  return BoxDecoration(
+      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      color: homeStartButtonColor,
       boxShadow: [
         BoxShadow(
-            color: colorPrimaryBlack,
+            color: themeBlack,
             blurRadius: 5.0,
             spreadRadius: 1.0)
       ]);

@@ -1,4 +1,5 @@
-import 'package:bakery_time/widget/UtilWidgets.dart';
+import 'package:bakery_time/util/UtilWidgets.dart';
+import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 
 class AgreeView extends StatefulWidget {
@@ -20,21 +21,21 @@ class _AgreeViewState extends State<AgreeView> {
         title: Row(
           children: [
             emptyExpanded(),
-            const Icon(
+            Icon(
               Icons.looks_one,
-              color: colorPrimary800,
+              color: signupStepIconActiveColor,
             ),
-            const Icon(
+            Icon(
               Icons.looks_two,
-              color: colorPrimaryGrey,
+              color: signupStepIconDisableColor,
             ),
-            const Icon(
+            Icon(
               Icons.looks_3,
-              color: colorPrimaryGrey,
+              color: signupStepIconDisableColor,
             ),
-            const Icon(
+            Icon(
               Icons.looks_4,
-              color: colorPrimaryGrey,
+              color: signupStepIconDisableColor,
             ),
           ],
         ),
@@ -67,7 +68,7 @@ class _AgreeViewState extends State<AgreeView> {
                 leading: GestureDetector(
                   child: Icon(
                     Icons.verified,
-                    color: allCheck() ? colorPrimary900 : colorPrimaryGrey,
+                    color: allCheck() ? agreeCheckButtonActiveColor : themeGrey,
                     size: 25,
                   ),
                   onTap: () => {
@@ -105,7 +106,7 @@ class _AgreeViewState extends State<AgreeView> {
               leading: GestureDetector(
                 child: Icon(
                   Icons.verified,
-                  color: _agree1 ? colorPrimary900 : colorPrimaryGrey,
+                  color: _agree1 ? agreeCheckButtonActiveColor : themeGrey,
                   size: 25,
                 ),
                 onTap: () => {
@@ -125,7 +126,7 @@ class _AgreeViewState extends State<AgreeView> {
               leading: GestureDetector(
                 child: Icon(
                   Icons.verified,
-                  color: _agree2 ? colorPrimary900 : colorPrimaryGrey,
+                  color: _agree2 ? agreeCheckButtonActiveColor : themeGrey,
                   size: 25,
                 ),
                 onTap: () => {
@@ -145,7 +146,7 @@ class _AgreeViewState extends State<AgreeView> {
               leading: GestureDetector(
                 child: Icon(
                   Icons.verified,
-                  color: _agree3 ? colorPrimary900 : colorPrimaryGrey,
+                  color: _agree3 ? agreeCheckButtonActiveColor : themeGrey,
                   size: 25,
                 ),
                 onTap: () => {
@@ -194,7 +195,7 @@ InputDecoration textInputStyle(IconData icon) {
     border: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10.0)),
     ),
-    fillColor: colorPrimary100,
+    fillColor: themeWhite,
     filled: true,
     prefixIcon: Icon(icon),
   );
@@ -203,6 +204,6 @@ InputDecoration textInputStyle(IconData icon) {
 BoxDecoration nextButtonStyle(bool agreeState) {
   return BoxDecoration(
     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-    color: agreeState ? colorPrimary900 : colorPrimaryGrey,
+    color: agreeState ? agreeCheckButtonActiveColor : themeGrey,
   );
 }

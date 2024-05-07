@@ -1,4 +1,4 @@
-import 'package:bakery_time/widget/UtilWidgets.dart';
+import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 
 class EnterView extends StatefulWidget {
@@ -15,15 +15,15 @@ class _EnterViewState extends State<EnterView> {
       body: Column(
         children: [
           const Expanded(child: SizedBox.shrink()),
-          const Text(
+          Text(
             "베이커리타임",
             style: TextStyle(
-                fontFamily: "euljiro", color: colorPrimary800, fontSize: 40),
+                fontFamily: "euljiro", color: enterMainTextColor, fontSize: 40),
           ),
-          const Text(
+          Text(
             "시간을 굽다.",
             style: TextStyle(
-                fontFamily: "euljiro", color: colorPrimary800, fontSize: 30),
+                fontFamily: "euljiro", color: enterSubTextColor, fontSize: 30),
           ),
           const Expanded(child: SizedBox.shrink()),
           Container(
@@ -39,10 +39,10 @@ class _EnterViewState extends State<EnterView> {
                     width: double.infinity,
                     height: 50,
                     decoration: loginButtonStyle(),
-                    child: const Center(
+                    child: Center(
                         child: Text("로그인",
                             style: TextStyle(
-                              color: colorPrimaryWhite,
+                              color: themeWhite,
                             ))),
                   ),
                 ),
@@ -75,21 +75,21 @@ InputDecoration textInputStyle() {
 }
 
 BoxDecoration loginButtonStyle() {
-  return const BoxDecoration(
-    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    color: colorPrimary800,
+  return BoxDecoration(
+    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+    color: enterLoginButtonColor,
   );
 }
 
 BoxDecoration signupButtonStyle() {
-  return const BoxDecoration(
-    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    color: colorPrimary300,
+  return BoxDecoration(
+    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+    color: enterSignupButtonColor,
   );
 }
 
 TextStyle signupButtonTextStyle() {
-  return const TextStyle(
-    color: colorPrimary800,
+  return TextStyle(
+    color: themePrimaryColor,
   );
 }

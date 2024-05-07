@@ -1,10 +1,11 @@
-import 'package:bakery_time/widget/UtilWidgets.dart';
+import 'package:bakery_time/util/UtilWidgets.dart';
+import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 
 AppBar mainAppBarWidget(BuildContext context) {
   return AppBar(
-    backgroundColor: colorPrimary800,
-    iconTheme: const IconThemeData(color: colorPrimaryWhite),
+    backgroundColor: mainAppBarColor,
+    iconTheme: IconThemeData(color: mainAppBarIconColor),
     centerTitle: true,
     elevation: 0.0,
     actions: [

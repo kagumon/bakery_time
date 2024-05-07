@@ -1,4 +1,4 @@
-import 'package:bakery_time/widget/UtilWidgets.dart';
+import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 
 class SuccessSignupView extends StatefulWidget {
@@ -19,15 +19,15 @@ class _SuccessSignupViewState extends State<SuccessSignupView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Expanded(child: SizedBox.shrink()),
-            const Text(
+            Text(
               "회원가입을 완료했습니다.",
               style: TextStyle(
-                  fontFamily: "euljiro", color: colorPrimary800, fontSize: 30),
+                  fontFamily: "euljiro", color: successMainTextColor, fontSize: 30),
             ),
-            const Text(
+            Text(
               "서비스 이용을 위해 로그인해주세요.",
               style: TextStyle(
-                  fontFamily: "euljiro", color: colorPrimary800, fontSize: 20),
+                  fontFamily: "euljiro", color: successMainTextColor, fontSize: 20),
             ),
             const Expanded(child: SizedBox.shrink()),
             GestureDetector(
@@ -52,23 +52,23 @@ class _SuccessSignupViewState extends State<SuccessSignupView> {
 }
 
 InputDecoration textInputStyle() {
-  return const InputDecoration(
-      border: OutlineInputBorder(
+  return InputDecoration(
+      border: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
       ),
-      fillColor: colorPrimaryWhite,
+      fillColor: themeWhite,
       filled: true);
 }
 
 BoxDecoration loginButtonStyle() {
-  return const BoxDecoration(
-    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    color: colorPrimary900,
+  return BoxDecoration(
+    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+    color: successLoginButtonColor,
   );
 }
 
 TextStyle loginButtonTextStyle() {
-  return const TextStyle(
-    color: colorPrimaryWhite,
+  return TextStyle(
+    color: themeWhite,
   );
 }

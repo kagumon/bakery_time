@@ -1,4 +1,5 @@
-import 'package:bakery_time/widget/UtilWidgets.dart';
+import 'package:bakery_time/util/UtilWidgets.dart';
+import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatefulWidget {
@@ -17,18 +18,18 @@ class _LoginViewState extends State<LoginView> {
       body: Column(
         children: [
           emptyExpanded(),
-          const Text(
+          Text(
             "베이커리 타임",
             style: TextStyle(
-                color: colorPrimary900,
+                color: loginMainTextColor,
                 fontWeight: FontWeight.bold,
                 fontFamily: "euljiro",
                 fontSize: 30),
           ),
-          const Text(
+          Text(
             "이제는 시간을 구울 시간",
             style: TextStyle(
-                color: colorPrimary600,
+                color: loginSubTextColor,
                 fontWeight: FontWeight.w700,
                 fontFamily: "euljiro",
                 fontSize: 20),
@@ -58,11 +59,11 @@ class _LoginViewState extends State<LoginView> {
                     width: double.infinity,
                     height: 60,
                     decoration: loginButtonStyle(),
-                    child: const Center(
+                    child: Center(
                         child: Text(
                       "로그인",
                       style: TextStyle(
-                          color: colorPrimaryWhite,
+                          color: themeWhite,
                           fontSize: 15,
                           fontWeight: FontWeight.bold),
                     )),
@@ -94,14 +95,14 @@ class _LoginViewState extends State<LoginView> {
             Expanded(
               child: Container(
                 height: 1,
-                color: colorPrimary900,
+                color: loginHorizonBarColor,
               ),
             ),
             const Text("   소셜 계정으로 로그인   "),
             Expanded(
               child: Container(
                 height: 1,
-                color: colorPrimary900,
+                color: loginHorizonBarColor,
               ),
             ),
             widthSizeBox(30),
@@ -136,7 +137,7 @@ class _LoginViewState extends State<LoginView> {
           const Expanded(child: SizedBox.shrink()),
           Container(
             height: 10,
-            color: colorPrimary900,
+            color: loginBottomContainerColor,
           )
         ],
       ),
@@ -153,8 +154,8 @@ InputDecoration textInputStyle(String hint) {
 }
 
 BoxDecoration loginButtonStyle() {
-  return const BoxDecoration(
-    borderRadius: BorderRadius.all(Radius.circular(5.0)),
-    color: colorPrimary900,
+  return BoxDecoration(
+    borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+    color: loginLoginButtonColor,
   );
 }

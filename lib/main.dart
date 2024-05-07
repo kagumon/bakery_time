@@ -2,16 +2,18 @@ import 'package:bakery_time/static_page/agreeView.dart';
 import 'package:bakery_time/static_page/enterView.dart';
 import 'package:bakery_time/static_page/loadingView.dart';
 import 'package:bakery_time/static_page/successSignupView.dart';
+import 'package:bakery_time/static_page/test.dart';
 import 'package:bakery_time/view/homeView.dart';
 import 'package:bakery_time/view/loginView.dart';
 import 'package:bakery_time/view/recordView.dart';
 import 'package:bakery_time/view/shopView.dart';
 import 'package:bakery_time/view/signupView.dart';
-import 'package:bakery_time/widget/UtilWidgets.dart';
+import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 import '../view/albumView.dart';
 
 void main() {
+  changeColorTheme("defualt");
   runApp(const Myapp());
 }
 
@@ -28,8 +30,8 @@ class _MyappState extends State<Myapp> {
     return MaterialApp(
         theme: ThemeData(
             fontFamily: "bongodicMedium",
-            scaffoldBackgroundColor: colorPrimaryWhite,
-            appBarTheme: const AppBarTheme(color: colorPrimaryWhite)),
+            scaffoldBackgroundColor: mainAppBackgroundColor,
+            appBarTheme: AppBarTheme(color: mainAppBarColor)),
         debugShowCheckedModeBanner: false,
         title: "Flutter App",
         initialRoute: '/loading',
@@ -48,23 +50,9 @@ class _MyappState extends State<Myapp> {
           '/home': (context) => const HomeView(),
           '/shop': (context) => const ShopView(),
           '/record': (context) => const RecordView(),
+
+          '/test': (context) => const TestView(),
         },
         home: const LoadingView());
   }
 }
-
-/*
-class Myapp extends StatelessWidget {
-  const Myapp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ChangeNotifierProvider<AlbumViewModel>(
-        create:(context) => AlbumViewModel(),
-        child: const AlbumView()
-      )
-    );
-  }
-}
-*/

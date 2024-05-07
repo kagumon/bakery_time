@@ -1,4 +1,4 @@
-import 'package:bakery_time/widget/UtilWidgets.dart';
+import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -21,28 +21,28 @@ class _LoadingViewState extends State<LoadingView> {
         body: Container(
       width: double.infinity,
       height: double.infinity,
-      color: colorPrimary800,
+      color: loadingBackgroundColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
+          Text(
             "베이커리타임",
             style: TextStyle(
-                fontFamily: "euljiro", color: colorPrimaryWhite, fontSize: 40),
+                fontFamily: "euljiro", color: themeWhite, fontSize: 40),
           ),
-          const Text(
+          Text(
             "시간을 굽다.",
             style: TextStyle(
-                fontFamily: "euljiro", color: colorPrimaryWhite, fontSize: 30),
+                fontFamily: "euljiro", color: themeWhite, fontSize: 30),
           ),
           GestureDetector(
             onTap: () => {
               Navigator.of(context)
                   .pushNamedAndRemoveUntil("/enter", (route) => false)
             },
-            child: const Text(
+            child: Text(
               "(임시)로그인 안됨",
-              style: TextStyle(color: colorPrimaryWhite),
+              style: TextStyle(color: themeWhite),
             ),
           ),
         ],

@@ -22,7 +22,7 @@ class _TestViewState extends State<TestView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: mainAppBarWidget(),
+      appBar: mainAppBarWidget(context),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
