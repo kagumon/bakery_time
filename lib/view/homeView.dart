@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ffi';
 
 import 'package:bakery_time/widget/MainDrawerWidget.dart';
 import 'package:bakery_time/widget/UtilFunction.dart';
@@ -75,12 +74,12 @@ class _HomeViewState extends State<HomeView> {
                 inactiveTickMarkColor: colorPrimaryWhite,
               ),
               child: Slider(
-                max: _isRunning ? _targetTimer : (3*60*60).toDouble(),
+                max: _isRunning ? _targetTimer : (3 * 60 * 60).toDouble(),
                 value: _timerSeconds,
                 divisions: _isRunning ? _targetTimer.floor() : 36,
                 //label: '',
                 onChanged: (value) {
-                  if(_isRunning == false) {
+                  if (_isRunning == false) {
                     setState(() {
                       _timerSeconds = value;
                     });
@@ -89,7 +88,8 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             const Expanded(child: SizedBox.shrink()),
-            Text(secondFormatHHMMSS(_timerSeconds.floor()),
+            Text(
+              secondFormatHHMMSS(_timerSeconds.floor()),
               style: const TextStyle(color: colorPrimary900, fontSize: 50),
             ),
             const Expanded(child: SizedBox.shrink()),
@@ -106,7 +106,9 @@ class _HomeViewState extends State<HomeView> {
   }
 
   void _startTimer() {
-    if(_isRunning == true) {return;}
+    if (_isRunning == true) {
+      return;
+    }
     _isRunning = true;
     _targetTimer = _timerSeconds;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -133,7 +135,8 @@ class _HomeViewState extends State<HomeView> {
       child: Container(
         decoration: startButtonDecoration(),
         child: const Center(
-            child: Text("베이킹 시작하기",
+            child: Text(
+          "베이킹 시작하기",
           style: TextStyle(color: colorPrimaryWhite),
         )),
       ),
@@ -144,12 +147,14 @@ class _HomeViewState extends State<HomeView> {
     return Container(
       decoration: startButtonDecoration(),
       child: const Center(
-          child: Text("시간을 굽는중이에요!",
+          child: Text(
+        "시간을 굽는중이에요!",
         style: TextStyle(color: colorPrimaryWhite),
       )),
     );
   }
 }
+
 BoxDecoration previewContainerDecoration() {
   return const BoxDecoration(
       borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -164,9 +169,6 @@ BoxDecoration startButtonDecoration() {
       borderRadius: BorderRadius.all(Radius.circular(10.0)),
       color: colorPrimary800,
       boxShadow: [
-        BoxShadow(
-            color: colorPrimaryBlack,
-            blurRadius: 5.0,
-            spreadRadius: 1.0)
+        BoxShadow(color: colorPrimaryBlack, blurRadius: 5.0, spreadRadius: 1.0)
       ]);
 }
