@@ -1,7 +1,9 @@
+import 'package:bakery_time/ad_manager.dart';
 import 'package:bakery_time/static_page/agreeView.dart';
 import 'package:bakery_time/static_page/enterView.dart';
 import 'package:bakery_time/static_page/loadingView.dart';
 import 'package:bakery_time/static_page/successSignupView.dart';
+import 'package:bakery_time/static_page/test.dart';
 import 'package:bakery_time/view/homeView.dart';
 import 'package:bakery_time/view/loginView.dart';
 import 'package:bakery_time/view/signupView.dart';
@@ -10,6 +12,8 @@ import 'package:flutter/material.dart';
 import '../view/albumView.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  AdManager.init();
   runApp(const Myapp());
 }
 
@@ -30,7 +34,7 @@ class _MyappState extends State<Myapp> {
             appBarTheme: const AppBarTheme(color: colorPrimaryWhite)),
         debugShowCheckedModeBanner: false,
         title: "Flutter App",
-        initialRoute: '/loading',
+        initialRoute: '/test',
         routes: {
           '/loading': (context) => const LoadingView(),
           '/agree': (context) => const AgreeView(),
@@ -40,23 +44,8 @@ class _MyappState extends State<Myapp> {
           '/signup': (context) => const SignupView(),
           '/success': (context) => const SuccessSignupView(),
           '/home': (context) => const HomeView(),
+          '/test':(context) => const TestView(),
         },
         home: const LoadingView());
   }
 }
-
-/*
-class Myapp extends StatelessWidget {
-  const Myapp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ChangeNotifierProvider<AlbumViewModel>(
-        create:(context) => AlbumViewModel(),
-        child: const AlbumView()
-      )
-    );
-  }
-}
-*/
