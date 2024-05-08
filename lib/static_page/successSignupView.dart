@@ -22,12 +22,16 @@ class _SuccessSignupViewState extends State<SuccessSignupView> {
             Text(
               "회원가입을 완료했습니다.",
               style: TextStyle(
-                  fontFamily: "euljiro", color: successMainTextColor, fontSize: 30),
+                  fontFamily: "euljiro",
+                  color: successMainTextColor,
+                  fontSize: 30),
             ),
             Text(
               "서비스 이용을 위해 로그인해주세요.",
               style: TextStyle(
-                  fontFamily: "euljiro", color: successMainTextColor, fontSize: 20),
+                  fontFamily: "euljiro",
+                  color: successMainTextColor,
+                  fontSize: 20),
             ),
             const Expanded(child: SizedBox.shrink()),
             GestureDetector(

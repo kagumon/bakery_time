@@ -13,7 +13,6 @@ class TestView extends StatefulWidget {
 }
 
 class _TestViewState extends State<TestView> {
-
   @override
   void initState() {
     super.initState();
@@ -22,20 +21,19 @@ class _TestViewState extends State<TestView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: mainAppBarWidget(context),
-      body: SafeArea(
-        child: Column(
+        appBar: mainAppBarWidget(context),
+        body: SafeArea(
+            child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              width: AdManager.instance.bannerAd!.sizes.first.width.toDouble(),
-              height: AdManager.instance.bannerAd!.sizes.first.height.toDouble(),
-              child: AdWidget(ad: AdManager.instance.bannerAd!)
-            )
+                width:
+                    AdManager.instance.bannerAd!.sizes.first.width.toDouble(),
+                height:
+                    AdManager.instance.bannerAd!.sizes.first.height.toDouble(),
+                child: AdWidget(ad: AdManager.instance.bannerAd!))
           ],
-        )
-      )
-    );
+        )));
   }
 }

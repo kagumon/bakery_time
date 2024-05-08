@@ -257,7 +257,9 @@ InputDecoration textInputStyle({required String hint}) {
 BoxDecoration nextButtonStyle(bool status) {
   return BoxDecoration(
     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-    color: status ? signupNextButtonTouchableColor : signupNextButtonUntouchableColor,
+    color: status
+        ? signupNextButtonTouchableColor
+        : signupNextButtonUntouchableColor,
   );
 }
 

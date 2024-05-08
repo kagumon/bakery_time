@@ -11,86 +11,88 @@ class ShopView extends StatefulWidget {
   State<ShopView> createState() => _ShopViewState();
 }
 
-class _ShopViewState extends State<ShopView>{
+class _ShopViewState extends State<ShopView> {
   List<Map<String, dynamic>> _tabList = [
-    {"selected" : true, "title" : "전체"},
-    {"selected" : false, "title" : "베이스"},
-    {"selected" : false, "title" : "데코레이션"},
-    {"selected" : false, "title" : "포장"},
+    {"selected": true, "title": "전체"},
+    {"selected": false, "title": "베이스"},
+    {"selected": false, "title": "데코레이션"},
+    {"selected": false, "title": "포장"},
   ];
   @override
   Widget build(BuildContext context) {
     final itemList = [
-      { "price" : "500", "name" : "아이템 이름" },
-      { "price" : "500", "name" : "아이템 이름" },
-      { "price" : "500", "name" : "아이템 이름" },
-      { "price" : "500", "name" : "아이템 이름" },
-      { "price" : "500", "name" : "아이템 이름" },
-      { "price" : "500", "name" : "아이템 이름" },
-      { "price" : "500", "name" : "아이템 이름" },
-      { "price" : "500", "name" : "아이템 이름" },
-      { "price" : "500", "name" : "아이템 이름" }
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"}
     ];
     return Scaffold(
-      backgroundColor: mainAppBackgroundColor,
-      appBar: cashAppBarWidget(context),
-      body: Column(
-        children: [
-          _contentTypeSelectTab(),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 10.0,
-                  mainAxisSpacing: 10.0,
-                ),
-                itemCount: itemList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                      color: shopItemConatinerBackgroundColor,
+        backgroundColor: mainAppBackgroundColor,
+        appBar: cashAppBarWidget(context),
+        body: Column(
+          children: [
+            _contentTypeSelectTab(),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 10.0,
+                      mainAxisSpacing: 10.0,
                     ),
-                    child: Text(itemList[index]["name"] as String),
-                  );
-                }
+                    itemCount: itemList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10.0)),
+                          color: shopItemConatinerBackgroundColor,
+                        ),
+                        child: Text(itemList[index]["name"] as String),
+                      );
+                    }),
               ),
             ),
-          ),
-        ],
-      )
-    );
+          ],
+        ));
   }
 
   Widget _contentTypeSelectTab() {
-    return Row(
-      children: [
-        for(int i=0;i<_tabList.length;i++)
-          Expanded(
-            child: GestureDetector(
-              onTap: ()=>{setState(() {_selectTab(i);})},
-              child: Container(
-                height: 40,
-                color: _tabList[i]["selected"] ? shopContentTypeActiveColor : shopContentTypeDisableColor,
-                child: Center(
-                  child: Text(
-                    _tabList[i]["title"],
-                    style: TextStyle(
-                      color: _tabList[i]["selected"] ? themeWhite : themePrimaryColor
-                    )
-                  )
-                ),
-              ),
+    return Row(children: [
+      for (int i = 0; i < _tabList.length; i++)
+        Expanded(
+          child: GestureDetector(
+            onTap: () => {
+              setState(() {
+                _selectTab(i);
+              })
+            },
+            child: Container(
+              height: 40,
+              color: _tabList[i]["selected"]
+                  ? shopContentTypeActiveColor
+                  : shopContentTypeDisableColor,
+              child: Center(
+                  child: Text(_tabList[i]["title"],
+                      style: TextStyle(
+                          color: _tabList[i]["selected"]
+                              ? themeWhite
+                              : themePrimaryColor))),
             ),
-          )
-      ]
-    );
+          ),
+        )
+    ]);
   }
 
   void _selectTab(int index) {
-    for(int i=0;i<_tabList.length;i++) {
+    for (int i = 0; i < _tabList.length; i++) {
       _tabList[i]["selected"] = false;
     }
     _tabList[index]["selected"] = true;

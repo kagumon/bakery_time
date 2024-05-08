@@ -8,8 +8,6 @@ AppBar cashAppBarWidget(BuildContext context) {
     iconTheme: IconThemeData(color: mainAppBarIconColor),
     centerTitle: true,
     elevation: 0.0,
-    actions: [
-      widthSizeBox(15)
-    ],
+    actions: [widthSizeBox(15)],
   );
 }

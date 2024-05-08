@@ -75,12 +75,12 @@ class _HomeViewState extends State<HomeView> {
                 inactiveTickMarkColor: homeSliderInactiveTickMarkColor,
               ),
               child: Slider(
-                max: _isRunning ? _targetTimer : (3*60*60).toDouble(),
+                max: _isRunning ? _targetTimer : (3 * 60 * 60).toDouble(),
                 value: _timerSeconds,
                 divisions: _isRunning ? _targetTimer.floor() : 36,
                 //label: '',
                 onChanged: (value) {
-                  if(_isRunning == false) {
+                  if (_isRunning == false) {
                     setState(() {
                       _timerSeconds = value;
                     });
@@ -89,7 +89,8 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             const Expanded(child: SizedBox.shrink()),
-            Text(secondFormatHHMMSS(_timerSeconds.floor()),
+            Text(
+              secondFormatHHMMSS(_timerSeconds.floor()),
               style: TextStyle(color: themePrimaryColor, fontSize: 50),
             ),
             const Expanded(child: SizedBox.shrink()),
@@ -106,7 +107,9 @@ class _HomeViewState extends State<HomeView> {
   }
 
   void _startTimer() {
-    if(_isRunning == true) {return;}
+    if (_isRunning == true) {
+      return;
+    }
     _isRunning = true;
     _targetTimer = _timerSeconds;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -133,7 +136,8 @@ class _HomeViewState extends State<HomeView> {
       child: Container(
         decoration: startButtonDecoration(),
         child: Center(
-            child: Text("베이킹 시작하기",
+            child: Text(
+          "베이킹 시작하기",
           style: TextStyle(color: themeWhite),
         )),
       ),
@@ -144,18 +148,23 @@ class _HomeViewState extends State<HomeView> {
     return Container(
       decoration: startButtonDecoration(),
       child: Center(
-          child: Text("시간을 굽는중이에요!",
+          child: Text(
+        "시간을 굽는중이에요!",
         style: TextStyle(color: themeWhite),
       )),
     );
   }
 }
+
 BoxDecoration previewContainerDecoration() {
   return BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
       color: homePriviewConatinerBackgroundColor,
       boxShadow: [
-        BoxShadow(color: homePriviewConatinerBoxShadowColor, blurRadius: 5.0, spreadRadius: 1.0)
+        BoxShadow(
+            color: homePriviewConatinerBoxShadowColor,
+            blurRadius: 5.0,
+            spreadRadius: 1.0)
       ]);
 }
 
@@ -164,9 +173,6 @@ BoxDecoration startButtonDecoration() {
       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
       color: homeStartButtonColor,
       boxShadow: [
-        BoxShadow(
-            color: themeBlack,
-            blurRadius: 5.0,
-            spreadRadius: 1.0)
+        BoxShadow(color: themeBlack, blurRadius: 5.0, spreadRadius: 1.0)
       ]);
 }
