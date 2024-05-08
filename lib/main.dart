@@ -4,6 +4,7 @@ import 'package:bakery_time/static_page/loadingView.dart';
 import 'package:bakery_time/static_page/successSignupView.dart';
 import 'package:bakery_time/static_page/test.dart';
 import 'package:bakery_time/view/homeView.dart';
+import 'package:bakery_time/view/itemDetailView.dart';
 import 'package:bakery_time/view/loginView.dart';
 import 'package:bakery_time/view/recordView.dart';
 import 'package:bakery_time/view/shopView.dart';
@@ -34,7 +35,7 @@ class _MyappState extends State<Myapp> {
             appBarTheme: AppBarTheme(color: main0002)),
         debugShowCheckedModeBanner: false,
         title: "Flutter App",
-        initialRoute: '/test',
+        initialRoute: '/loading',
         routes: {
           '/loading': (context) => const LoadingView(),
 
@@ -50,6 +51,7 @@ class _MyappState extends State<Myapp> {
           '/home': (context) => const HomeView(),
           '/shop': (context) => const ShopView(),
           '/record': (context) => const RecordView(),
+          '/itemDetail': (context) => const ItemDetailView(),
 
           '/test': (context) => const TestView(),
         },

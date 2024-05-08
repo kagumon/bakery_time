@@ -1,3 +1,5 @@
+import 'package:bakery_time/util/UtilWidgets.dart';
+import 'package:bakery_time/view/itemDetailView.dart';
 import 'package:bakery_time/widget/ShopAppbar.dart';
 import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,7 +14,7 @@ class ShopView extends StatefulWidget {
 }
 
 class _ShopViewState extends State<ShopView> {
-  List<Map<String, dynamic>> _tabList = [
+  final List<Map<String, dynamic>> _tabList = [
     {"selected": true, "title": "전체"},
     {"selected": false, "title": "베이스"},
     {"selected": false, "title": "데코레이션"},
@@ -20,16 +22,35 @@ class _ShopViewState extends State<ShopView> {
   ];
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+
+    /*24 is for notification bar on Android*/
+    final double itemWidth = size.width / 3;
     final itemList = [
-      {"price": "500", "name": "아이템 이름"},
-      {"price": "500", "name": "아이템 이름"},
-      {"price": "500", "name": "아이템 이름"},
-      {"price": "500", "name": "아이템 이름"},
-      {"price": "500", "name": "아이템 이름"},
-      {"price": "500", "name": "아이템 이름"},
-      {"price": "500", "name": "아이템 이름"},
-      {"price": "500", "name": "아이템 이름"},
-      {"price": "500", "name": "아이템 이름"}
+      {"seq": "item0001", "price": "500", "name": "크리스마스 케이크", "imageUrl":"https://www.urbanbrush.net/web/wp-content/uploads/edd/2022/12/urbanbrush-20221210171027388041.jpg"},
+      {"seq": "item0002", "price": "1000", "name": "딸기 케이크", "imageUrl": "https://eshop.lottehotel.com/uploads/product/82d2de092c6aab217a269659935117b4.jpg"},
+      {"seq": "item0003", "price": "700", "name": "초코 케이크", "imageUrl": "https://ecimg.cafe24img.com/pg299b34409484036/baekih1001/web/product/medium/20230613/ce94c88007e24270e9e7f45a6eb9271d.jpg"},
+      {"seq": "item0001", "price": "500", "name": "크리스마스 케이크", "imageUrl":"https://www.urbanbrush.net/web/wp-content/uploads/edd/2022/12/urbanbrush-20221210171027388041.jpg"},
+      {"seq": "item0002", "price": "1000", "name": "딸기 케이크", "imageUrl": "https://eshop.lottehotel.com/uploads/product/82d2de092c6aab217a269659935117b4.jpg"},
+      {"seq": "item0003", "price": "700", "name": "초코 케이크", "imageUrl": "https://ecimg.cafe24img.com/pg299b34409484036/baekih1001/web/product/medium/20230613/ce94c88007e24270e9e7f45a6eb9271d.jpg"},
+      {"seq": "item0001", "price": "500", "name": "크리스마스 케이크", "imageUrl":"https://www.urbanbrush.net/web/wp-content/uploads/edd/2022/12/urbanbrush-20221210171027388041.jpg"},
+      {"seq": "item0002", "price": "1000", "name": "딸기 케이크", "imageUrl": "https://eshop.lottehotel.com/uploads/product/82d2de092c6aab217a269659935117b4.jpg"},
+      {"seq": "item0003", "price": "700", "name": "초코 케이크", "imageUrl": "https://ecimg.cafe24img.com/pg299b34409484036/baekih1001/web/product/medium/20230613/ce94c88007e24270e9e7f45a6eb9271d.jpg"},
+      {"seq": "item0001", "price": "500", "name": "크리스마스 케이크", "imageUrl":"https://www.urbanbrush.net/web/wp-content/uploads/edd/2022/12/urbanbrush-20221210171027388041.jpg"},
+      {"seq": "item0002", "price": "1000", "name": "딸기 케이크", "imageUrl": "https://eshop.lottehotel.com/uploads/product/82d2de092c6aab217a269659935117b4.jpg"},
+      {"seq": "item0003", "price": "700", "name": "초코 케이크", "imageUrl": "https://ecimg.cafe24img.com/pg299b34409484036/baekih1001/web/product/medium/20230613/ce94c88007e24270e9e7f45a6eb9271d.jpg"},
+      {"seq": "item0001", "price": "500", "name": "크리스마스 케이크", "imageUrl":"https://www.urbanbrush.net/web/wp-content/uploads/edd/2022/12/urbanbrush-20221210171027388041.jpg"},
+      {"seq": "item0002", "price": "1000", "name": "딸기 케이크", "imageUrl": "https://eshop.lottehotel.com/uploads/product/82d2de092c6aab217a269659935117b4.jpg"},
+      {"seq": "item0003", "price": "700", "name": "초코 케이크", "imageUrl": "https://ecimg.cafe24img.com/pg299b34409484036/baekih1001/web/product/medium/20230613/ce94c88007e24270e9e7f45a6eb9271d.jpg"},
+      {"seq": "item0001", "price": "500", "name": "크리스마스 케이크", "imageUrl":"https://www.urbanbrush.net/web/wp-content/uploads/edd/2022/12/urbanbrush-20221210171027388041.jpg"},
+      {"seq": "item0002", "price": "1000", "name": "딸기 케이크", "imageUrl": "https://eshop.lottehotel.com/uploads/product/82d2de092c6aab217a269659935117b4.jpg"},
+      {"seq": "item0003", "price": "700", "name": "초코 케이크", "imageUrl": "https://ecimg.cafe24img.com/pg299b34409484036/baekih1001/web/product/medium/20230613/ce94c88007e24270e9e7f45a6eb9271d.jpg"},
+      {"seq": "item0001", "price": "500", "name": "크리스마스 케이크", "imageUrl":"https://www.urbanbrush.net/web/wp-content/uploads/edd/2022/12/urbanbrush-20221210171027388041.jpg"},
+      {"seq": "item0002", "price": "1000", "name": "딸기 케이크", "imageUrl": "https://eshop.lottehotel.com/uploads/product/82d2de092c6aab217a269659935117b4.jpg"},
+      {"seq": "item0003", "price": "700", "name": "초코 케이크", "imageUrl": "https://ecimg.cafe24img.com/pg299b34409484036/baekih1001/web/product/medium/20230613/ce94c88007e24270e9e7f45a6eb9271d.jpg"},
+      {"seq": "item0001", "price": "500", "name": "크리스마스 케이크", "imageUrl":"https://www.urbanbrush.net/web/wp-content/uploads/edd/2022/12/urbanbrush-20221210171027388041.jpg"},
+      {"seq": "item0002", "price": "1000", "name": "딸기 케이크", "imageUrl": "https://eshop.lottehotel.com/uploads/product/82d2de092c6aab217a269659935117b4.jpg"},
+      {"seq": "item0003", "price": "700", "name": "초코 케이크", "imageUrl": "https://ecimg.cafe24img.com/pg299b34409484036/baekih1001/web/product/medium/20230613/ce94c88007e24270e9e7f45a6eb9271d.jpg"},
     ];
     return Scaffold(
         backgroundColor: main0001,
@@ -40,24 +61,28 @@ class _ShopViewState extends State<ShopView> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 10.0,
-                      mainAxisSpacing: 10.0,
-                    ),
-                    itemCount: itemList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10.0)),
-                          color: shop0002,
-                        ),
-                        child: Text(itemList[index]["name"] as String),
-                      );
-                    }),
+                child: GridView.count(
+                  crossAxisCount: 3,
+                  childAspectRatio: 0.7,
+                  controller: ScrollController(keepScrollOffset: false),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  children: itemList.map((Map<String, dynamic> item) {
+                    return Container(
+                      color: comm0003,
+                      margin: const EdgeInsets.all(5.0),
+                      child: Column(
+                        children: [
+                          Image.network(item["imageUrl"]),
+                          emptyExpanded(),
+                          Center(child: Text(item["name"]),),
+                          Center(child: Text(item["price"]),),
+                          emptyExpanded(),
+                        ],
+                      )
+                    );
+                  }).toList(),
+                ),
               ),
             ),
           ],
@@ -94,4 +119,11 @@ class _ShopViewState extends State<ShopView> {
     }
     _tabList[index]["selected"] = true;
   }
+}
+
+class ScreenArguments {
+  final String name;
+  final String price;
+
+  ScreenArguments(this.name, this.price);
 }
