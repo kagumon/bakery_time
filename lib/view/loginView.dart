@@ -21,7 +21,7 @@ class _LoginViewState extends State<LoginView> {
           Text(
             "베이커리 타임",
             style: TextStyle(
-                color: loginMainTextColor,
+                color: logn0001,
                 fontWeight: FontWeight.bold,
                 fontFamily: "euljiro",
                 fontSize: 30),
@@ -29,7 +29,7 @@ class _LoginViewState extends State<LoginView> {
           Text(
             "이제는 시간을 구울 시간",
             style: TextStyle(
-                color: loginSubTextColor,
+                color: logn0002,
                 fontWeight: FontWeight.w700,
                 fontFamily: "euljiro",
                 fontSize: 20),
@@ -63,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
                         child: Text(
                       "로그인",
                       style: TextStyle(
-                          color: themeWhite,
+                          color: comm0001,
                           fontSize: 15,
                           fontWeight: FontWeight.bold),
                     )),
@@ -95,14 +95,14 @@ class _LoginViewState extends State<LoginView> {
             Expanded(
               child: Container(
                 height: 1,
-                color: loginHorizonBarColor,
+                color: logn0003,
               ),
             ),
             const Text("   소셜 계정으로 로그인   "),
             Expanded(
               child: Container(
                 height: 1,
-                color: loginHorizonBarColor,
+                color: logn0003,
               ),
             ),
             widthSizeBox(30),
@@ -137,7 +137,7 @@ class _LoginViewState extends State<LoginView> {
           const Expanded(child: SizedBox.shrink()),
           Container(
             height: 10,
-            color: loginBottomContainerColor,
+            color: logn0004,
           )
         ],
       ),
@@ -156,6 +156,6 @@ InputDecoration textInputStyle(String hint) {
 BoxDecoration loginButtonStyle() {
   return BoxDecoration(
     borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-    color: loginLoginButtonColor,
+    color: logn0005,
   );
 }

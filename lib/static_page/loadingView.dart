@@ -21,19 +21,19 @@ class _LoadingViewState extends State<LoadingView> {
         body: Container(
       width: double.infinity,
       height: double.infinity,
-      color: loadingBackgroundColor,
+      color: load0001,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             "베이커리타임",
-            style: TextStyle(
-                fontFamily: "euljiro", color: themeWhite, fontSize: 40),
+            style:
+                TextStyle(fontFamily: "euljiro", color: comm0001, fontSize: 40),
           ),
           Text(
             "시간을 굽다.",
-            style: TextStyle(
-                fontFamily: "euljiro", color: themeWhite, fontSize: 30),
+            style:
+                TextStyle(fontFamily: "euljiro", color: comm0001, fontSize: 30),
           ),
           GestureDetector(
             onTap: () => {
@@ -42,7 +42,7 @@ class _LoadingViewState extends State<LoadingView> {
             },
             child: Text(
               "(임시)로그인 안됨",
-              style: TextStyle(color: themeWhite),
+              style: TextStyle(color: comm0001),
             ),
           ),
         ],

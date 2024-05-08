@@ -41,19 +41,19 @@ class _SignupViewState extends State<SignupView> {
             emptyExpanded(),
             Icon(
               Icons.looks_one,
-              color: signupStepIconActiveColor,
+              color: sign0005,
             ),
             Icon(
               Icons.looks_two,
-              color: signupStepIconActiveColor,
+              color: sign0005,
             ),
             Icon(
               Icons.looks_3,
-              color: signupStepIconDisableColor,
+              color: sign0006,
             ),
             Icon(
               Icons.looks_4,
-              color: signupStepIconDisableColor,
+              color: sign0006,
             ),
           ],
         ),
@@ -101,7 +101,7 @@ class _SignupViewState extends State<SignupView> {
                     DropdownButton(
                         underline: Container(
                           height: 1,
-                          color: signupDropdownButtonBorderColor,
+                          color: sign0001,
                         ),
                         isExpanded: true,
                         value: _mvnmValue,
@@ -246,10 +246,10 @@ InputDecoration textInputStyle({required String hint}) {
     hintText: hint,
     contentPadding: const EdgeInsets.only(left: 10, right: 10, bottom: 0),
     enabledBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: signupTextInputBorderColor),
+      borderSide: BorderSide(color: shop0005),
     ),
     focusedBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: signupTextInputBorderColor),
+      borderSide: BorderSide(color: shop0005),
     ),
   );
 }
@@ -257,15 +257,13 @@ InputDecoration textInputStyle({required String hint}) {
 BoxDecoration nextButtonStyle(bool status) {
   return BoxDecoration(
     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-    color: status
-        ? signupNextButtonTouchableColor
-        : signupNextButtonUntouchableColor,
+    color: status ? sign0002 : sign0003,
   );
 }
 
 TextStyle explanTextStyle() {
   return TextStyle(
-    color: signupExplanTextColor,
+    color: sign0004,
     fontSize: 24,
   );
 }

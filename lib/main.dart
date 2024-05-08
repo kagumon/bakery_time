@@ -30,8 +30,8 @@ class _MyappState extends State<Myapp> {
     return MaterialApp(
         theme: ThemeData(
             fontFamily: "bongodicMedium",
-            scaffoldBackgroundColor: mainAppBackgroundColor,
-            appBarTheme: AppBarTheme(color: mainAppBarColor)),
+            scaffoldBackgroundColor: main0001,
+            appBarTheme: AppBarTheme(color: main0002)),
         debugShowCheckedModeBanner: false,
         title: "Flutter App",
         initialRoute: '/loading',

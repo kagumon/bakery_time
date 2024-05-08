@@ -31,7 +31,7 @@ class _RecordViewState extends State<RecordView> {
       {"price": "500", "name": "아이템 이름"}
     ];
     return Scaffold(
-        backgroundColor: mainAppBackgroundColor,
+        backgroundColor: main0001,
         appBar: cashAppBarWidget(context),
         body: Column(
           children: [
@@ -53,7 +53,7 @@ class _RecordViewState extends State<RecordView> {
                       decoration: BoxDecoration(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(30.0)),
-                          color: recordCalendarPickerColor),
+                          color: rcrd0001),
                       child: const Padding(
                         padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
                         child: Text("2024.05.05"),
@@ -73,7 +73,7 @@ class _RecordViewState extends State<RecordView> {
                       decoration: BoxDecoration(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(30.0)),
-                          color: recordCalendarPickerColor),
+                          color: rcrd0001),
                       child: const Padding(
                         padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
                         child: Text("2024.05.05"),
@@ -99,7 +99,7 @@ class _RecordViewState extends State<RecordView> {
                         decoration: BoxDecoration(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10.0)),
-                          color: recordItemConatinerBackgroundColor,
+                          color: rcrd0002,
                         ),
                         child: Text(itemList[index]["name"] as String),
                       );
@@ -122,15 +122,12 @@ class _RecordViewState extends State<RecordView> {
             },
             child: Container(
               height: 40,
-              color: _tabList[i]["selected"]
-                  ? recordContentTypeActiveColor
-                  : recordContentTypeDisableColor,
+              color: _tabList[i]["selected"] ? rcrd0003 : rcrd0004,
               child: Center(
                   child: Text(_tabList[i]["title"],
                       style: TextStyle(
-                          color: _tabList[i]["selected"]
-                              ? themeWhite
-                              : themePrimaryColor))),
+                          color:
+                              _tabList[i]["selected"] ? comm0001 : comm0000))),
             ),
           ),
         )

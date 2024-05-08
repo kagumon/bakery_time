@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 AppBar mainAppBarWidget(BuildContext context) {
   return AppBar(
-    backgroundColor: mainAppBarColor,
-    iconTheme: IconThemeData(color: mainAppBarIconColor),
+    backgroundColor: main0002,
+    iconTheme: IconThemeData(color: main0003),
     centerTitle: true,
     elevation: 0.0,
     actions: [

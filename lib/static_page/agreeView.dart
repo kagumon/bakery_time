@@ -23,19 +23,19 @@ class _AgreeViewState extends State<AgreeView> {
             emptyExpanded(),
             Icon(
               Icons.looks_one,
-              color: signupStepIconActiveColor,
+              color: sign0005,
             ),
             Icon(
               Icons.looks_two,
-              color: signupStepIconDisableColor,
+              color: sign0006,
             ),
             Icon(
               Icons.looks_3,
-              color: signupStepIconDisableColor,
+              color: sign0006,
             ),
             Icon(
               Icons.looks_4,
-              color: signupStepIconDisableColor,
+              color: sign0006,
             ),
           ],
         ),
@@ -68,7 +68,7 @@ class _AgreeViewState extends State<AgreeView> {
                 leading: GestureDetector(
                   child: Icon(
                     Icons.verified,
-                    color: allCheck() ? agreeCheckButtonActiveColor : themeGrey,
+                    color: allCheck() ? agre0001 : comm0003,
                     size: 25,
                   ),
                   onTap: () => {
@@ -106,7 +106,7 @@ class _AgreeViewState extends State<AgreeView> {
               leading: GestureDetector(
                 child: Icon(
                   Icons.verified,
-                  color: _agree1 ? agreeCheckButtonActiveColor : themeGrey,
+                  color: _agree1 ? agre0001 : comm0003,
                   size: 25,
                 ),
                 onTap: () => {
@@ -126,7 +126,7 @@ class _AgreeViewState extends State<AgreeView> {
               leading: GestureDetector(
                 child: Icon(
                   Icons.verified,
-                  color: _agree2 ? agreeCheckButtonActiveColor : themeGrey,
+                  color: _agree2 ? agre0001 : comm0003,
                   size: 25,
                 ),
                 onTap: () => {
@@ -146,7 +146,7 @@ class _AgreeViewState extends State<AgreeView> {
               leading: GestureDetector(
                 child: Icon(
                   Icons.verified,
-                  color: _agree3 ? agreeCheckButtonActiveColor : themeGrey,
+                  color: _agree3 ? agre0001 : comm0003,
                   size: 25,
                 ),
                 onTap: () => {
@@ -195,7 +195,7 @@ InputDecoration textInputStyle(IconData icon) {
     border: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10.0)),
     ),
-    fillColor: themeWhite,
+    fillColor: comm0001,
     filled: true,
     prefixIcon: Icon(icon),
   );
@@ -204,6 +204,6 @@ InputDecoration textInputStyle(IconData icon) {
 BoxDecoration nextButtonStyle(bool agreeState) {
   return BoxDecoration(
     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-    color: agreeState ? agreeCheckButtonActiveColor : themeGrey,
+    color: agreeState ? agre0001 : comm0003,
   );
 }

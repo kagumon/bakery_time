@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 Drawer mainDrawerWidget(BuildContext context) {
   return Drawer(
-      backgroundColor: drawerBackgroundColor,
+      backgroundColor: draw0001,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
             currentAccountPicture: CircleAvatar(
               //backgroundImage: AssetImage('assets/me.png'),
-              backgroundColor: drawerAvatarBackgroundColor,
+              backgroundColor: draw0003,
             ),
             accountName: const Text('Mei'),
             accountEmail: const Text('meibin@aaaa.com'),
@@ -18,13 +18,13 @@ Drawer mainDrawerWidget(BuildContext context) {
               print('arrow is clicked');
             },
             decoration: BoxDecoration(
-              color: drawerHeaderBackgroundColor,
+              color: draw0002,
             ),
           ),
           ListTile(
             leading: Icon(
               Icons.home,
-              color: drawerListIconColor,
+              color: draw0004,
             ),
             title: const Text('홈'),
             onTap: () {
@@ -34,7 +34,7 @@ Drawer mainDrawerWidget(BuildContext context) {
           ListTile(
             leading: Icon(
               Icons.settings,
-              color: drawerListIconColor,
+              color: draw0004,
             ),
             title: const Text('상점'),
             onTap: () {
@@ -44,7 +44,7 @@ Drawer mainDrawerWidget(BuildContext context) {
           ListTile(
             leading: Icon(
               Icons.settings,
-              color: drawerListIconColor,
+              color: draw0004,
             ),
             title: const Text('둘러보기'),
             onTap: () {
@@ -54,7 +54,7 @@ Drawer mainDrawerWidget(BuildContext context) {
           ListTile(
             leading: Icon(
               Icons.settings,
-              color: drawerListIconColor,
+              color: draw0004,
             ),
             title: const Text('우리의 활동'),
             onTap: () {
@@ -64,7 +64,7 @@ Drawer mainDrawerWidget(BuildContext context) {
           ListTile(
             leading: Icon(
               Icons.question_answer,
-              color: drawerListIconColor,
+              color: draw0004,
             ),
             title: const Text('라이선스 정보'),
             onTap: () {

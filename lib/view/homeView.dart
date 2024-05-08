@@ -28,7 +28,7 @@ class _HomeViewState extends State<HomeView> {
       appBar: mainAppBarWidget(context),
       drawer: mainDrawerWidget(context),
       body: Container(
-        color: mainAppBackgroundColor,
+        color: main0001,
         padding: const EdgeInsets.all(30),
         child: Column(
           children: [
@@ -61,18 +61,18 @@ class _HomeViewState extends State<HomeView> {
               data: SliderTheme.of(context).copyWith(
                 trackHeight: 26.0,
                 trackShape: const RoundedRectSliderTrackShape(),
-                activeTrackColor: homeSliderActiveTrackColor,
-                inactiveTrackColor: homeSliderInactiveTrackColor,
+                activeTrackColor: home0101,
+                inactiveTrackColor: home0102,
                 thumbShape: const RoundSliderThumbShape(
                   enabledThumbRadius: 14.0,
                   pressedElevation: 0.0,
                 ),
-                thumbColor: homeSliderthumbColor,
-                overlayColor: homeSliderOverlayColor.withOpacity(0.5),
+                thumbColor: home0103,
+                overlayColor: home0104.withOpacity(0.5),
                 overlayShape:
                     const RoundSliderOverlayShape(overlayRadius: 20.0),
                 tickMarkShape: const RoundSliderTickMarkShape(),
-                inactiveTickMarkColor: homeSliderInactiveTickMarkColor,
+                inactiveTickMarkColor: home0105,
               ),
               child: Slider(
                 max: _isRunning ? _targetTimer : (3 * 60 * 60).toDouble(),
@@ -91,7 +91,7 @@ class _HomeViewState extends State<HomeView> {
             const Expanded(child: SizedBox.shrink()),
             Text(
               secondFormatHHMMSS(_timerSeconds.floor()),
-              style: TextStyle(color: themePrimaryColor, fontSize: 50),
+              style: TextStyle(color: comm0000, fontSize: 50),
             ),
             const Expanded(child: SizedBox.shrink()),
             SizedBox(
@@ -138,7 +138,7 @@ class _HomeViewState extends State<HomeView> {
         child: Center(
             child: Text(
           "베이킹 시작하기",
-          style: TextStyle(color: themeWhite),
+          style: TextStyle(color: comm0001),
         )),
       ),
     );
@@ -150,7 +150,7 @@ class _HomeViewState extends State<HomeView> {
       child: Center(
           child: Text(
         "시간을 굽는중이에요!",
-        style: TextStyle(color: themeWhite),
+        style: TextStyle(color: comm0001),
       )),
     );
   }
@@ -159,20 +159,17 @@ class _HomeViewState extends State<HomeView> {
 BoxDecoration previewContainerDecoration() {
   return BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-      color: homePriviewConatinerBackgroundColor,
+      color: home0201,
       boxShadow: [
-        BoxShadow(
-            color: homePriviewConatinerBoxShadowColor,
-            blurRadius: 5.0,
-            spreadRadius: 1.0)
+        BoxShadow(color: home0202, blurRadius: 5.0, spreadRadius: 1.0)
       ]);
 }
 
 BoxDecoration startButtonDecoration() {
   return BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-      color: homeStartButtonColor,
+      color: home0203,
       boxShadow: [
-        BoxShadow(color: themeBlack, blurRadius: 5.0, spreadRadius: 1.0)
+        BoxShadow(color: comm0002, blurRadius: 5.0, spreadRadius: 1.0)
       ]);
 }

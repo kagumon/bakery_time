@@ -22,16 +22,12 @@ class _SuccessSignupViewState extends State<SuccessSignupView> {
             Text(
               "회원가입을 완료했습니다.",
               style: TextStyle(
-                  fontFamily: "euljiro",
-                  color: successMainTextColor,
-                  fontSize: 30),
+                  fontFamily: "euljiro", color: succ0003, fontSize: 30),
             ),
             Text(
               "서비스 이용을 위해 로그인해주세요.",
               style: TextStyle(
-                  fontFamily: "euljiro",
-                  color: successMainTextColor,
-                  fontSize: 20),
+                  fontFamily: "euljiro", color: succ0003, fontSize: 20),
             ),
             const Expanded(child: SizedBox.shrink()),
             GestureDetector(
@@ -60,19 +56,19 @@ InputDecoration textInputStyle() {
       border: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
       ),
-      fillColor: themeWhite,
+      fillColor: comm0001,
       filled: true);
 }
 
 BoxDecoration loginButtonStyle() {
   return BoxDecoration(
     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-    color: successLoginButtonColor,
+    color: succ0001,
   );
 }
 
 TextStyle loginButtonTextStyle() {
   return TextStyle(
-    color: themeWhite,
+    color: comm0001,
   );
 }

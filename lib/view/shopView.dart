@@ -32,7 +32,7 @@ class _ShopViewState extends State<ShopView> {
       {"price": "500", "name": "아이템 이름"}
     ];
     return Scaffold(
-        backgroundColor: mainAppBackgroundColor,
+        backgroundColor: main0001,
         appBar: cashAppBarWidget(context),
         body: Column(
           children: [
@@ -53,7 +53,7 @@ class _ShopViewState extends State<ShopView> {
                         decoration: BoxDecoration(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10.0)),
-                          color: shopItemConatinerBackgroundColor,
+                          color: shop0002,
                         ),
                         child: Text(itemList[index]["name"] as String),
                       );
@@ -76,15 +76,12 @@ class _ShopViewState extends State<ShopView> {
             },
             child: Container(
               height: 40,
-              color: _tabList[i]["selected"]
-                  ? shopContentTypeActiveColor
-                  : shopContentTypeDisableColor,
+              color: _tabList[i]["selected"] ? shop0003 : shop0004,
               child: Center(
                   child: Text(_tabList[i]["title"],
                       style: TextStyle(
-                          color: _tabList[i]["selected"]
-                              ? themeWhite
-                              : themePrimaryColor))),
+                          color:
+                              _tabList[i]["selected"] ? comm0001 : comm0000))),
             ),
           ),
         )

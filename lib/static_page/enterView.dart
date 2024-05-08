@@ -17,13 +17,13 @@ class _EnterViewState extends State<EnterView> {
           const Expanded(child: SizedBox.shrink()),
           Text(
             "베이커리타임",
-            style: TextStyle(
-                fontFamily: "euljiro", color: enterMainTextColor, fontSize: 40),
+            style:
+                TextStyle(fontFamily: "euljiro", color: entr0001, fontSize: 40),
           ),
           Text(
             "시간을 굽다.",
-            style: TextStyle(
-                fontFamily: "euljiro", color: enterSubTextColor, fontSize: 30),
+            style:
+                TextStyle(fontFamily: "euljiro", color: entr0002, fontSize: 30),
           ),
           const Expanded(child: SizedBox.shrink()),
           Container(
@@ -42,7 +42,7 @@ class _EnterViewState extends State<EnterView> {
                     child: Center(
                         child: Text("로그인",
                             style: TextStyle(
-                              color: themeWhite,
+                              color: comm0001,
                             ))),
                   ),
                 ),
@@ -77,19 +77,19 @@ InputDecoration textInputStyle() {
 BoxDecoration loginButtonStyle() {
   return BoxDecoration(
     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-    color: enterLoginButtonColor,
+    color: entr0003,
   );
 }
 
 BoxDecoration signupButtonStyle() {
   return BoxDecoration(
     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-    color: enterSignupButtonColor,
+    color: entr0004,
   );
 }
 
 TextStyle signupButtonTextStyle() {
   return TextStyle(
-    color: themePrimaryColor,
+    color: comm0000,
   );
 }
