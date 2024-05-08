@@ -1,4 +1,4 @@
-import 'package:bakery_time/ad_manager.dart';
+import 'package:bakery_time/widget/GoogleAdWidget.dart';
 import 'package:bakery_time/widget/MainAppBarWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +13,7 @@ class TestView extends StatefulWidget {
 }
 
 class _TestViewState extends State<TestView> {
+  AdManager _adManger = AdManager();
   @override
   void initState() {
     super.initState();
@@ -26,14 +27,7 @@ class _TestViewState extends State<TestView> {
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-                width:
-                    AdManager.instance.bannerAd!.sizes.first.width.toDouble(),
-                height:
-                    AdManager.instance.bannerAd!.sizes.first.height.toDouble(),
-                child: AdWidget(ad: AdManager.instance.bannerAd!))
-          ],
+          children: [_adManger.showBannerWidget(context)],
         )));
   }
 }

@@ -34,7 +34,7 @@ class _MyappState extends State<Myapp> {
             appBarTheme: AppBarTheme(color: main0002)),
         debugShowCheckedModeBanner: false,
         title: "Flutter App",
-        initialRoute: '/loading',
+        initialRoute: '/test',
         routes: {
           '/loading': (context) => const LoadingView(),
 
