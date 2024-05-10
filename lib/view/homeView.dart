@@ -1,5 +1,4 @@
-import 'dart:async';
-
+import 'package:bakery_time/model/timer.dart';
 import 'package:bakery_time/util/UtilWidgets.dart';
 import 'package:bakery_time/widget/MainDrawerWidget.dart';
 import 'package:bakery_time/util/UtilFunction.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import 'package:bakery_time/widget/MainAppBarWidget.dart';
 import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -18,9 +18,22 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   double _timerSeconds = 0.0;
-  double _targetTimer = 0.0;
-  bool _isRunning = false;
-  late Timer _timer;
+
+  late SharedPreferences _prefs;
+
+  @override
+  void initState() {
+    super.initState();
+    //_initSharedPreferences();
+  }
+
+  Future<void> _initSharedPreferences() async {
+    _prefs = await SharedPreferences.getInstance();
+  }
+  
+  Future<void> _saveData() async {
+    _prefs.setDouble('timerSeconds', _timerSeconds);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,16 +88,14 @@ class _HomeViewState extends State<HomeView> {
                 inactiveTickMarkColor: home0105,
               ),
               child: Slider(
-                max: _isRunning ? _targetTimer : (3 * 60 * 60).toDouble(),
+                max: (3 * 60 * 60).toDouble(),
                 value: _timerSeconds,
-                divisions: _isRunning ? _targetTimer.floor() : 36,
+                divisions: 36,
                 //label: '',
                 onChanged: (value) {
-                  if (_isRunning == false) {
-                    setState(() {
-                      _timerSeconds = value;
-                    });
-                  }
+                  setState(() {
+                    _timerSeconds = value;
+                  });
                 },
               ),
             ),
@@ -97,7 +108,7 @@ class _HomeViewState extends State<HomeView> {
             SizedBox(
               height: 50,
               width: MediaQuery.of(context).size.width * 0.6,
-              child: _isRunning ? timerRunningText() : timerStartButton(),
+              child: timerStartButton(),
             ),
             heightSizeBox(20)
           ],
@@ -106,33 +117,15 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  void _startTimer() {
-    if (_isRunning == true) {
-      return;
-    }
-    _isRunning = true;
-    _targetTimer = _timerSeconds;
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        _timerSeconds--;
-      });
-    });
-  }
-
-  void _stopTimer() {
-    _isRunning = false;
-    _timer.cancel();
-  }
-
-  void _resetTimer() {
-    setState(() {
-      _timerSeconds = 0;
-    });
-  }
-
   GestureDetector timerStartButton() {
     return GestureDetector(
-      onTap: () => {_startTimer()},
+      onTap: () => {
+        //_saveData(),
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          '/timer', (route) => false,
+          arguments: TimerArguments(seconds: _timerSeconds)
+        )
+      },
       child: Container(
         decoration: startButtonDecoration(),
         child: Center(
@@ -141,17 +134,6 @@ class _HomeViewState extends State<HomeView> {
           style: TextStyle(color: comm0001),
         )),
       ),
-    );
-  }
-
-  Container timerRunningText() {
-    return Container(
-      decoration: startButtonDecoration(),
-      child: Center(
-          child: Text(
-        "시간을 굽는중이에요!",
-        style: TextStyle(color: comm0001),
-      )),
     );
   }
 }

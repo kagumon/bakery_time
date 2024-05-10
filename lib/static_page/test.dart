@@ -1,9 +1,6 @@
 import 'package:bakery_time/widget/GoogleAdWidget.dart';
 import 'package:bakery_time/widget/MainAppBarWidget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class TestView extends StatefulWidget {
   const TestView({super.key});
@@ -13,7 +10,7 @@ class TestView extends StatefulWidget {
 }
 
 class _TestViewState extends State<TestView> {
-  AdManager _adManger = AdManager();
+  final AdManager _adManger = AdManager();
   @override
   void initState() {
     super.initState();
