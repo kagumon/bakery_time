@@ -1,6 +1,7 @@
 import 'package:bakery_time/util/UtilWidgets.dart';
 import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -12,6 +13,7 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   final _idTextController = TextEditingController();
   final _pwTextController = TextEditingController();
+  late final SharedPreferences _prefs;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +54,9 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   heightSizeBox(5),
                   GestureDetector(
-                    onTap: () => {
+                    onTap: () async => {
+                      _prefs = await SharedPreferences.getInstance(),
+                      _prefs.setBool("loginStatus", true),
                       Navigator.of(context)
                           .pushNamedAndRemoveUntil("/home", (route) => false)
                     },

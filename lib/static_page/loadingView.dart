@@ -44,19 +44,30 @@ class _LoadingViewState extends State<LoadingView> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: load0001,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            load0001,
+            load0002,
+            load0003,
+            load0004,
+          ],
+        ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               "베이커리타임",
               style:
-                  TextStyle(fontFamily: "euljiro", color: comm0001, fontSize: 40),
+                  TextStyle(fontFamily: "euljiro", color: load0005, fontSize: 40),
             ),
             Text(
               "시간을 굽다.",
               style:
-                  TextStyle(fontFamily: "euljiro", color: comm0001, fontSize: 30),
+                  TextStyle(fontFamily: "euljiro", color: load0005, fontSize: 30),
             ),
           ],
         ),

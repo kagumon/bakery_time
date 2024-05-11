@@ -46,11 +46,11 @@ class _AgreeViewState extends State<AgreeView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             emptyExpanded(),
-            const Text(
+            Text(
               "베이커리 타임",
               style: TextStyle(
                   fontSize: 25,
-                  color: Color(0xFF4B2615),
+                  color: agre0001,
                   fontWeight: FontWeight.bold),
             ),
             const Text(
@@ -60,9 +60,9 @@ class _AgreeViewState extends State<AgreeView> {
             heightSizeBox(70),
             Container(
               padding: const EdgeInsets.only(top: 10, bottom: 10),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                color: Color(0xFFFAF5EB),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                color: agre0002,
               ),
               child: ListTile(
                 leading: GestureDetector(

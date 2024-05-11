@@ -81,7 +81,7 @@ class _HomeViewState extends State<HomeView> {
                       animation: true,
                       percent: 0.7,
                       circularStrokeCap: CircularStrokeCap.round,
-                      progressColor: Colors.purple,
+                      progressColor: home0101,
                       backgroundColor: Colors.white,
                     ),
                   ),
@@ -169,6 +169,6 @@ BoxDecoration startButtonDecoration() {
       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
       color: home0203,
       boxShadow: [
-        BoxShadow(color: comm0002, blurRadius: 5.0, spreadRadius: 1.0)
+        BoxShadow(color: home0203, blurRadius: 5.0, spreadRadius: 1.0)
       ]);
 }
