@@ -1,4 +1,5 @@
 import 'package:bakery_time/util/UtilWidgets.dart';
+import 'package:bakery_time/widget/GoogleAdWidget.dart';
 import 'package:bakery_time/widget/ShopAppbar.dart';
 import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,6 +35,7 @@ class _ShopViewState extends State<ShopView> {
               color: Colors.amberAccent,
               height: 180.0,
             ),
+            showBannerWidget(),
             heightSizeBox(15),
             _contentTypeSelectTab(),
             heightSizeBox(10),

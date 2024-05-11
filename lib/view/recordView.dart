@@ -1,4 +1,5 @@
 import 'package:bakery_time/util/UtilWidgets.dart';
+import 'package:bakery_time/widget/GoogleAdWidget.dart';
 import 'package:bakery_time/widget/ShopAppbar.dart';
 import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
@@ -33,80 +34,84 @@ class _RecordViewState extends State<RecordView> {
     return Scaffold(
         backgroundColor: main0001,
         appBar: cashAppBarWidget(context),
-        body: Column(
-          children: [
-            _contentTypeSelectTab(),
-            heightSizeBox(20),
-            Row(
-              children: [
-                emptyExpanded(),
-                GestureDetector(
-                  onTap: () => {
-                    showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(1900),
-                      lastDate: DateTime.now(),
-                    ).then((date) => {}),
-                  },
-                  child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(30.0)),
-                          color: rcrd0001),
-                      child: const Padding(
-                        padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
-                        child: Text("2024.05.05"),
-                      )),
-                ),
-                const Text("  -  "),
-                GestureDetector(
-                  onTap: () => {
-                    showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(1900),
-                      lastDate: DateTime.now(),
-                    ).then((date) => {}),
-                  },
-                  child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(30.0)),
-                          color: rcrd0001),
-                      child: const Padding(
-                        padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
-                        child: Text("2024.05.05"),
-                      )),
-                ),
-                emptyExpanded(),
-              ],
-            ),
-            heightSizeBox(5),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 10.0,
-                      mainAxisSpacing: 10.0,
-                    ),
-                    itemCount: itemList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
+        body: SafeArea(
+          child: Column(
+            children: [
+              _contentTypeSelectTab(),
+              heightSizeBox(20),
+              Row(
+                children: [
+                  emptyExpanded(),
+                  GestureDetector(
+                    onTap: () => {
+                      showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1900),
+                        lastDate: DateTime.now(),
+                      ).then((date) => {}),
+                    },
+                    child: Container(
                         decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10.0)),
-                          color: rcrd0002,
-                        ),
-                        child: Text(itemList[index]["name"] as String),
-                      );
-                    }),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(30.0)),
+                            color: rcrd0001),
+                        child: const Padding(
+                          padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
+                          child: Text("2024.05.05"),
+                        )),
+                  ),
+                  const Text("  -  "),
+                  GestureDetector(
+                    onTap: () => {
+                      showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1900),
+                        lastDate: DateTime.now(),
+                      ).then((date) => {}),
+                    },
+                    child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(30.0)),
+                            color: rcrd0001),
+                        child: const Padding(
+                          padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
+                          child: Text("2024.05.05"),
+                        )),
+                  ),
+                  emptyExpanded(),
+                ],
               ),
-            ),
-          ],
+              heightSizeBox(5),
+              showBannerWidget(),
+              heightSizeBox(5),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 10.0,
+                        mainAxisSpacing: 10.0,
+                      ),
+                      itemCount: itemList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10.0)),
+                            color: rcrd0002,
+                          ),
+                          child: Text(itemList[index]["name"] as String),
+                        );
+                      }),
+                ),
+              ),
+            ],
+          ),
         ));
   }
 

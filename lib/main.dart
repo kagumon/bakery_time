@@ -14,13 +14,13 @@ import 'package:flutter/material.dart';
 import '../view/albumView.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   changeColorTheme("defualt");
   runApp(const Myapp());
 }
 
 class Myapp extends StatefulWidget {
   const Myapp({super.key});
-
   @override
   State<Myapp> createState() => _MyappState();
 }
@@ -37,7 +37,7 @@ class _MyappState extends State<Myapp> {
         title: "Flutter App",
         initialRoute: '/loading',
         routes: {
-          '/loading': (context) => const LoadingView(),
+          '/loading': (context) => LoadingView(),
 
           //회원가입 및 로그인
           '/agree': (context) => const AgreeView(),
@@ -55,6 +55,6 @@ class _MyappState extends State<Myapp> {
 
           '/test': (context) => const TestView(),
         },
-        home: const LoadingView());
+        home: LoadingView());
   }
 }

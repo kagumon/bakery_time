@@ -14,17 +14,15 @@ class TimerView extends StatefulWidget {
 
 class _TimerViewState extends State<TimerView> {
   late Timer _timer;
-  late double _timerSeconds = 500;
-  late double _targetTimer = 500;
-  late SharedPreferences _prefs;
+  late double _timerSeconds = 0;
+  late double _targetTimer = 0;
+  late final SharedPreferences _prefs;
   bool _isRunning = false;
 
   @override
   void initState() {
     super.initState();
-    //_initSharedPreferences();
-    //_loadData();
-    _start();
+    _initSharedPreferences().then((value) => _loadData()).then((value) => _start());
   }
 
   Future<void> _initSharedPreferences() async {
@@ -39,50 +37,52 @@ class _TimerViewState extends State<TimerView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SliderTheme(
-            data: SliderTheme.of(context).copyWith(
-              trackHeight: 26.0,
-              trackShape: const RoundedRectSliderTrackShape(),
-              activeTrackColor: home0101,
-              inactiveTrackColor: home0102,
-              thumbShape: const RoundSliderThumbShape(
-                enabledThumbRadius: 14.0,
-                pressedElevation: 0.0,
+      body: _isRunning ? SafeArea(
+        child: Column(
+          children: [
+            SliderTheme(
+              data: SliderTheme.of(context).copyWith(
+                trackHeight: 26.0,
+                trackShape: const RoundedRectSliderTrackShape(),
+                activeTrackColor: home0101,
+                inactiveTrackColor: home0102,
+                thumbShape: const RoundSliderThumbShape(
+                  enabledThumbRadius: 14.0,
+                  pressedElevation: 0.0,
+                ),
+                thumbColor: home0103,
+                overlayColor: home0104.withOpacity(0.5),
+                overlayShape:
+                    const RoundSliderOverlayShape(overlayRadius: 20.0),
+                tickMarkShape: const RoundSliderTickMarkShape(),
+                inactiveTickMarkColor: home0105,
               ),
-              thumbColor: home0103,
-              overlayColor: home0104.withOpacity(0.5),
-              overlayShape:
-                  const RoundSliderOverlayShape(overlayRadius: 20.0),
-              tickMarkShape: const RoundSliderTickMarkShape(),
-              inactiveTickMarkColor: home0105,
+              child: Slider(
+                max: _targetTimer,
+                value: _timerSeconds,
+                divisions: _targetTimer.floor(),
+                onChanged: (value) {},
+              ),
             ),
-            child: Slider(
-              max: _targetTimer,
-              value: _timerSeconds,
-              divisions: _targetTimer.floor(),
-              onChanged: (value) {},
+            Container(
+              child: Center(
+                child: Text("$_timerSeconds"),
+              ),
             ),
-          ),
-          Container(
-            child: Center(
-              child: Text("$_timerSeconds"),
-            ),
-          ),
-          GestureDetector(
-            onTap:() => {
-              _reset(),
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                '/home', (route) => false,
-              )
-            },
-            child: Container(
-              child: Text("포기하기"),
-            ),
-          )
-        ],
-      ),
+            GestureDetector(
+              onTap:() => {
+                _reset(),
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/home', (route) => false,
+                )
+              },
+              child: Container(
+                child: Text("포기하기"),
+              ),
+            )
+          ],
+        ),
+      ) : Container(),
     );
   }
 
@@ -90,10 +90,11 @@ class _TimerViewState extends State<TimerView> {
     if(_isRunning) return;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
+        print("test");
         _timerSeconds--;
       });
     });
-    _isRunning!=_isRunning;
+    _isRunning=true;
   }
 
   void _reset() {

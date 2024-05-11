@@ -1,6 +1,7 @@
 import 'package:bakery_time/widget/GoogleAdWidget.dart';
 import 'package:bakery_time/widget/MainAppBarWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class TestView extends StatefulWidget {
   const TestView({super.key});
@@ -10,9 +11,12 @@ class TestView extends StatefulWidget {
 }
 
 class _TestViewState extends State<TestView> {
-  final AdManager _adManger = AdManager();
+   WebViewController? _webViewController;
   @override
   void initState() {
+ 	  _webViewController = WebViewController()
+      ..loadRequest(Uri.parse('https://youtube.com'))
+      ..setJavaScriptMode(JavaScriptMode.unrestricted);
     super.initState();
   }
 
@@ -20,11 +24,7 @@ class _TestViewState extends State<TestView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: mainAppBarWidget(context),
-        body: SafeArea(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [_adManger.showBannerWidget(context)],
-        )));
+        body: WebViewWidget(controller: _webViewController!,),
+    );
   }
 }
