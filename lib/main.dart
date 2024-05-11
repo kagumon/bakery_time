@@ -1,9 +1,10 @@
 import 'package:bakery_time/static_page/agreeView.dart';
 import 'package:bakery_time/static_page/enterView.dart';
+import 'package:bakery_time/static_page/itemRewardView.dart';
 import 'package:bakery_time/static_page/loadingView.dart';
 import 'package:bakery_time/static_page/successSignupView.dart';
 import 'package:bakery_time/static_page/test.dart';
-import 'package:bakery_time/static_page/timerView.dart';
+import 'package:bakery_time/view/timerView.dart';
 import 'package:bakery_time/view/homeView.dart';
 import 'package:bakery_time/view/loginView.dart';
 import 'package:bakery_time/view/recordView.dart';
@@ -52,6 +53,7 @@ class _MyappState extends State<Myapp> {
           '/shop': (context) => const ShopView(),
           '/record': (context) => const RecordView(),
           '/timer': (context) => const TimerView(),
+          '/reward': (context) => const ItemRewardView(),
 
           '/test': (context) => const TestView(),
         },

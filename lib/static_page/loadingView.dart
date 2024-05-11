@@ -28,7 +28,7 @@ class _LoadingViewState extends State<LoadingView> {
   Future<void> _initSharedPreferences() async {
     _prefs = await SharedPreferences.getInstance();
   }
- 
+
   Future<void> _loadData() async {
     _loginStatus = _prefs.getBool("loginStatus");
     if(_loginStatus == null || _loginStatus == false) {

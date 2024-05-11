@@ -1,25 +1,61 @@
+import 'package:bakery_time/util/UtilWidgets.dart';
 import 'package:bakery_time/util/theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Drawer mainDrawerWidget(BuildContext context) {
+  late final SharedPreferences _prefs;
+
   return Drawer(
       backgroundColor: draw0001,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          UserAccountsDrawerHeader(
-            currentAccountPicture: CircleAvatar(
-              //backgroundImage: AssetImage('assets/me.png'),
-              backgroundColor: draw0003,
-            ),
-            accountName: const Text('Mei'),
-            accountEmail: const Text('meibin@aaaa.com'),
-            onDetailsPressed: () {
-              print('arrow is clicked');
-            },
+          DrawerHeader(
+            padding: const EdgeInsets.only(left: 8, right: 8, top: 12, bottom: 18),
             decoration: BoxDecoration(
               color: draw0002,
             ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    widthSizeBox(8),
+                    ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(24)),
+                      child: Image.asset(
+                        'assets/images/timer_background.png',
+                        width: 48,
+                        height: 48,
+                        fit: BoxFit.cover
+                      ),
+                    ),
+                    widthSizeBox(8),
+                    Text("kmnk\nkyung2687@gmail.com", style: TextStyle(color: Colors.white, fontSize: 11),),
+                    emptyExpanded(),
+                    GestureDetector(
+                      onTap: () async => {
+                        _prefs = await SharedPreferences.getInstance(),
+                        _prefs.setBool("loginStatus", false),
+                        Navigator.of(context).pushNamedAndRemoveUntil("/loading", (route) => false)
+                      },
+                      child: Icon(Icons.logout, color: Colors.white,)
+                    ),
+                    widthSizeBox(8),
+                  ],
+                ),
+                Row(
+                  children: [
+                    totalTextContainer("누적 시간", 100),
+                    totalTextContainer("오늘 시간", 100),
+                    totalTextContainer("만든 케이크", 100),
+                  ],
+                ),
+              ],
+            )
           ),
           ListTile(
             leading: Icon(
@@ -74,4 +110,15 @@ Drawer mainDrawerWidget(BuildContext context) {
           ),
         ],
       ));
+}
+
+Expanded totalTextContainer(String title, int value) {
+  return Expanded(
+    child: Column(
+      children: [
+        Text("$value", style: TextStyle(fontSize: 30, color: Colors.white),),
+        Text("$title", style: TextStyle(fontSize: 12, color: Colors.white),),
+      ],
+    )
+  );
 }

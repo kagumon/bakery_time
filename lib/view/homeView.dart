@@ -1,4 +1,3 @@
-import 'package:bakery_time/model/timer.dart';
 import 'package:bakery_time/util/UtilWidgets.dart';
 import 'package:bakery_time/widget/GoogleAdWidget.dart';
 import 'package:bakery_time/widget/MainDrawerWidget.dart';
@@ -48,7 +47,7 @@ class _HomeViewState extends State<HomeView> {
           padding: const EdgeInsets.all(30),
           child: Column(
             children: [
-              showBannerWidget(),
+              googleBannerAdWidget(),
               emptyExpanded(),
               const Row(
                 children: [
@@ -142,10 +141,7 @@ class _HomeViewState extends State<HomeView> {
     return GestureDetector(
       onTap: () => {
         _saveData(),
-        Navigator.of(context).pushNamedAndRemoveUntil(
-          '/timer', (route) => false,
-          arguments: TimerArguments(seconds: _timerSeconds)
-        )
+        Navigator.of(context).pushNamedAndRemoveUntil('/timer', (route) => false,)
       },
       child: Container(
         decoration: startButtonDecoration(),

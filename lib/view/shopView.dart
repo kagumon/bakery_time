@@ -29,47 +29,49 @@ class _ShopViewState extends State<ShopView> {
     return Scaffold(
         backgroundColor: main0001,
         appBar: cashAppBarWidget(context),
-        body: Column(
-          children: [
-            Container(
-              color: Colors.amberAccent,
-              height: 180.0,
-            ),
-            showBannerWidget(),
-            heightSizeBox(15),
-            _contentTypeSelectTab(),
-            heightSizeBox(10),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                child: GridView.count(
-                  crossAxisCount: 3,
-                  childAspectRatio: 0.7,
-                  controller: ScrollController(keepScrollOffset: false),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: itemList.map((Map<String, dynamic> item) {
-                    return Container(
-                      color: comm0003,
-                      margin: const EdgeInsets.all(5.0),
-                      child: Column(
-                        children: [
-                          //Image.asset(
-                          //  item["imageUrl"],
-                          //  fit: BoxFit.cover,
-                          //),
-                          emptyExpanded(),
-                          Center(child: Text(item["seq"]),),
-                          Center(child: Text(item["price"]),),
-                          emptyExpanded(),
-                        ],
-                      )
-                    );
-                  }).toList(),
+        body: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                color: Colors.amberAccent,
+                height: 180.0,
+              ),
+              heightSizeBox(15),
+              _contentTypeSelectTab(),
+              heightSizeBox(10),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                  child: GridView.count(
+                    crossAxisCount: 3,
+                    childAspectRatio: 0.7,
+                    controller: ScrollController(keepScrollOffset: false),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: itemList.map((Map<String, dynamic> item) {
+                      return Container(
+                        color: comm0003,
+                        margin: const EdgeInsets.all(5.0),
+                        child: Column(
+                          children: [
+                            //Image.asset(
+                            //  item["imageUrl"],
+                            //  fit: BoxFit.cover,
+                            //),
+                            emptyExpanded(),
+                            Center(child: Text(item["seq"]),),
+                            Center(child: Text(item["price"]),),
+                            emptyExpanded(),
+                          ],
+                        )
+                      );
+                    }).toList(),
+                  ),
                 ),
               ),
-            ),
-          ],
+              googleBannerAdWidget(),
+            ],
+          ),
         ));
   }
 

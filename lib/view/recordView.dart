@@ -29,6 +29,18 @@ class _RecordViewState extends State<RecordView> {
       {"price": "500", "name": "아이템 이름"},
       {"price": "500", "name": "아이템 이름"},
       {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
+      {"price": "500", "name": "아이템 이름"},
       {"price": "500", "name": "아이템 이름"}
     ];
     return Scaffold(
@@ -85,8 +97,6 @@ class _RecordViewState extends State<RecordView> {
                 ],
               ),
               heightSizeBox(5),
-              showBannerWidget(),
-              heightSizeBox(5),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
@@ -110,6 +120,7 @@ class _RecordViewState extends State<RecordView> {
                       }),
                 ),
               ),
+              googleBannerAdWidget(),
             ],
           ),
         ));
