@@ -32,9 +32,9 @@ class _LoadingViewState extends State<LoadingView> {
   Future<void> _loadData() async {
     _loginStatus = _prefs.getBool("loginStatus");
     if(_loginStatus == null || _loginStatus == false) {
-      Navigator.of(context).pushNamedAndRemoveUntil("/enter", (route) => false);
+      //Navigator.of(context).pushNamedAndRemoveUntil("/enter", (route) => false);
     } else {
-      Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);
+      //Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);
     }
   }
 
@@ -45,16 +45,8 @@ class _LoadingViewState extends State<LoadingView> {
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            load0001,
-            load0002,
-            load0003,
-            load0004,
-          ],
-        ),
+          color: load0001,
+          image: DecorationImage(image: AssetImage('assets/images/loading_background.png'), repeat: ImageRepeat.repeat, scale: 3.5, opacity:0.2)
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -62,12 +54,20 @@ class _LoadingViewState extends State<LoadingView> {
             Text(
               "베이커리타임",
               style:
-                  TextStyle(fontFamily: "euljiro", color: load0005, fontSize: 40),
+                  TextStyle(
+                    fontFamily: "euljiro",
+                    color: load0002,
+                    fontSize: 40,
+                ),
             ),
             Text(
-              "시간을 굽다.",
+              "시간을 굽다",
               style:
-                  TextStyle(fontFamily: "euljiro", color: load0005, fontSize: 30),
+                  TextStyle(
+                    fontFamily: "euljiro",
+                    color: load0002,
+                    fontSize: 20,
+                ),
             ),
           ],
         ),

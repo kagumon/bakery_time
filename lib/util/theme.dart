@@ -89,12 +89,9 @@ void changeColorTheme(String type) {
     rcrd0004 = const Color(0xFFFEEEED);
     succ0001 = const Color(0xFFFB8887);
     succ0002 = const Color(0xFF242323);
-    succ0003 = const Color(0xFFFB8887);
-    load0001 = const Color(0xFFFFC2C1);
-    load0002 = const Color(0xFFFB8887);
-    load0003 = const Color(0xFFFB8887);
-    load0004 = const Color(0xFFC76160);
-    load0005 = const Color(0xFFF4F2F2);
+    succ0003 = const Color(0xFF5D574E);
+    load0001 = const Color(0xFFFEFCFA);
+    load0002 = const Color(0xFFEAA7A9);
     entr0001 = const Color(0xFFCF5F5D);
     entr0002 = const Color(0xFFFFA9A8);
     entr0003 = const Color(0xFFFB8887);
@@ -104,7 +101,7 @@ void changeColorTheme(String type) {
     comm0001 = const Color(0xFFFFFAFA);
     comm0002 = const Color(0xFF1E1216);
     comm0003 = const Color(0xFFDDD8D8);
-    comm0000 = const Color(0xFFFB8887);
+    comm0000 = const Color(0xFFE1BEC5);
   }
 }
 
