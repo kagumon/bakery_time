@@ -53,6 +53,7 @@ class _TimerViewState extends State<TimerView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: timerBackgroundColor,
       body: _isRunning ? SafeArea(
         child: Column(
           children: [
@@ -71,7 +72,7 @@ class _TimerViewState extends State<TimerView> {
                 ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(MediaQuery.of(context).size.width * 0.35)),
                   child: Image.asset(
-                    'assets/images/timer_background.png',
+                    'assets/images/loading_background.png',
                     width: MediaQuery.of(context).size.width * 0.70,
                     height: MediaQuery.of(context).size.width * 0.70,
                     fit: BoxFit.cover
@@ -82,9 +83,9 @@ class _TimerViewState extends State<TimerView> {
                   lineWidth: 20.0,
                   animation: false,
                   percent: _timerSeconds / _targetTimer,
-                  circularStrokeCap: CircularStrokeCap.round,
-                  progressColor: Colors.purple,
-                  backgroundColor: Colors.red,
+                  circularStrokeCap: CircularStrokeCap.butt,
+                  progressColor: indicatorActiveColor,
+                  backgroundColor: indicatorDisableColor,
                 ),
               ],
             ),
@@ -92,66 +93,43 @@ class _TimerViewState extends State<TimerView> {
             Center(
               child: Text(
                   secondFormatHHMMSS(_timerSeconds.floor()),
-                  style: TextStyle(color: comm0000, fontSize: 50),
+                  style: TextStyle(color: textWhiteColor, fontSize: 50),
               ),
             ),
             heightSizeBox(40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap:() => {
-                    _reset(),
+            GestureDetector(
+              onTap:() => {
+                _reset(),
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/home', (route) => false,
+                )
+              },
+              child: GestureDetector(
+                onTap: ()=> {
+                  googleRewardedAdWidget((){
+                    _reset();
                     Navigator.of(context).pushNamedAndRemoveUntil(
                       '/home', (route) => false,
-                    )
-                  },
-                  child: GestureDetector(
-                    onTap: ()=> {
-                      googleRewardedAdWidget((){
-                        _reset();
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/home', (route) => false,
-                        );
-                      })
-                    },
-                    child: Container(
-                      height: 50,
-                      width: 120,
-                      decoration: const BoxDecoration(
-                        color: colorDanger500,
-                        borderRadius: BorderRadius.all(Radius.circular(50))
-                      ),
-                      child: const Center(child: Text("중단할래요")),
-                    ),
+                    );
+                  })
+                },
+                child: Container(
+                  height: 50,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: buttonWhiteColor,
+                    borderRadius: const BorderRadius.all(Radius.circular(50))
                   ),
+                  child: Center(child: Text("중단할래요", style: TextStyle(color: textPrimaryColor),)),
                 ),
-                widthSizeBox(15.0),
-                GestureDetector(
-                  onTap:() => {
-                    _reset(),
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/home', (route) => false,
-                    )
-                  },
-                  child: Container(
-                    height: 50,
-                    width: 170,
-                    decoration: const BoxDecoration(
-                      color: colorSuccess700,
-                      borderRadius: BorderRadius.all(Radius.circular(50))
-                    ),
-                    child: const Center(child: Text("일시정지")),
-                  ),
-                ),
-              ],
+              ),
             ),
             emptyExpanded(),
             GestureDetector(
               onTap:() => {
                 print("click text button")
               },
-              child: const Center(child: Text("케이크를 완성하면?"))
+              child: Center(child: Text("케이크를 완성하면?", style: TextStyle(color: textBlackColor),))
             ),
             heightSizeBox(30)
           ],

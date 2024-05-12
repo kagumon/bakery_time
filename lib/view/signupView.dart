@@ -41,19 +41,19 @@ class _SignupViewState extends State<SignupView> {
             emptyExpanded(),
             Icon(
               Icons.looks_one,
-              color: sign0005,
+              color: iconBlackColor,
             ),
             Icon(
               Icons.looks_two,
-              color: sign0005,
+              color: iconBlackColor,
             ),
             Icon(
               Icons.looks_3,
-              color: sign0006,
+              color: iconGreyColor,
             ),
             Icon(
               Icons.looks_4,
-              color: sign0006,
+              color: iconGreyColor,
             ),
           ],
         ),
@@ -101,7 +101,7 @@ class _SignupViewState extends State<SignupView> {
                     DropdownButton(
                         underline: Container(
                           height: 1,
-                          color: sign0001,
+                          color: primaryColor,
                         ),
                         isExpanded: true,
                         value: _mvnmValue,
@@ -246,10 +246,10 @@ InputDecoration textInputStyle({required String hint}) {
     hintText: hint,
     contentPadding: const EdgeInsets.only(left: 10, right: 10, bottom: 0),
     enabledBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: shop0005),
+      borderSide: BorderSide(color: primaryColor),
     ),
     focusedBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: shop0005),
+      borderSide: BorderSide(color: primaryColor),
     ),
   );
 }
@@ -257,13 +257,13 @@ InputDecoration textInputStyle({required String hint}) {
 BoxDecoration nextButtonStyle(bool status) {
   return BoxDecoration(
     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-    color: status ? sign0002 : sign0003,
+    color: status ? primaryColor : buttonDisableColor,
   );
 }
 
 TextStyle explanTextStyle() {
   return TextStyle(
-    color: sign0004,
+    color: textPrimaryColor,
     fontSize: 24,
   );
 }

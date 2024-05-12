@@ -43,33 +43,17 @@ class _HomeViewState extends State<HomeView> {
       drawer: mainDrawerWidget(context),
       body: SafeArea(
         child: Container(
-          color: main0001,
-          padding: const EdgeInsets.all(30),
+          color: backgroundColor,
+          padding: const EdgeInsets.all(45),
           child: Column(
             children: [
               googleBannerAdWidget(),
               emptyExpanded(),
-              const Row(
-                children: [
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text("오늘의 목표 : 공부"),
-                  Expanded(child: SizedBox.shrink()),
-                  Text("포장하기"),
-                  SizedBox(
-                    width: 20,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 12,
-              ),
               Stack(
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: MediaQuery.of(context).size.width * 0.8 + 20,
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    height: MediaQuery.of(context).size.width * 0.7 + 20,
                     decoration: previewContainerDecoration(),
                   ),
                   Positioned(
@@ -81,36 +65,34 @@ class _HomeViewState extends State<HomeView> {
                       animation: true,
                       percent: 0.7,
                       circularStrokeCap: CircularStrokeCap.round,
-                      progressColor: home0101,
+                      progressColor: sliderActiveColor,
                       backgroundColor: Colors.white,
                     ),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              heightSizeBox(30),
               SliderTheme(
                 data: SliderTheme.of(context).copyWith(
                   trackHeight: 26.0,
                   trackShape: const RoundedRectSliderTrackShape(),
-                  activeTrackColor: home0101,
-                  inactiveTrackColor: home0102,
+                  activeTrackColor: sliderActiveColor,
+                  inactiveTrackColor: sliderDisableColor,
                   thumbShape: const RoundSliderThumbShape(
                     enabledThumbRadius: 14.0,
                     pressedElevation: 0.0,
                   ),
-                  thumbColor: home0103,
-                  overlayColor: home0104.withOpacity(0.5),
+                  thumbColor: sliderDotColor,
+                  overlayColor: sliderDotColor.withOpacity(0.5),
                   overlayShape:
                       const RoundSliderOverlayShape(overlayRadius: 20.0),
                   tickMarkShape: const RoundSliderTickMarkShape(),
-                  inactiveTickMarkColor: home0105,
+                  inactiveTickMarkColor: sliderDotColor,
                 ),
                 child: Slider(
-                  max: (3 * 60 * 60).toDouble(),
+                  max: (1.5 * 60 * 60).toDouble(),
                   value: _timerSeconds,
-                  divisions: 36,
+                  divisions: 18,
                   //label: '',
                   onChanged: (value) {
                     setState(() {
@@ -119,12 +101,12 @@ class _HomeViewState extends State<HomeView> {
                   },
                 ),
               ),
-              const Expanded(child: SizedBox.shrink()),
+              heightSizeBox(40),
               Text(
                 secondFormatHHMMSS(_timerSeconds.floor()),
-                style: TextStyle(color: comm0000, fontSize: 50),
+                style: TextStyle(color: primaryColor, fontSize: 50),
               ),
-              const Expanded(child: SizedBox.shrink()),
+              heightSizeBox(40),
               SizedBox(
                 height: 50,
                 width: MediaQuery.of(context).size.width * 0.6,
@@ -148,7 +130,7 @@ class _HomeViewState extends State<HomeView> {
         child: Center(
             child: Text(
           "베이킹 시작하기",
-          style: TextStyle(color: comm0001),
+          style: TextStyle(color: textWhiteColor),
         )),
       ),
     );
@@ -158,17 +140,12 @@ class _HomeViewState extends State<HomeView> {
 BoxDecoration previewContainerDecoration() {
   return BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-      color: home0201,
-      boxShadow: [
-        BoxShadow(color: home0202, blurRadius: 5.0, spreadRadius: 1.0)
-      ]);
+      color: itemBackgroundColor,
+  );
 }
 
 BoxDecoration startButtonDecoration() {
   return BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-      color: home0203,
-      boxShadow: [
-        BoxShadow(color: home0203, blurRadius: 5.0, spreadRadius: 1.0)
-      ]);
+      color: buttonActiveColor,);
 }

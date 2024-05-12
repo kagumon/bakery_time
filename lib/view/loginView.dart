@@ -24,7 +24,7 @@ class _LoginViewState extends State<LoginView> {
             Text(
               "베이커리 타임",
               style: TextStyle(
-                  color: logn0001,
+                  color: textPrimaryColor,
                   fontWeight: FontWeight.bold,
                   fontFamily: "euljiro",
                   fontSize: 30),
@@ -32,7 +32,7 @@ class _LoginViewState extends State<LoginView> {
             Text(
               "이제는 시간을 구울 시간",
               style: TextStyle(
-                  color: logn0002,
+                  color: textprimarySoftColor,
                   fontWeight: FontWeight.w700,
                   fontFamily: "euljiro",
                   fontSize: 20),
@@ -68,7 +68,7 @@ class _LoginViewState extends State<LoginView> {
                           child: Text(
                         "로그인",
                         style: TextStyle(
-                            color: comm0001,
+                            color: textWhiteColor,
                             fontSize: 15,
                             fontWeight: FontWeight.bold),
                       )),
@@ -100,14 +100,14 @@ class _LoginViewState extends State<LoginView> {
               Expanded(
                 child: Container(
                   height: 1,
-                  color: logn0003,
+                  color: primaryColor,
                 ),
               ),
               const Text("   소셜 계정으로 로그인   "),
               Expanded(
                 child: Container(
                   height: 1,
-                  color: logn0003,
+                  color: primaryColor,
                 ),
               ),
               widthSizeBox(30),
@@ -158,6 +158,6 @@ InputDecoration textInputStyle(String hint) {
 BoxDecoration loginButtonStyle() {
   return BoxDecoration(
     borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-    color: logn0005,
+    color: buttonActiveColor,
   );
 }

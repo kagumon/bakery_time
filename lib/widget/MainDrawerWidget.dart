@@ -8,14 +8,14 @@ Drawer mainDrawerWidget(BuildContext context) {
   late final SharedPreferences _prefs;
 
   return Drawer(
-      backgroundColor: draw0001,
+      backgroundColor: backgroundColor,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
             padding: const EdgeInsets.only(left: 8, right: 8, top: 12, bottom: 18),
             decoration: BoxDecoration(
-              color: draw0002,
+              color: appbarBackgroundColor,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,7 +60,7 @@ Drawer mainDrawerWidget(BuildContext context) {
           ListTile(
             leading: Icon(
               Icons.home,
-              color: draw0004,
+              color: iconBlackColor,
             ),
             title: const Text('홈'),
             onTap: () {
@@ -70,7 +70,7 @@ Drawer mainDrawerWidget(BuildContext context) {
           ListTile(
             leading: Icon(
               Icons.settings,
-              color: draw0004,
+              color: iconBlackColor,
             ),
             title: const Text('상점'),
             onTap: () {
@@ -80,7 +80,7 @@ Drawer mainDrawerWidget(BuildContext context) {
           ListTile(
             leading: Icon(
               Icons.settings,
-              color: draw0004,
+              color: iconBlackColor,
             ),
             title: const Text('둘러보기'),
             onTap: () {
@@ -90,7 +90,7 @@ Drawer mainDrawerWidget(BuildContext context) {
           ListTile(
             leading: Icon(
               Icons.settings,
-              color: draw0004,
+              color: iconBlackColor,
             ),
             title: const Text('우리의 활동'),
             onTap: () {
@@ -100,7 +100,7 @@ Drawer mainDrawerWidget(BuildContext context) {
           ListTile(
             leading: Icon(
               Icons.question_answer,
-              color: draw0004,
+              color: iconBlackColor,
             ),
             title: const Text('라이선스 정보'),
             onTap: () {

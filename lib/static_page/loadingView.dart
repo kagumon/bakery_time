@@ -32,9 +32,9 @@ class _LoadingViewState extends State<LoadingView> {
   Future<void> _loadData() async {
     _loginStatus = _prefs.getBool("loginStatus");
     if(_loginStatus == null || _loginStatus == false) {
-      //Navigator.of(context).pushNamedAndRemoveUntil("/enter", (route) => false);
+      Navigator.of(context).pushNamedAndRemoveUntil("/enter", (route) => false);
     } else {
-      //Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);
+      Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);
     }
   }
 
@@ -45,8 +45,8 @@ class _LoadingViewState extends State<LoadingView> {
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          color: load0001,
-          image: DecorationImage(image: AssetImage('assets/images/loading_background.png'), repeat: ImageRepeat.repeat, scale: 3.5, opacity:0.2)
+          color: loadingBackgroundColor,
+          //image: DecorationImage(image: AssetImage('assets/images/loading_background.png'), repeat: ImageRepeat.repeat, scale: 2.5, opacity:0.2)
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +56,7 @@ class _LoadingViewState extends State<LoadingView> {
               style:
                   TextStyle(
                     fontFamily: "euljiro",
-                    color: load0002,
+                    color: textWhiteColor,
                     fontSize: 40,
                 ),
             ),
@@ -65,7 +65,7 @@ class _LoadingViewState extends State<LoadingView> {
               style:
                   TextStyle(
                     fontFamily: "euljiro",
-                    color: load0002,
+                    color: textWhiteColor,
                     fontSize: 20,
                 ),
             ),

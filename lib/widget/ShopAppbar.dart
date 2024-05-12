@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 AppBar cashAppBarWidget(BuildContext context) {
   return AppBar(
-    backgroundColor: shop0001,
-    iconTheme: IconThemeData(color: main0003),
+    backgroundColor: appbarBackgroundColor,
+    iconTheme: IconThemeData(color: iconWhiteColor),
     centerTitle: true,
     elevation: 0.0,
     actions: [widthSizeBox(15)],

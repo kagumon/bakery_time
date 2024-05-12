@@ -12,7 +12,6 @@ import 'package:bakery_time/view/shopView.dart';
 import 'package:bakery_time/view/signupView.dart';
 import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
-import '../view/albumView.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,8 +31,8 @@ class _MyappState extends State<Myapp> {
     return MaterialApp(
         theme: ThemeData(
             fontFamily: "bongodicMedium",
-            scaffoldBackgroundColor: main0001,
-            appBarTheme: AppBarTheme(color: main0002)),
+            scaffoldBackgroundColor: backgroundColor,
+            appBarTheme: AppBarTheme(color: appbarBackgroundColor)),
         debugShowCheckedModeBanner: false,
         title: "Flutter App",
         initialRoute: '/loading',
@@ -43,14 +42,13 @@ class _MyappState extends State<Myapp> {
           //회원가입 및 로그인
           '/agree': (context) => const AgreeView(),
           '/enter': (context) => const EnterView(),
-          '/index': (context) => const AlbumView(),
           '/login': (context) => const LoginView(),
           '/signup': (context) => const SignupView(),
           '/success': (context) => const SuccessSignupView(),
 
           //메인 컨텐츠
           '/home': (context) => const HomeView(),
-          '/shop': (context) => const ShopView(),
+          '/shop': (context) => ShopView(),
           '/record': (context) => const RecordView(),
           '/timer': (context) => const TimerView(),
           '/reward': (context) => const ItemRewardView(),

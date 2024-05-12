@@ -12,4 +12,14 @@ class LoginUser {
     required this.ci,
     required this.dn,
   });
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['username'] = username;
+    data['hpno'] = hpno;
+    data['email'] = email;
+    data['ci'] = ci;
+    data['dn'] = dn;
+    return data;
+  }
 }
