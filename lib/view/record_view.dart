@@ -12,7 +12,7 @@ class RecordView extends StatefulWidget {
 }
 
 class _RecordViewState extends State<RecordView> {
-  List<Map<String, dynamic>> _tabList = [
+  final List<Map<String, dynamic>> _tabList = [
     {"selected": true, "title": "주별"},
     {"selected": false, "title": "월별"},
     {"selected": false, "title": "연도별"},

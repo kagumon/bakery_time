@@ -13,12 +13,12 @@ class ItemRewardPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("성공 ~ !"),
+            const Text("성공 ~ !"),
             GestureDetector(
               onTap: () {
                 Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);
               },
-              child: Text("돌아가기"),
+              child: const Text("돌아가기"),
             )
           ],
         ),

@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Drawer mainDrawerWidget(BuildContext context) {
-  late final SharedPreferences _prefs;
-
   return Drawer(
       backgroundColor: backgroundColor,
       child: ListView(
@@ -24,7 +22,7 @@ Drawer mainDrawerWidget(BuildContext context) {
                   children: [
                     widthSizeBox(8),
                     ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(24)),
+                      borderRadius: const BorderRadius.all(Radius.circular(24)),
                       child: Image.asset(
                         'assets/images/timer_background.png',
                         width: 48,
@@ -33,24 +31,44 @@ Drawer mainDrawerWidget(BuildContext context) {
                       ),
                     ),
                     widthSizeBox(8),
-                    Text("kmnk\nkyung2687@gmail.com", style: TextStyle(color: Colors.white, fontSize: 11),),
+                    const Text("kmnk\nkyung2687@gmail.com", style: TextStyle(color: Colors.white, fontSize: 11),),
                     emptyExpanded(),
                     GestureDetector(
-                      onTap: () async => {
-                        _prefs = await SharedPreferences.getInstance(),
-                        _prefs.setBool("loginStatus", false),
+                      onTap: () => {
+                        logout(),
                         Navigator.of(context).pushNamedAndRemoveUntil("/loading", (route) => false)
                       },
-                      child: Icon(Icons.logout, color: Colors.white,)
+                      child: const Icon(Icons.logout, color: Colors.white,)
                     ),
                     widthSizeBox(8),
                   ],
                 ),
-                Row(
+                const Row(
                   children: [
-                    totalTextContainer("누적 시간", 100),
-                    totalTextContainer("오늘 시간", 100),
-                    totalTextContainer("만든 케이크", 100),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text("100", style: TextStyle(fontSize: 30, color: Colors.white),),
+                          Text("누적 시간", style: TextStyle(fontSize: 12, color: Colors.white),),
+                        ],
+                      )
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text("100", style: TextStyle(fontSize: 30, color: Colors.white),),
+                          Text("만든 케이크", style: TextStyle(fontSize: 12, color: Colors.white),),
+                        ],
+                      )
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text("1k", style: TextStyle(fontSize: 30, color: Colors.white),),
+                          Text("총 기부", style: TextStyle(fontSize: 12, color: Colors.white),),
+                        ],
+                      )
+                    ),
                   ],
                 ),
               ],
@@ -63,7 +81,6 @@ Drawer mainDrawerWidget(BuildContext context) {
             ),
             title: const Text('홈'),
             onTap: () {
-              print('Home is clicked !');
             },
           ),
           ListTile(
@@ -73,7 +90,6 @@ Drawer mainDrawerWidget(BuildContext context) {
             ),
             title: const Text('상점'),
             onTap: () {
-              print('Setting is clicked !');
             },
           ),
           ListTile(
@@ -83,7 +99,6 @@ Drawer mainDrawerWidget(BuildContext context) {
             ),
             title: const Text('둘러보기'),
             onTap: () {
-              print('Setting is clicked !');
             },
           ),
           ListTile(
@@ -93,7 +108,6 @@ Drawer mainDrawerWidget(BuildContext context) {
             ),
             title: const Text('우리의 활동'),
             onTap: () {
-              print('Setting is clicked !');
             },
           ),
           ListTile(
@@ -103,7 +117,6 @@ Drawer mainDrawerWidget(BuildContext context) {
             ),
             title: const Text('라이선스 정보'),
             onTap: () {
-              print('Q&A is clicked !');
             },
             trailing: const Icon(Icons.check),
           ),
@@ -111,13 +124,9 @@ Drawer mainDrawerWidget(BuildContext context) {
       ));
 }
 
-Expanded totalTextContainer(String title, int value) {
-  return Expanded(
-    child: Column(
-      children: [
-        Text("$value", style: TextStyle(fontSize: 30, color: Colors.white),),
-        Text("$title", style: TextStyle(fontSize: 12, color: Colors.white),),
-      ],
-    )
-  );
+Future<void> logout() async {
+  late final SharedPreferences prefs;
+  prefs = await SharedPreferences.getInstance();
+  prefs.setBool("loginStatus", false);
+  return;
 }

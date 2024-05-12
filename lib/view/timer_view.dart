@@ -57,9 +57,9 @@ class _TimerViewState extends State<TimerView> {
             Row(
               children: [
                 widthSizeBox(30),
-                Text("$_currentDTTM"),
+                Text(_currentDTTM),
                 emptyExpanded(),
-                Text("$_currentBattery"),
+                Text(_currentBattery),
                 widthSizeBox(30),
               ],
             ),
@@ -124,7 +124,6 @@ class _TimerViewState extends State<TimerView> {
             emptyExpanded(),
             GestureDetector(
               onTap:() => {
-                print("click text button")
               },
               child: Center(child: Text("케이크를 완성하면?", style: TextStyle(color: textBlackColor),))
             ),
@@ -155,8 +154,4 @@ class _TimerViewState extends State<TimerView> {
       _timer.cancel();
     });
   }
-}
-
-void printSuccess() {
-  print("success");
 }

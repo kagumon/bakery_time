@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bakery_time/util/util_widget.dart';
 import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
@@ -54,11 +56,9 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   heightSizeBox(5),
                   GestureDetector(
-                    onTap: () async => {
-                      _prefs = await SharedPreferences.getInstance(),
-                      _prefs.setBool("loginStatus", true),
-                      Navigator.of(context)
-                          .pushNamedAndRemoveUntil("/home", (route) => false)
+                    onTap: () => {
+                      login(),
+                      Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false)
                     },
                     child: Container(
                       width: double.infinity,
@@ -80,15 +80,15 @@ class _LoginViewState extends State<LoginView> {
                     children: [
                       GestureDetector(
                           child: const Text("아이디 찾기"),
-                          onTap: () => {print("아이디 찾기")}),
+                          onTap: () => {}),
                       const Text("|"),
                       GestureDetector(
                           child: const Text("비밀번호 찾기"),
-                          onTap: () => {print("아이디 찾기")}),
+                          onTap: () => {}),
                       const Text("|"),
                       GestureDetector(
                           child: const Text("회원가입"),
-                          onTap: () => {print("아이디 찾기")}),
+                          onTap: () => {}),
                     ],
                   ),
                 ],
@@ -115,7 +115,7 @@ class _LoginViewState extends State<LoginView> {
             heightSizeBox(20),
             Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
               GestureDetector(
-                onTap: () => {print("1")},
+                onTap: () => {},
                 child: Image.asset(
                   'assets/images/login_kakao.png',
                   width: 40,
@@ -123,7 +123,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
               ),
               GestureDetector(
-                onTap: () => {print("1")},
+                onTap: () => {},
                 child: Image.asset(
                   'assets/images/login_google.png',
                   width: 40,
@@ -131,7 +131,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
               ),
               GestureDetector(
-                onTap: () => {print("1")},
+                onTap: () => {},
                 child: Image.asset(
                   'assets/images/login_naver.png',
                   width: 40,
@@ -144,6 +144,12 @@ class _LoginViewState extends State<LoginView> {
         ),
       ),
     );
+  }
+  
+  Future<void> login() async {
+    _prefs = await SharedPreferences.getInstance();
+    _prefs.setBool("loginStatus", true);
+    return;
   }
 }
 

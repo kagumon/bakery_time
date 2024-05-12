@@ -40,7 +40,7 @@ Future<void>? googleRewardedAdWidget(void Function() rewardFunction) {
         ad.show(onUserEarnedReward: (_, r) {rewardFunction();});
       },
       onAdFailedToLoad: (err) {
-        print('Failed to load a rewarded ad: ${err.message}');
+        //print('Failed to load a rewarded ad: ${err.message}');
       },
     ),
   );
