@@ -44,7 +44,12 @@ class ShopView extends StatelessWidget {
                               color: tabList[i]["selected"] ? tabActiveColor : tabDisableColor,
                               borderRadius: const BorderRadius.all(Radius.circular(20.0))
                             ),
-                            child: Center(child: Text("${tabList[i]["title"]}"),),
+                            child: Center(
+                              child: Text(
+                                "${tabList[i]["title"]}",
+                                style: TextStyle(color: tabList[i]["selected"] ? textWhiteColor : textPrimaryColor,),
+                              ),
+                            ),
                           ),
                         ),
                       emptyExpanded(),

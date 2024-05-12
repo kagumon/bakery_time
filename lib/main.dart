@@ -3,7 +3,6 @@ import 'package:bakery_time/static_page/enterView.dart';
 import 'package:bakery_time/static_page/itemRewardView.dart';
 import 'package:bakery_time/static_page/loadingView.dart';
 import 'package:bakery_time/static_page/successSignupView.dart';
-import 'package:bakery_time/static_page/test.dart';
 import 'package:bakery_time/view/timerView.dart';
 import 'package:bakery_time/view/homeView.dart';
 import 'package:bakery_time/view/loginView.dart';
@@ -37,7 +36,7 @@ class _MyappState extends State<Myapp> {
         title: "Flutter App",
         initialRoute: '/loading',
         routes: {
-          '/loading': (context) => LoadingView(),
+          '/loading': (context) => const LoadingView(),
 
           //회원가입 및 로그인
           '/agree': (context) => const AgreeView(),
@@ -48,12 +47,10 @@ class _MyappState extends State<Myapp> {
 
           //메인 컨텐츠
           '/home': (context) => const HomeView(),
-          '/shop': (context) => ShopView(),
+          '/shop': (context) => const ShopView(),
           '/record': (context) => const RecordView(),
           '/timer': (context) => const TimerView(),
           '/reward': (context) => const ItemRewardView(),
-
-          '/test': (context) => const TestView(),
         },
         home: LoadingView());
   }
