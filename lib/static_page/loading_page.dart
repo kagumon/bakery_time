@@ -1,19 +1,16 @@
 import 'dart:async';
-
-import 'package:bakery_time/model/loginUser.dart';
 import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LoadingView extends StatefulWidget {
-  const LoadingView({super.key});
+class LoadingPage extends StatefulWidget {
+  const LoadingPage({super.key});
 
   @override
-  State<LoadingView> createState() => _LoadingViewState();
+  State<LoadingPage> createState() => _LoadingPageState();
 }
 
-class _LoadingViewState extends State<LoadingView> {
+class _LoadingPageState extends State<LoadingPage> {
   late final SharedPreferences _prefs;
   bool? _loginStatus = false;
 

@@ -1,14 +1,14 @@
-import 'package:bakery_time/static_page/agreeView.dart';
-import 'package:bakery_time/static_page/enterView.dart';
-import 'package:bakery_time/static_page/itemRewardView.dart';
-import 'package:bakery_time/static_page/loadingView.dart';
-import 'package:bakery_time/static_page/successSignupView.dart';
-import 'package:bakery_time/view/timerView.dart';
-import 'package:bakery_time/view/homeView.dart';
-import 'package:bakery_time/view/loginView.dart';
-import 'package:bakery_time/view/recordView.dart';
-import 'package:bakery_time/view/shopView.dart';
-import 'package:bakery_time/view/signupView.dart';
+import 'package:bakery_time/view/agree_page.dart';
+import 'package:bakery_time/static_page/enter_page.dart';
+import 'package:bakery_time/static_page/item_reward_page.dart';
+import 'package:bakery_time/static_page/loading_page.dart';
+import 'package:bakery_time/static_page/success_signup_page.dart';
+import 'package:bakery_time/view/timer_view.dart';
+import 'package:bakery_time/view/home_view.dart';
+import 'package:bakery_time/view/login_view.dart';
+import 'package:bakery_time/view/record_view.dart';
+import 'package:bakery_time/view/shop_view.dart';
+import 'package:bakery_time/view/signup_view.dart';
 import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -36,22 +36,22 @@ class _MyappState extends State<Myapp> {
         title: "Flutter App",
         initialRoute: '/loading',
         routes: {
-          '/loading': (context) => const LoadingView(),
+          '/loading': (context) => const LoadingPage(),
 
           //회원가입 및 로그인
           '/agree': (context) => const AgreeView(),
-          '/enter': (context) => const EnterView(),
+          '/enter': (context) => const EnterPage(),
           '/login': (context) => const LoginView(),
           '/signup': (context) => const SignupView(),
-          '/success': (context) => const SuccessSignupView(),
+          '/success': (context) => const SuccessSignupPage(),
 
           //메인 컨텐츠
           '/home': (context) => const HomeView(),
           '/shop': (context) => const ShopView(),
           '/record': (context) => const RecordView(),
           '/timer': (context) => const TimerView(),
-          '/reward': (context) => const ItemRewardView(),
+          '/reward': (context) => const ItemRewardPage(),
         },
-        home: LoadingView());
+        home: const LoadingPage());
   }
 }

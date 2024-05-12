@@ -44,4 +44,5 @@ Future<void>? googleRewardedAdWidget(void Function() rewardFunction) {
       },
     ),
   );
+  return null;
 }

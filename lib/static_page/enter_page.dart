@@ -1,14 +1,9 @@
 import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 
-class EnterView extends StatefulWidget {
-  const EnterView({super.key});
+class EnterPage extends StatelessWidget {
+  const EnterPage({super.key});
 
-  @override
-  State<EnterView> createState() => _EnterViewState();
-}
-
-class _EnterViewState extends State<EnterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

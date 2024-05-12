@@ -1,4 +1,4 @@
-import 'package:bakery_time/util/UtilWidgets.dart';
+import 'package:bakery_time/util/util_widget.dart';
 import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -117,7 +117,6 @@ class _AgreeViewState extends State<AgreeView> {
               ),
               title: const Text('(필수) 이용약관'),
               onTap: () {
-                print('Q&A is clicked !');
               },
               trailing: const Icon(Icons.chevron_right),
             ),
@@ -137,7 +136,6 @@ class _AgreeViewState extends State<AgreeView> {
               ),
               title: const Text('(필수) 개인정보 수집 및 이용'),
               onTap: () {
-                print('Q&A is clicked !');
               },
               trailing: const Icon(Icons.chevron_right),
             ),
@@ -157,7 +155,6 @@ class _AgreeViewState extends State<AgreeView> {
               ),
               title: const Text('(필수) 결제 약관'),
               onTap: () {
-                print('Q&A is clicked !');
               },
               trailing: const Icon(Icons.chevron_right),
             ),

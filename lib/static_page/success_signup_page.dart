@@ -1,14 +1,9 @@
 import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 
-class SuccessSignupView extends StatefulWidget {
-  const SuccessSignupView({super.key});
+class SuccessSignupPage extends StatelessWidget {
+  const SuccessSignupPage({super.key});
 
-  @override
-  State<SuccessSignupView> createState() => _SuccessSignupViewState();
-}
-
-class _SuccessSignupViewState extends State<SuccessSignupView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

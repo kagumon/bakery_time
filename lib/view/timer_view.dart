@@ -1,13 +1,10 @@
 import 'dart:async';
-import 'package:bakery_time/util/UtilFunction.dart';
-import 'package:bakery_time/util/UtilWidgets.dart';
+import 'package:bakery_time/util/util_function.dart';
+import 'package:bakery_time/util/util_widget.dart';
 import 'package:bakery_time/util/theme.dart';
-import 'package:bakery_time/widget/GoogleAdWidget.dart';
+import 'package:bakery_time/widget/google_ad_widget.dart';
 import 'package:battery/battery.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';

@@ -1,8 +1,8 @@
 import 'package:bakery_time/model/item.dart';
-import 'package:bakery_time/util/UtilWidgets.dart';
-import 'package:bakery_time/provider/shopProvider.dart';
-import 'package:bakery_time/widget/GoogleAdWidget.dart';
-import 'package:bakery_time/widget/ShopAppbar.dart';
+import 'package:bakery_time/util/util_widget.dart';
+import 'package:bakery_time/provider/shop_provider.dart';
+import 'package:bakery_time/widget/google_ad_widget.dart';
+import 'package:bakery_time/widget/cash_appbar_widget.dart';
 import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

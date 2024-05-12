@@ -1,14 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ItemRewardView extends StatefulWidget {
-  const ItemRewardView({super.key});
+class ItemRewardPage extends StatelessWidget {
+  const ItemRewardPage({super.key});
 
-  @override
-  State<ItemRewardView> createState() => _ItemRewardViewState();
-}
-
-class _ItemRewardViewState extends State<ItemRewardView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

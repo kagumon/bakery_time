@@ -1,9 +1,7 @@
-import 'package:bakery_time/util/UtilWidgets.dart';
+import 'package:bakery_time/util/util_widget.dart';
 import 'package:bakery_time/util/theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 class SignupView extends StatefulWidget {
   const SignupView({super.key});
