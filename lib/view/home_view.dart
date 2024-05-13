@@ -6,8 +6,10 @@ import 'package:bakery_time/widget/google_ad_widget.dart';
 import 'package:bakery_time/widget/main_drawer_widget.dart';
 import 'package:bakery_time/util/util_function.dart';
 import 'package:bakery_time/util/theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bakery_time/widget/main_appbar_widget.dart';
+import 'package:flutter/widgets.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 
@@ -36,7 +38,7 @@ class HomeView extends StatelessWidget {
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width * 0.7,
-                          height: MediaQuery.of(context).size.width * 0.7 + 20,
+                          height: MediaQuery.of(context).size.width * 0.7,
                           decoration: BoxDecoration(
                             borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                             color: itemBackgroundColor,
@@ -45,57 +47,69 @@ class HomeView extends StatelessWidget {
                         Positioned(
                           top: 80,
                           left: 80,
-                          child: Image.asset(
-                            width: MediaQuery.of(context).size.width * 0.7 - 160,
-                            height: MediaQuery.of(context).size.width * 0.7 - 160,
-                            "assets/images/${provider.selectedItem.type}/${provider.selectedItem.id}.png"
+                          child: GestureDetector(
+                            onTap: () {
+                              if(provider.currentCake.currentStatus != 3) {
+                                showUnlockItemList(context, provider.queryItemList);
+                              }
+                            },
+                            child: Image.asset(
+                              width: MediaQuery.of(context).size.width * 0.7 - 160,
+                              height: MediaQuery.of(context).size.width * 0.7 - 160,
+                              "assets/images/${provider.selectedItem.type}/${provider.selectedItem.id}.png"
+                            ),
                           )
+                        ),
+                        Visibility(
+                          visible: provider.showExplain()["visiable"],
+                          child: Positioned(
+                            bottom: 10,
+                            right: 60,
+                            child: Container(
+                              color: backgroundColor,
+                              width: 200,
+                              height: 40,
+                              child: Center(
+                                child: Text(provider.showExplain()["explainText"])
+                              ),
+                            )
+                          ),
                         ),
                         /* button Icons */
-                        Positioned(
-                          top: 0,
-                          right: 0,
-                          child: IconButton(
-                            onPressed: () {
-                              showUnlockItemList(context, provider.queryItemList);
-                            },
-                            icon: Icon(Icons.apps, color: iconGreyColor,)
-                          )
+                        Visibility(
+                          visible: provider.currentCake.currentStatus != 3,
+                          child: Positioned(
+                            top: MediaQuery.of(context).size.width * 0.35,
+                            left: 0,
+                            child: GestureDetector(
+                              onTap: () {
+                                provider.nextItemSelect(false);
+                              },
+                              child: Icon(Icons.arrow_left, color: iconGreyColor, size: 40,)
+                            )
+                          ),
                         ),
-                        Positioned(
-                          top: MediaQuery.of(context).size.width * 0.35 - 20,
-                          left: 0,
-                          child: GestureDetector(
-                            onTap: () {
-                            },
-                            child: Icon(Icons.arrow_left, color: iconGreyColor, size: 40,)
-                          )
-                        ),
-                        Positioned(
-                          top: MediaQuery.of(context).size.width * 0.35 - 20,
-                          right: 0,
-                          child: GestureDetector(
-                            onTap: () {
-                            },
-                            child: Icon(Icons.arrow_right, color: iconGreyColor, size: 40,)
-                          )
-                        ),
-                        Positioned(
-                          top: 0,
-                          left: 0,
-                          child: IconButton(
-                            onPressed: () {
-                              print(provider.currentCake.toJson());
-                              print(provider.bakeryTimer.toJson());
-                            },
-                            icon: Icon(Icons.apps, color: iconGreyColor,)
-                          )
+                        Visibility(
+                          visible: provider.currentCake.currentStatus != 3,
+                          child: Positioned(
+                            top: MediaQuery.of(context).size.width * 0.35 - 20,
+                            right: 0,
+                            child: GestureDetector(
+                              onTap: () {
+                                provider.nextItemSelect(true);
+                              },
+                              child: Icon(Icons.arrow_right, color: iconGreyColor, size: 40,)
+                            )
+                          ),
                         ),
                         Positioned(
                           bottom: 15,
                           right: 15,
                           child: GestureDetector(
-                            onTap: () {provider.pref.setString("currentCake", "");},
+                            onTap: () {
+                              print(provider.currentCake.toJson());
+                              print(provider.bakeryTimer.toJson());
+                            },
                             child: CircularPercentIndicator(
                               radius: 15.0,
                               lineWidth: 8.0,
@@ -104,7 +118,7 @@ class HomeView extends StatelessWidget {
                               percent: (bakeryTimer.targetTime + bakeryTimer.totalTime) / bakeryTimer.targetItemTime >= 1.0 
                                         ? 1.0 : (bakeryTimer.targetTime + bakeryTimer.totalTime) / bakeryTimer.targetItemTime,
                               circularStrokeCap: CircularStrokeCap.round,
-                              progressColor: sliderActiveColor,
+                              progressColor: (bakeryTimer.targetTime + bakeryTimer.totalTime) / bakeryTimer.targetItemTime >= 1.0 ? sliderDotColor : sliderActiveColor,
                               backgroundColor: Colors.white,
                             ),
                           ),
@@ -135,7 +149,7 @@ class HomeView extends StatelessWidget {
                         value: bakeryTimer.targetTime,
                         divisions: 15,
                         onChanged: (value) {
-                          provider.settimerTime(value);
+                          provider.setTimerTime(value);
                         },
                       ),
                     ),
@@ -145,24 +159,57 @@ class HomeView extends StatelessWidget {
                       style: TextStyle(color: primaryColor, fontSize: 50),
                     ),
                     heightSizeBox(40),
-                    GestureDetector(
-                      onTap: () {
-                        provider.startTimer();
-                        Navigator.of(context).pushNamedAndRemoveUntil("/timer", (route) => false);
-                      },
-                      child: Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width * 0.6,
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                            color: buttonActiveColor,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        emptyExpanded(),
+                        Visibility(
+                          visible: provider.currentCake.step! >= 4 && provider.currentCake.currentStatus != 3,
+                          child: GestureDetector(
+                            onTap: () {
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(left: 5, right: 5),
+                              height: 50,
+                              width: provider.currentCake.step! < 6 ? MediaQuery.of(context).size.width * 0.3 - 10 : MediaQuery.of(context).size.width * 0.6,
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                                color: buttonSubColor,
+                              ),
+                              child: Center(
+                                  child: Text(
+                                "포장하기",
+                                style: TextStyle(color: textPrimaryColor),
+                              )),
+                            ),
                           ),
-                          child: Center(
-                              child: Text(
-                            "베이킹 시작하기",
-                            style: TextStyle(color: textWhiteColor),
-                          )),
                         ),
+                        Visibility(
+                          visible: provider.currentCake.step! < 6,
+                          child: GestureDetector(
+                            onTap: () {
+                              provider.startTimer();
+                              Navigator.of(context).pushNamedAndRemoveUntil("/timer", (route) => false);
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(left: 5, right: 5),
+                              height: 50,
+                              width: provider.currentCake.step! >= 4 && provider.currentCake.currentStatus != 3 ?
+                                     MediaQuery.of(context).size.width * 0.4 : MediaQuery.of(context).size.width * 0.6,
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                                color: buttonActiveColor,
+                              ),
+                              child: Center(
+                                  child: Text(
+                                "베이킹 시작하기",
+                                style: TextStyle(color: textWhiteColor),
+                              )),
+                            ),
+                          ),
+                        ),
+                        emptyExpanded(),
+                      ],
                     ),
                   ],
                 ),

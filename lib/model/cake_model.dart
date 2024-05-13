@@ -7,7 +7,7 @@ class Cake {
   String? accessoriesId2;
   String? accessoriesId3;
   int? step = 1;
-  int? currentStatus = 0; // 0: 비활성화, 1: Timer 작동중, 2: 포장 완료, 3: 미완성, 9: 상함
+  int? currentStatus = 0; // 0: 미작동중, 1: Timer 작동중, 2: 포장 완료, 3: 미완성, 9: 상함
   String? sheetEndDTTM;
   String? creemEndDTTM;
   String? accessories1EndDTTM;

@@ -15,6 +15,7 @@ class HomeProvider with ChangeNotifier {
   late final List<Item> _queryItemList = List.empty(growable: true);
   late BakeryTimer _bakeryTimer;
   late Item _selectedItem;
+  late int _selectedItemIndex;
 
   SharedPreferences get pref => _pref;
   Cake get currentCake => _currentCake;
@@ -26,6 +27,7 @@ class HomeProvider with ChangeNotifier {
     setCurrentCake();
     setBakeryTimer();
     getItemList();
+    initSelectedItem();
   }
 
   Future<void> setCurrentCake() async {
@@ -80,8 +82,33 @@ class HomeProvider with ChangeNotifier {
     saveCurrentCake();
   }
 
-  Future<void> settimerTime(double value) async {
+  Future<void> setTimerTime(double value) async {
     _bakeryTimer.targetTime = value;
+    notifyListeners();
+  }
+
+  Future<void> nextItemSelect(bool right) async {
+    if(right) {
+      _selectedItemIndex = ++_selectedItemIndex % _queryItemList.length;
+    } else {
+      _selectedItemIndex -= 1;
+      if(_selectedItemIndex < 0) {
+        _selectedItemIndex = _queryItemList.length-1;
+      }
+    }
+    _selectedItem = _queryItemList[_selectedItemIndex];
+    
+    _bakeryTimer.targetItemId = _selectedItem.id;
+    _bakeryTimer.targetItemTime = _selectedItem.itemTime;
+    saveBakeryTimer();
+    notifyListeners();
+  }
+
+  Future<void> choiceItem(int idx) async {
+    _selectedItem = _queryItemList[idx];
+    _bakeryTimer.targetItemId = _selectedItem.id;
+    _bakeryTimer.targetItemTime = _selectedItem.itemTime;
+    saveBakeryTimer();
     notifyListeners();
   }
 
@@ -93,10 +120,42 @@ class HomeProvider with ChangeNotifier {
         _queryItemList.add(item);
       }
     }
-    _selectedItem = _queryItemList[0];
-    _bakeryTimer.targetItemId = _selectedItem.id;
-    _bakeryTimer.targetItemTime = 4000;
-    //_bakeryTimer.totalTime = 0;
     notifyListeners();
+  }
+
+  Future<void> initSelectedItem() async {
+    if(_currentCake.currentStatus == 3) {
+      for(var i=0; i<_queryItemList.length; i++) {
+        if(_queryItemList[i].id == _bakeryTimer.targetItemId) {
+          _selectedItem = _queryItemList[i];
+          _selectedItemIndex = i;
+        }
+      }
+    } else {
+      _selectedItem = _queryItemList[0];
+      _selectedItemIndex = 0;
+      _bakeryTimer.targetItemId = _selectedItem.id;
+      _bakeryTimer.targetItemTime = _selectedItem.itemTime;
+    }
+    saveBakeryTimer();
+    notifyListeners();
+  }
+
+  Map<String, dynamic> showExplain() {
+    Map<String, dynamic> result = {
+      "visiable" : false,
+      "explainText" : "",
+      "color" : "",
+    };
+
+    if((_bakeryTimer.targetTime + _bakeryTimer.totalTime) / _bakeryTimer.targetItemTime >= 1.0) {
+      result["visiable"] = true;
+      result["explainText"] = "필요한 시간을 모두 채웠어요!";
+    } else if(_currentCake.currentStatus == 3){
+      result["visiable"] = true;
+      result["explainText"] = "마저 만들어볼까요?";
+    }
+
+    return result;
   }
 }
