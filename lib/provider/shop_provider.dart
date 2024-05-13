@@ -1,20 +1,8 @@
-import 'package:bakery_time/model/item.dart';
+import 'package:bakery_time/data_source/item_data.dart';
+import 'package:bakery_time/model/item_model.dart';
 import 'package:flutter/material.dart';
 
 class ShopProvider with ChangeNotifier {
-  /* 원천 데이터 */
-  List<Map<String, dynamic>> items = [
-    {"type": "sheets", "id": "sht1001", "price": 1500, "minTime": 1800, "unlock": 0},
-    {"type": "sheets", "id": "sht1002", "price": 1500, "minTime": 1800, "unlock": 0},
-    {"type": "sheets", "id": "sht1003", "price": 1500, "minTime": 1800, "unlock": 0},
-    {"type": "cream", "id": "crm2001", "price": 1500, "minTime": 1800, "unlock": 0},
-    {"type": "cream", "id": "crm2002", "price": 1500, "minTime": 1800, "unlock": 0},
-    {"type": "cream", "id": "crm2003", "price": 1500, "minTime": 1800, "unlock": 0},
-    {"type": "accessories", "id": "acc3001", "price": 1500, "minTime": 1800, "unlock": 0},
-    {"type": "accessories", "id": "acc3002", "price": 1500, "minTime": 1800, "unlock": 0},
-    {"type": "accessories", "id": "acc3003", "price": 1500, "minTime": 1800, "unlock": 0},
-  ];
-
   /* 데이터 가공할 클래스 내부 변수 */
   List<Item> _allItemList = List.empty(growable: true);
   final List<Item> _itemList = List.empty(growable: true);
@@ -37,7 +25,7 @@ class ShopProvider with ChangeNotifier {
 
   /* notifyListeners 함수 */
   Future<void> getItemList() async {
-    _allItemList = items.map<Item>((value) => Item.fromJson(value)).toList();
+    _allItemList = ItemData().items;
     setSelectedItem();
     notifyListeners();
   }

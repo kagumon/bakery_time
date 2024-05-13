@@ -1,4 +1,4 @@
-import 'package:bakery_time/model/item.dart';
+import 'package:bakery_time/model/item_model.dart';
 import 'package:bakery_time/util/util_widget.dart';
 import 'package:bakery_time/provider/shop_provider.dart';
 import 'package:bakery_time/widget/google_ad_widget.dart';

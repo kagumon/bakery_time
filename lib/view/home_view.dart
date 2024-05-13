@@ -1,3 +1,5 @@
+import 'package:bakery_time/model/bakery_timer_model.dart';
+import 'package:bakery_time/model/item_model.dart';
 import 'package:bakery_time/provider/home_provider.dart';
 import 'package:bakery_time/util/util_widget.dart';
 import 'package:bakery_time/widget/google_ad_widget.dart';
@@ -21,6 +23,7 @@ class HomeView extends StatelessWidget {
         drawer: mainDrawerWidget(context),
         body: Consumer<HomeProvider>(
           builder: (context, provider, child) {
+            BakeryTimer bakeryTimer = provider.bakeryTimer;
             return SafeArea(
               child: Container(
                 color: backgroundColor,
@@ -34,19 +37,76 @@ class HomeView extends StatelessWidget {
                         Container(
                           width: MediaQuery.of(context).size.width * 0.7,
                           height: MediaQuery.of(context).size.width * 0.7 + 20,
-                          decoration: previewContainerDecoration(),
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                            color: itemBackgroundColor,
+                          ),
                         ),
                         Positioned(
-                          bottom: 3,
-                          right: 3,
-                          child: CircularPercentIndicator(
-                            radius: 15.0,
-                            lineWidth: 8.0,
-                            animation: true,
-                            percent: 0.7,
-                            circularStrokeCap: CircularStrokeCap.round,
-                            progressColor: sliderActiveColor,
-                            backgroundColor: Colors.white,
+                          top: 80,
+                          left: 80,
+                          child: Image.asset(
+                            width: MediaQuery.of(context).size.width * 0.7 - 160,
+                            height: MediaQuery.of(context).size.width * 0.7 - 160,
+                            "assets/images/${provider.selectedItem.type}/${provider.selectedItem.id}.png"
+                          )
+                        ),
+                        /* button Icons */
+                        Positioned(
+                          top: 0,
+                          right: 0,
+                          child: IconButton(
+                            onPressed: () {
+                              showUnlockItemList(context, provider.queryItemList);
+                            },
+                            icon: Icon(Icons.apps, color: iconGreyColor,)
+                          )
+                        ),
+                        Positioned(
+                          top: MediaQuery.of(context).size.width * 0.35 - 20,
+                          left: 0,
+                          child: GestureDetector(
+                            onTap: () {
+                            },
+                            child: Icon(Icons.arrow_left, color: iconGreyColor, size: 40,)
+                          )
+                        ),
+                        Positioned(
+                          top: MediaQuery.of(context).size.width * 0.35 - 20,
+                          right: 0,
+                          child: GestureDetector(
+                            onTap: () {
+                            },
+                            child: Icon(Icons.arrow_right, color: iconGreyColor, size: 40,)
+                          )
+                        ),
+                        Positioned(
+                          top: 0,
+                          left: 0,
+                          child: IconButton(
+                            onPressed: () {
+                              print(provider.currentCake.toJson());
+                              print(provider.bakeryTimer.toJson());
+                            },
+                            icon: Icon(Icons.apps, color: iconGreyColor,)
+                          )
+                        ),
+                        Positioned(
+                          bottom: 15,
+                          right: 15,
+                          child: GestureDetector(
+                            onTap: () {provider.pref.setString("currentCake", "");},
+                            child: CircularPercentIndicator(
+                              radius: 15.0,
+                              lineWidth: 8.0,
+                              animation: true,
+                              animateFromLastPercent: true,
+                              percent: (bakeryTimer.targetTime + bakeryTimer.totalTime) / bakeryTimer.targetItemTime >= 1.0 
+                                        ? 1.0 : (bakeryTimer.targetTime + bakeryTimer.totalTime) / bakeryTimer.targetItemTime,
+                              circularStrokeCap: CircularStrokeCap.round,
+                              progressColor: sliderActiveColor,
+                              backgroundColor: Colors.white,
+                            ),
                           ),
                         ),
                       ],
@@ -71,31 +131,38 @@ class HomeView extends StatelessWidget {
                       ),
                       child: Slider(
                         max: (1.5 * 60 * 60).toDouble(),
-                        value: provider.timerSeconds,
-                        divisions: 18,
-                        //label: '',
+                        min: (15 * 60).toDouble(),
+                        value: bakeryTimer.targetTime,
+                        divisions: 15,
                         onChanged: (value) {
-                          provider.setTimerSeconds(value);
+                          provider.settimerTime(value);
                         },
                       ),
                     ),
                     heightSizeBox(40),
                     Text(
-                      secondFormatHHMMSS(provider.timerSeconds.floor()),
+                      secondFormatHHMMSS(bakeryTimer.targetTime.floor()),
                       style: TextStyle(color: primaryColor, fontSize: 50),
                     ),
                     heightSizeBox(40),
-                    SizedBox(
-                      height: 50,
-                      width: MediaQuery.of(context).size.width * 0.6,
+                    GestureDetector(
+                      onTap: () {
+                        provider.startTimer();
+                        Navigator.of(context).pushNamedAndRemoveUntil("/timer", (route) => false);
+                      },
                       child: Container(
-                        decoration: startButtonDecoration(),
-                        child: Center(
-                            child: Text(
-                          "베이킹 시작하기",
-                          style: TextStyle(color: textWhiteColor),
-                        )),
-                      ),
+                        height: 50,
+                        width: MediaQuery.of(context).size.width * 0.6,
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                            color: buttonActiveColor,
+                          ),
+                          child: Center(
+                              child: Text(
+                            "베이킹 시작하기",
+                            style: TextStyle(color: textWhiteColor),
+                          )),
+                        ),
                     ),
                   ],
                 ),
@@ -108,15 +175,51 @@ class HomeView extends StatelessWidget {
   }
 }
 
-BoxDecoration previewContainerDecoration() {
-  return BoxDecoration(
-      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-      color: itemBackgroundColor,
-  );
-}
-
-BoxDecoration startButtonDecoration() {
-  return BoxDecoration(
-      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-      color: buttonActiveColor,);
+Future<void> showUnlockItemList(BuildContext context, List<Item> itemList) async {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    useSafeArea: true,
+    barrierColor: primaryColor.withOpacity(0.8),
+    backgroundColor: backgroundColor,
+    builder: (context) {
+      return Container(
+        padding: const EdgeInsets.only(left: 30, right: 30, top: 0, bottom: 0),
+        height: MediaQuery.of(context).size.height * 0.8,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(30.0))
+        ),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 60,
+              child: Center(
+                child: Icon(Icons.arrow_drop_down, color: iconGreyColor,),
+              ),
+            ),
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  childAspectRatio: 1,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                ),
+                itemCount: itemList.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    color: itemBackgroundColor,
+                    child: Column(
+                      children: [
+                        Image.asset("assets/images/${itemList[index].type}/${itemList[index].id}.png")
+                      ],
+                    ),
+                  );
+                }
+              ),
+            ),
+          ],
+        ),
+      );
+    });
 }

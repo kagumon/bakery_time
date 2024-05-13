@@ -47,6 +47,7 @@ void changeColorTheme(String type) {
     sliderDotColor = const Color(0xFFE4A8A7);
     indicatorActiveColor = const Color(0xFFFCC9C8);
     indicatorDisableColor = const Color(0xFFFFF6F6);
+    indicatorFinishColor = const Color(0xFFF4B4B3);
     tabActiveColor = const Color(0xFFF6BAB9);
     tabDisableColor = const Color(0xFFFDFBFB);
     buttonSubColor = const Color(0xFFFEEEED);
@@ -55,7 +56,7 @@ void changeColorTheme(String type) {
     buttonDisableColor = const Color(0xFFE4DEDD);
     iconBlackColor = const Color(0xFF302828);
     iconPrimaryColor = const Color(0xFFFB8887);
-    iconGreyColor = const Color(0xFFDCD9D9);
+    iconGreyColor = const Color(0xFF999393);
     iconWhiteColor = const Color(0xFFFFFCFC);
     textWhiteColor = const Color(0xFFFFFBFC);
     textPrimaryColor = const Color(0xFFF6BAB9);
@@ -81,6 +82,7 @@ late final Color sliderDisableColor;
 late final Color sliderDotColor;
 late final Color indicatorActiveColor;
 late final Color indicatorDisableColor;
+late final Color indicatorFinishColor;
 late final Color tabActiveColor;
 late final Color tabDisableColor;
 late final Color buttonSubColor;

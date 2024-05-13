@@ -1,42 +1,49 @@
 import 'dart:async';
+import 'dart:convert';
+import 'package:bakery_time/model/bakery_timer_model.dart';
+import 'package:bakery_time/model/cake_model.dart';
+import 'package:bakery_time/util/pref_handler.dart';
 import 'package:bakery_time/util/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LoadingPage extends StatefulWidget {
+class LoadingPage extends StatelessWidget {
   const LoadingPage({super.key});
 
   @override
-  State<LoadingPage> createState() => _LoadingPageState();
-}
-
-class _LoadingPageState extends State<LoadingPage> {
-  late final SharedPreferences _prefs;
-  bool? _loginStatus = false;
-
-  @override
-  void initState() {
-    super.initState();
-    Timer(const Duration(milliseconds: 1000), () {
-      _initSharedPreferences().then((value) => _loadData());
-    });
-  }
-
-  Future<void> _initSharedPreferences() async {
-    _prefs = await SharedPreferences.getInstance();
-  }
-
-  Future<void> _loadData() async {
-    _loginStatus = _prefs.getBool("loginStatus");
-    if(_loginStatus == null || _loginStatus == false) {
-      Navigator.of(context).pushNamedAndRemoveUntil("/enter", (route) => false);
-    } else {
-      Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
+    Timer(const Duration(milliseconds: 1000), () {
+      final SharedPreferences pref = PreferencesHandler.instance.pref;
+
+      if(pref.getBool("loginStatus") == null || pref.getBool("loginStatus") == false) {
+        print("로그인 안되어 있어 로그인 화면으로 이동");
+        Navigator.of(context).pushNamedAndRemoveUntil("/enter", (route) => false);
+      } else {
+        String? data = pref.getString("currentCake");
+        if(data == null || data == "") {
+          print("플레이 기록이 없어 홈으로 이동");
+          Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);
+        } else {
+          Cake currentCake = Cake.fromJson(jsonDecode(data));
+          if(currentCake.currentStatus == 1) {
+            BakeryTimer bakeryTimer = BakeryTimer.fromJson(jsonDecode(pref.getString("currentTimer")!));
+            Duration offlineTime = DateTime.now().difference(DateTime.parse(bakeryTimer.lastDTTM));
+            if(offlineTime.inMinutes >= 1) {
+              currentCake.currentStatus = 9;
+              pref.setString("currentCake", jsonEncode(currentCake.toJson()));
+              print("상함");
+              Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);
+            } else {
+              print("아직 안상해서 타이머로 이동");
+              Navigator.of(context).pushNamedAndRemoveUntil("/timer", (route) => false);
+            }
+          } else {
+            print("타이머 미작동 상태로 홈 이동");
+            Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);
+          }
+        }
+      }
+    });
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -58,7 +65,7 @@ class _LoadingPageState extends State<LoadingPage> {
                 ),
             ),
             Text(
-              "시간을 굽다",
+              "시간을 기부하다",
               style:
                   TextStyle(
                     fontFamily: "euljiro",
