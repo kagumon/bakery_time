@@ -12,13 +12,15 @@ class EnterPage extends StatelessWidget {
           const Expanded(child: SizedBox.shrink()),
           Text(
             "베이커리타임",
-            style:
-                TextStyle(fontFamily: "euljiro", color: textPrimaryColor, fontSize: 40),
+            style: TextStyle(
+                fontFamily: "euljiro", color: textPrimaryColor, fontSize: 40),
           ),
           Text(
             "시간을 굽다.",
-            style:
-                TextStyle(fontFamily: "euljiro", color: textprimarySoftColor, fontSize: 30),
+            style: TextStyle(
+                fontFamily: "euljiro",
+                color: textprimarySoftColor,
+                fontSize: 30),
           ),
           const Expanded(child: SizedBox.shrink()),
           Container(

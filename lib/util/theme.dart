@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 void changeColorTheme(String type) {
-  if(type == "brown") {
+  if (type == "brown") {
     primaryColor = const Color(0xFF4B2615);
     backgroundColor = const Color(0xFFFFFEFD);
     calenderBackgroundColor = const Color(0xFFE1D1B9);

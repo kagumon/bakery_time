@@ -40,67 +40,75 @@ class HomeView extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 0.7,
                           height: MediaQuery.of(context).size.width * 0.7,
                           decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10.0)),
                             color: itemBackgroundColor,
                           ),
                         ),
                         Positioned(
-                          top: 80,
-                          left: 80,
-                          child: GestureDetector(
-                            onTap: () {
-                              if(provider.currentCake.currentStatus != 3) {
-                                showUnlockItemList(context, provider.queryItemList);
-                              }
-                            },
-                            child: Image.asset(
-                              width: MediaQuery.of(context).size.width * 0.7 - 160,
-                              height: MediaQuery.of(context).size.width * 0.7 - 160,
-                              "assets/images/${provider.selectedItem.type}/${provider.selectedItem.id}.png"
-                            ),
-                          )
-                        ),
+                            top: 80,
+                            left: 80,
+                            child: GestureDetector(
+                              onTap: () {
+                                if (provider.currentCake.currentStatus != 3) {
+                                  showUnlockItemList(
+                                      context, provider.queryItemList);
+                                }
+                              },
+                              child: Image.asset(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.7 -
+                                          160,
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.7 -
+                                          160,
+                                  "assets/images/${provider.selectedItem.type}/${provider.selectedItem.id}.png"),
+                            )),
                         Visibility(
                           visible: provider.showExplain()["visiable"],
                           child: Positioned(
-                            bottom: 10,
-                            right: 60,
-                            child: Container(
-                              color: backgroundColor,
-                              width: 200,
-                              height: 40,
-                              child: Center(
-                                child: Text(provider.showExplain()["explainText"])
-                              ),
-                            )
-                          ),
+                              bottom: 10,
+                              right: 60,
+                              child: Container(
+                                color: backgroundColor,
+                                width: 200,
+                                height: 40,
+                                child: Center(
+                                    child: Text(
+                                        provider.showExplain()["explainText"])),
+                              )),
                         ),
                         /* button Icons */
                         Visibility(
                           visible: provider.currentCake.currentStatus != 3,
                           child: Positioned(
-                            top: MediaQuery.of(context).size.width * 0.35,
-                            left: 0,
-                            child: GestureDetector(
-                              onTap: () {
-                                provider.nextItemSelect(false);
-                              },
-                              child: Icon(Icons.arrow_left, color: iconGreyColor, size: 40,)
-                            )
-                          ),
+                              top: MediaQuery.of(context).size.width * 0.35,
+                              left: 0,
+                              child: GestureDetector(
+                                  onTap: () {
+                                    provider.nextItemSelect(false);
+                                  },
+                                  child: Icon(
+                                    Icons.arrow_left,
+                                    color: iconGreyColor,
+                                    size: 40,
+                                  ))),
                         ),
                         Visibility(
                           visible: provider.currentCake.currentStatus != 3,
                           child: Positioned(
-                            top: MediaQuery.of(context).size.width * 0.35 - 20,
-                            right: 0,
-                            child: GestureDetector(
-                              onTap: () {
-                                provider.nextItemSelect(true);
-                              },
-                              child: Icon(Icons.arrow_right, color: iconGreyColor, size: 40,)
-                            )
-                          ),
+                              top:
+                                  MediaQuery.of(context).size.width * 0.35 - 20,
+                              right: 0,
+                              child: GestureDetector(
+                                  onTap: () {
+                                    provider.nextItemSelect(true);
+                                  },
+                                  child: Icon(
+                                    Icons.arrow_right,
+                                    color: iconGreyColor,
+                                    size: 40,
+                                  ))),
                         ),
                         Positioned(
                           bottom: 15,
@@ -115,10 +123,21 @@ class HomeView extends StatelessWidget {
                               lineWidth: 8.0,
                               animation: true,
                               animateFromLastPercent: true,
-                              percent: (bakeryTimer.targetTime + bakeryTimer.totalTime) / bakeryTimer.targetItemTime >= 1.0 
-                                        ? 1.0 : (bakeryTimer.targetTime + bakeryTimer.totalTime) / bakeryTimer.targetItemTime,
+                              percent: (bakeryTimer.targetTime +
+                                              bakeryTimer.totalTime) /
+                                          bakeryTimer.targetItemTime >=
+                                      1.0
+                                  ? 1.0
+                                  : (bakeryTimer.targetTime +
+                                          bakeryTimer.totalTime) /
+                                      bakeryTimer.targetItemTime,
                               circularStrokeCap: CircularStrokeCap.round,
-                              progressColor: (bakeryTimer.targetTime + bakeryTimer.totalTime) / bakeryTimer.targetItemTime >= 1.0 ? sliderDotColor : sliderActiveColor,
+                              progressColor: (bakeryTimer.targetTime +
+                                              bakeryTimer.totalTime) /
+                                          bakeryTimer.targetItemTime >=
+                                      1.0
+                                  ? sliderDotColor
+                                  : sliderActiveColor,
                               backgroundColor: Colors.white,
                             ),
                           ),
@@ -164,16 +183,19 @@ class HomeView extends StatelessWidget {
                       children: [
                         emptyExpanded(),
                         Visibility(
-                          visible: provider.currentCake.step! >= 4 && provider.currentCake.currentStatus != 3,
+                          visible: provider.currentCake.step! >= 4 &&
+                              provider.currentCake.currentStatus != 3,
                           child: GestureDetector(
-                            onTap: () {
-                            },
+                            onTap: () {},
                             child: Container(
                               margin: const EdgeInsets.only(left: 5, right: 5),
                               height: 50,
-                              width: provider.currentCake.step! < 6 ? MediaQuery.of(context).size.width * 0.3 - 10 : MediaQuery.of(context).size.width * 0.6,
+                              width: provider.currentCake.step! < 6
+                                  ? MediaQuery.of(context).size.width * 0.3 - 10
+                                  : MediaQuery.of(context).size.width * 0.6,
                               decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(10.0)),
                                 color: buttonSubColor,
                               ),
                               child: Center(
@@ -189,15 +211,19 @@ class HomeView extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               provider.startTimer();
-                              Navigator.of(context).pushNamedAndRemoveUntil("/timer", (route) => false);
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                  "/timer", (route) => false);
                             },
                             child: Container(
                               margin: const EdgeInsets.only(left: 5, right: 5),
                               height: 50,
-                              width: provider.currentCake.step! >= 4 && provider.currentCake.currentStatus != 3 ?
-                                     MediaQuery.of(context).size.width * 0.4 : MediaQuery.of(context).size.width * 0.6,
+                              width: provider.currentCake.step! >= 4 &&
+                                      provider.currentCake.currentStatus != 3
+                                  ? MediaQuery.of(context).size.width * 0.4
+                                  : MediaQuery.of(context).size.width * 0.6,
                               decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(10.0)),
                                 color: buttonActiveColor,
                               ),
                               child: Center(
@@ -222,51 +248,56 @@ class HomeView extends StatelessWidget {
   }
 }
 
-Future<void> showUnlockItemList(BuildContext context, List<Item> itemList) async {
+Future<void> showUnlockItemList(
+    BuildContext context, List<Item> itemList) async {
   showModalBottomSheet(
-    context: context,
-    isScrollControlled: true,
-    useSafeArea: true,
-    barrierColor: primaryColor.withOpacity(0.8),
-    backgroundColor: backgroundColor,
-    builder: (context) {
-      return Container(
-        padding: const EdgeInsets.only(left: 30, right: 30, top: 0, bottom: 0),
-        height: MediaQuery.of(context).size.height * 0.8,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(30.0))
-        ),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 60,
-              child: Center(
-                child: Icon(Icons.arrow_drop_down, color: iconGreyColor,),
-              ),
-            ),
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  childAspectRatio: 1,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      barrierColor: primaryColor.withOpacity(0.8),
+      backgroundColor: backgroundColor,
+      builder: (context) {
+        return Container(
+          padding:
+              const EdgeInsets.only(left: 30, right: 30, top: 0, bottom: 0),
+          height: MediaQuery.of(context).size.height * 0.8,
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(30.0))),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 60,
+                child: Center(
+                  child: Icon(
+                    Icons.arrow_drop_down,
+                    color: iconGreyColor,
+                  ),
                 ),
-                itemCount: itemList.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    color: itemBackgroundColor,
-                    child: Column(
-                      children: [
-                        Image.asset("assets/images/${itemList[index].type}/${itemList[index].id}.png")
-                      ],
-                    ),
-                  );
-                }
               ),
-            ),
-          ],
-        ),
-      );
-    });
+              Expanded(
+                child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      childAspectRatio: 1,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                    ),
+                    itemCount: itemList.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        color: itemBackgroundColor,
+                        child: Column(
+                          children: [
+                            Image.asset(
+                                "assets/images/${itemList[index].type}/${itemList[index].id}.png")
+                          ],
+                        ),
+                      );
+                    }),
+              ),
+            ],
+          ),
+        );
+      });
 }

@@ -11,7 +11,7 @@ Widget googleBannerAdWidget() {
 
   String adUnitId = androidBannerAdUnitId;
   if (Platform.isIOS) adUnitId = iosBannerAdUnitId;
-  
+
   bannerAd = AdManagerBannerAd(
     adUnitId: adUnitId,
     request: const AdManagerAdRequest(),
@@ -20,9 +20,9 @@ Widget googleBannerAdWidget() {
   )..load();
 
   return SizedBox(
-    width: bannerAd.sizes.first.width.toDouble(),
-    height: bannerAd.sizes.first.height.toDouble(),
-    child: AdWidget(ad: bannerAd));
+      width: bannerAd.sizes.first.width.toDouble(),
+      height: bannerAd.sizes.first.height.toDouble(),
+      child: AdWidget(ad: bannerAd));
 }
 
 Future<void>? googleRewardedAdWidget(void Function() rewardFunction) {
@@ -37,7 +37,9 @@ Future<void>? googleRewardedAdWidget(void Function() rewardFunction) {
     request: const AdManagerAdRequest(),
     rewardedAdLoadCallback: RewardedAdLoadCallback(
       onAdLoaded: (ad) {
-        ad.show(onUserEarnedReward: (_, r) {rewardFunction();});
+        ad.show(onUserEarnedReward: (_, r) {
+          rewardFunction();
+        });
       },
       onAdFailedToLoad: (err) {
         //print('Failed to load a rewarded ad: ${err.message}');

@@ -58,7 +58,8 @@ class _LoginViewState extends State<LoginView> {
                   GestureDetector(
                     onTap: () => {
                       login(),
-                      Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false)
+                      Navigator.of(context)
+                          .pushNamedAndRemoveUntil("/home", (route) => false)
                     },
                     child: Container(
                       width: double.infinity,
@@ -79,16 +80,13 @@ class _LoginViewState extends State<LoginView> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       GestureDetector(
-                          child: const Text("아이디 찾기"),
-                          onTap: () => {}),
+                          child: const Text("아이디 찾기"), onTap: () => {}),
                       const Text("|"),
                       GestureDetector(
-                          child: const Text("비밀번호 찾기"),
-                          onTap: () => {}),
+                          child: const Text("비밀번호 찾기"), onTap: () => {}),
                       const Text("|"),
                       GestureDetector(
-                          child: const Text("회원가입"),
-                          onTap: () => {}),
+                          child: const Text("회원가입"), onTap: () => {}),
                     ],
                   ),
                 ],
@@ -145,7 +143,7 @@ class _LoginViewState extends State<LoginView> {
       ),
     );
   }
-  
+
   Future<void> login() async {
     _prefs = await SharedPreferences.getInstance();
     _prefs.setBool("loginStatus", true);

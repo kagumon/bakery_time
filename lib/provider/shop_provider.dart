@@ -7,9 +7,9 @@ class ShopProvider with ChangeNotifier {
   List<Item> _allItemList = List.empty(growable: true);
   final List<Item> _itemList = List.empty(growable: true);
   final List<Map<String, dynamic>> _tabList = [
-    {"selected": true,  "type" : "sheets", "title": "베이스"},
-    {"selected": false, "type" : "cream", "title": "데코레이션"},
-    {"selected": false, "type" : "accessories", "title": "포장"},
+    {"selected": true, "type": "sheets", "title": "베이스"},
+    {"selected": false, "type": "cream", "title": "데코레이션"},
+    {"selected": false, "type": "accessories", "title": "포장"},
   ];
   int _currentTabIndex = 0;
 
@@ -33,7 +33,7 @@ class ShopProvider with ChangeNotifier {
   Future<void> setSelectedItem() async {
     _itemList.clear();
     for (var item in _allItemList) {
-      if(_tabList[_currentTabIndex]["type"] == item.type) {
+      if (_tabList[_currentTabIndex]["type"] == item.type) {
         _itemList.add(item);
       }
     }

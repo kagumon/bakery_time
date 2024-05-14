@@ -138,15 +138,19 @@ class _RecordViewState extends State<RecordView> {
             child: Container(
               height: 40,
               decoration: BoxDecoration(
-                color: _tabList[i]["selected"] ? tabActiveColor : tabDisableColor,
-                borderRadius: const BorderRadius.vertical(bottom: Radius.circular(20.0))
-              ),
+                  color: _tabList[i]["selected"]
+                      ? tabActiveColor
+                      : tabDisableColor,
+                  borderRadius: const BorderRadius.vertical(
+                      bottom: Radius.circular(20.0))),
               child: Center(
-                  child: Text(_tabList[i]["title"],
-                      style: TextStyle(
-                          color: _tabList[i]["selected"] ? textWhiteColor : primaryColor,
-                          fontSize: 12)),
-                          ),
+                child: Text(_tabList[i]["title"],
+                    style: TextStyle(
+                        color: _tabList[i]["selected"]
+                            ? textWhiteColor
+                            : primaryColor,
+                        fontSize: 12)),
+              ),
             ),
           ),
         )

@@ -16,24 +16,23 @@ class Cake {
   String? startDTTM;
   String? lastDTTM;
 
-  Cake({
-    required this.uuid,
-    this.cakeTotalTime,
-    this.sheetId,
-    this.creemId,
-    this.accessoriesId1,
-    this.accessoriesId2,
-    this.accessoriesId3,
-    this.step,
-    this.currentStatus,
-    this.sheetEndDTTM,
-    this.creemEndDTTM,
-    this.accessories1EndDTTM,
-    this.accessories2EndDTTM,
-    this.accessories3EndDTTM,
-    this.startDTTM,
-    this.lastDTTM
-  });
+  Cake(
+      {required this.uuid,
+      this.cakeTotalTime,
+      this.sheetId,
+      this.creemId,
+      this.accessoriesId1,
+      this.accessoriesId2,
+      this.accessoriesId3,
+      this.step,
+      this.currentStatus,
+      this.sheetEndDTTM,
+      this.creemEndDTTM,
+      this.accessories1EndDTTM,
+      this.accessories2EndDTTM,
+      this.accessories3EndDTTM,
+      this.startDTTM,
+      this.lastDTTM});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -58,22 +57,21 @@ class Cake {
 
   factory Cake.fromJson(Map<String, dynamic> json) {
     return Cake(
-      uuid: json["uuid"],
-      cakeTotalTime: json["cakeTotalTime"],
-      sheetId: json["sheetId"],
-      creemId: json["creemId"],
-      accessoriesId1: json["accessoriesId1"],
-      accessoriesId2: json["accessoriesId2"],
-      accessoriesId3: json["accessoriesId3"],
-      step: json["step"],
-      currentStatus: json["currentStatus"],
-      sheetEndDTTM: json["sheetEndDTTM"],
-      creemEndDTTM: json["creemEndDTTM"],
-      accessories1EndDTTM: json["accessories1EndDTTM"],
-      accessories2EndDTTM: json["accessories2EndDTTM"],
-      accessories3EndDTTM: json["accessories3EndDTTM"],
-      startDTTM: json["startDTTM"],
-      lastDTTM: json["lastDTTM"]
-    );
+        uuid: json["uuid"],
+        cakeTotalTime: json["cakeTotalTime"],
+        sheetId: json["sheetId"],
+        creemId: json["creemId"],
+        accessoriesId1: json["accessoriesId1"],
+        accessoriesId2: json["accessoriesId2"],
+        accessoriesId3: json["accessoriesId3"],
+        step: json["step"],
+        currentStatus: json["currentStatus"],
+        sheetEndDTTM: json["sheetEndDTTM"],
+        creemEndDTTM: json["creemEndDTTM"],
+        accessories1EndDTTM: json["accessories1EndDTTM"],
+        accessories2EndDTTM: json["accessories2EndDTTM"],
+        accessories3EndDTTM: json["accessories3EndDTTM"],
+        startDTTM: json["startDTTM"],
+        lastDTTM: json["lastDTTM"]);
   }
 }

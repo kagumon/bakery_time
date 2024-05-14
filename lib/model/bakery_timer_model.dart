@@ -7,15 +7,14 @@ class BakeryTimer {
   String startDTTM;
   String lastDTTM;
 
-  BakeryTimer({
-    required this.targetItemId,
-    required this.targetItemTime,
-    required this.totalTime,
-    required this.targetTime,
-    required this.timerTime,
-    required this.startDTTM,
-    required this.lastDTTM
-  });
+  BakeryTimer(
+      {required this.targetItemId,
+      required this.targetItemTime,
+      required this.totalTime,
+      required this.targetTime,
+      required this.timerTime,
+      required this.startDTTM,
+      required this.lastDTTM});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -31,13 +30,12 @@ class BakeryTimer {
 
   factory BakeryTimer.fromJson(Map<String, dynamic> json) {
     return BakeryTimer(
-      targetItemId: json["targetItemId"],
-      targetItemTime: json["targetItemTime"],
-      totalTime: json["totalTime"],
-      targetTime: json["targetTime"],
-      timerTime: json["timerTime"],
-      startDTTM: json["startDTTM"],
-      lastDTTM: json["lastDTTM"]
-    );
+        targetItemId: json["targetItemId"],
+        targetItemTime: json["targetItemTime"],
+        totalTime: json["totalTime"],
+        targetTime: json["targetTime"],
+        timerTime: json["timerTime"],
+        startDTTM: json["startDTTM"],
+        lastDTTM: json["lastDTTM"]);
   }
 }

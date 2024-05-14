@@ -39,23 +39,23 @@ class TimerProvider with ChangeNotifier {
   }
 
   Future<void> giveReward() async {
-    if(_bakeryTimer.totalTime < _bakeryTimer.targetItemTime) {
+    if (_bakeryTimer.totalTime < _bakeryTimer.targetItemTime) {
       _currentCake.currentStatus = 3;
     } else {
-      if(_currentCake.step == 1) {
-        _currentCake.sheetId="sht1001";
+      if (_currentCake.step == 1) {
+        _currentCake.sheetId = "sht1001";
         _currentCake.sheetEndDTTM = DateTime.now().toString();
-      } else if(_currentCake.step == 2) {
-        _currentCake.creemId="crm2001";
+      } else if (_currentCake.step == 2) {
+        _currentCake.creemId = "crm2001";
         _currentCake.creemEndDTTM = DateTime.now().toString();
-      } else if(_currentCake.step == 3) {
-        _currentCake.accessoriesId1="acc3001";
+      } else if (_currentCake.step == 3) {
+        _currentCake.accessoriesId1 = "acc3001";
         _currentCake.accessories1EndDTTM = DateTime.now().toString();
-      } else if(_currentCake.step == 4) {
-        _currentCake.accessoriesId2="acc3002";
+      } else if (_currentCake.step == 4) {
+        _currentCake.accessoriesId2 = "acc3002";
         _currentCake.accessories2EndDTTM = DateTime.now().toString();
-      } else if(_currentCake.step == 5) {
-        _currentCake.accessoriesId3="acc3003";
+      } else if (_currentCake.step == 5) {
+        _currentCake.accessoriesId3 = "acc3003";
         _currentCake.accessories3EndDTTM = DateTime.now().toString();
       }
       _currentCake.step = _currentCake.step! + 1;
@@ -68,16 +68,16 @@ class TimerProvider with ChangeNotifier {
   }
 
   Future<void> giveUp() async {
-    if(_currentCake.step == 1) {
-      _currentCake.sheetId="";
-    } else if(_currentCake.step == 2) {
-      _currentCake.creemId="";
-    } else if(_currentCake.step == 3) {
-      _currentCake.accessoriesId1="";
-    } else if(_currentCake.step == 4) {
-      _currentCake.accessoriesId2="";
-    } else if(_currentCake.step == 5) {
-      _currentCake.accessoriesId3="";
+    if (_currentCake.step == 1) {
+      _currentCake.sheetId = "";
+    } else if (_currentCake.step == 2) {
+      _currentCake.creemId = "";
+    } else if (_currentCake.step == 3) {
+      _currentCake.accessoriesId1 = "";
+    } else if (_currentCake.step == 4) {
+      _currentCake.accessoriesId2 = "";
+    } else if (_currentCake.step == 5) {
+      _currentCake.accessoriesId3 = "";
     }
     _currentCake.currentStatus = 0;
 
@@ -93,14 +93,14 @@ class TimerProvider with ChangeNotifier {
   }
 
   void startTimer() {
-    if(_isRunning) return;
+    if (_isRunning) return;
     _isRunning = true;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       //bakeryTimer.timerTime++;
-      _bakeryTimer.timerTime+=300;
+      _bakeryTimer.timerTime += 300;
       _bakeryTimer.lastDTTM = DateTime.now().toString();
 
-      if(bakeryTimer.timerTime.floor() >=  bakeryTimer.targetTime.floor()) {
+      if (bakeryTimer.timerTime.floor() >= bakeryTimer.targetTime.floor()) {
         _timer.cancel();
         _bakeryTimer.totalTime += _bakeryTimer.targetTime;
         _isFinish = true;

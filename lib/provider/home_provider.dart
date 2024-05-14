@@ -21,7 +21,7 @@ class HomeProvider with ChangeNotifier {
   Cake get currentCake => _currentCake;
   BakeryTimer get bakeryTimer => _bakeryTimer;
   List<Item> get queryItemList => _queryItemList;
-  Item get selectedItem =>_selectedItem;
+  Item get selectedItem => _selectedItem;
 
   HomeProvider() {
     setCurrentCake();
@@ -31,7 +31,8 @@ class HomeProvider with ChangeNotifier {
   }
 
   Future<void> setCurrentCake() async {
-    if(_pref.getString("currentCake") == null || _pref.getString("currentCake") == "") {
+    if (_pref.getString("currentCake") == null ||
+        _pref.getString("currentCake") == "") {
       _currentCake = Cake(
         uuid: const Uuid().v4(),
         cakeTotalTime: 0,
@@ -51,9 +52,9 @@ class HomeProvider with ChangeNotifier {
   }
 
   Future<void> setBakeryTimer() async {
-    if(_currentCake.currentStatus != 3) {
+    if (_currentCake.currentStatus != 3) {
       _bakeryTimer = BakeryTimer(
-        targetItemId:"",
+        targetItemId: "",
         targetItemTime: 0.0,
         totalTime: 0.0,
         targetTime: 15 * 60,
@@ -88,16 +89,16 @@ class HomeProvider with ChangeNotifier {
   }
 
   Future<void> nextItemSelect(bool right) async {
-    if(right) {
+    if (right) {
       _selectedItemIndex = ++_selectedItemIndex % _queryItemList.length;
     } else {
       _selectedItemIndex -= 1;
-      if(_selectedItemIndex < 0) {
-        _selectedItemIndex = _queryItemList.length-1;
+      if (_selectedItemIndex < 0) {
+        _selectedItemIndex = _queryItemList.length - 1;
       }
     }
     _selectedItem = _queryItemList[_selectedItemIndex];
-    
+
     _bakeryTimer.targetItemId = _selectedItem.id;
     _bakeryTimer.targetItemTime = _selectedItem.itemTime;
     saveBakeryTimer();
@@ -115,8 +116,8 @@ class HomeProvider with ChangeNotifier {
   /* 소유하고 있는 아이쳄을 조호하는 함수 step에 맞는 아이템만 보여줌 */
   Future<void> getItemList() async {
     _allItemList = ItemData().items;
-    for(Item item in _allItemList) {
-      if(item.unlock) {
+    for (Item item in _allItemList) {
+      if (item.unlock) {
         _queryItemList.add(item);
       }
     }
@@ -124,9 +125,9 @@ class HomeProvider with ChangeNotifier {
   }
 
   Future<void> initSelectedItem() async {
-    if(_currentCake.currentStatus == 3) {
-      for(var i=0; i<_queryItemList.length; i++) {
-        if(_queryItemList[i].id == _bakeryTimer.targetItemId) {
+    if (_currentCake.currentStatus == 3) {
+      for (var i = 0; i < _queryItemList.length; i++) {
+        if (_queryItemList[i].id == _bakeryTimer.targetItemId) {
           _selectedItem = _queryItemList[i];
           _selectedItemIndex = i;
         }
@@ -143,15 +144,17 @@ class HomeProvider with ChangeNotifier {
 
   Map<String, dynamic> showExplain() {
     Map<String, dynamic> result = {
-      "visiable" : false,
-      "explainText" : "",
-      "color" : "",
+      "visiable": false,
+      "explainText": "",
+      "color": "",
     };
 
-    if((_bakeryTimer.targetTime + _bakeryTimer.totalTime) / _bakeryTimer.targetItemTime >= 1.0) {
+    if ((_bakeryTimer.targetTime + _bakeryTimer.totalTime) /
+            _bakeryTimer.targetItemTime >=
+        1.0) {
       result["visiable"] = true;
       result["explainText"] = "필요한 시간을 모두 채웠어요!";
-    } else if(_currentCake.currentStatus == 3){
+    } else if (_currentCake.currentStatus == 3) {
       result["visiable"] = true;
       result["explainText"] = "마저 만들어볼까요?";
     }

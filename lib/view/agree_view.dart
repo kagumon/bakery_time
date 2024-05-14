@@ -116,8 +116,7 @@ class _AgreeViewState extends State<AgreeView> {
                 },
               ),
               title: const Text('(필수) 이용약관'),
-              onTap: () {
-              },
+              onTap: () {},
               trailing: const Icon(Icons.chevron_right),
             ),
             heightSizeBox(5),
@@ -135,8 +134,7 @@ class _AgreeViewState extends State<AgreeView> {
                 },
               ),
               title: const Text('(필수) 개인정보 수집 및 이용'),
-              onTap: () {
-              },
+              onTap: () {},
               trailing: const Icon(Icons.chevron_right),
             ),
             heightSizeBox(5),
@@ -154,8 +152,7 @@ class _AgreeViewState extends State<AgreeView> {
                 },
               ),
               title: const Text('(필수) 결제 약관'),
-              onTap: () {
-              },
+              onTap: () {},
               trailing: const Icon(Icons.chevron_right),
             ),
             emptyExpanded(),
