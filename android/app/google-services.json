@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1025746760669",
+    "project_id": "bakery-time",
+    "storage_bucket": "bakery-time.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1025746760669:android:fa1e04eec9597465f7bc34",
+        "android_client_info": {
+          "package_name": "com.example.bakery_time"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt0tK-ctxtzGUQk48Ar5XN0nXjABYj1lI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
