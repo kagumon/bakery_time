@@ -85,5 +85,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'bakery-time.appspot.com',
     measurementId: 'G-SBCMD7K88Y',
   );
-
 }

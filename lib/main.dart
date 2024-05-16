@@ -51,6 +51,6 @@ class Myapp extends StatelessWidget {
           '/timer': (context) => const TimerView(),
           '/record': (context) => const RecordView(),
         },
-        home: const LoadingPage());
+        home: const SignupView());
   }
 }

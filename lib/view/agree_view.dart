@@ -17,29 +17,7 @@ class _AgreeViewState extends State<AgreeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            emptyExpanded(),
-            Icon(
-              Icons.looks_one,
-              color: iconBlackColor,
-            ),
-            Icon(
-              Icons.looks_two,
-              color: iconGreyColor,
-            ),
-            Icon(
-              Icons.looks_3,
-              color: iconGreyColor,
-            ),
-            Icon(
-              Icons.looks_4,
-              color: iconGreyColor,
-            ),
-          ],
-        ),
-      ),
+      appBar: AppBar(),
       body: Container(
         padding: const EdgeInsets.all(30),
         child: Column(
