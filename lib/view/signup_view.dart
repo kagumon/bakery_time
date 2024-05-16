@@ -44,11 +44,33 @@ class SignupView extends StatelessWidget {
                             decoration: textInputStyle(hint: "전화번호"),
                             controller: provider.hpnoTextController,
                             onSubmitted: (_) {
-                              //setState(() {
-                              //  FocusScope.of(context).unfocus();
-                              //  _explanText = "본인인증을 진행해주세요.";
-                              //});
+                              if (!provider.checkPhoneNumber()) {
+                                return;
+                              } else {
+                                provider.allInputCheck();
+                              }
                             },
+                          ),
+                          heightSizeBox(40),
+                        ],
+                      )),
+                  /*********************************/
+                  /* 인증번호 입력                 */
+                  /*********************************/
+                  Visibility(
+                      visible: provider.visiableVerify,
+                      child: Column(
+                        children: [
+                          TextField(
+                            maxLength: 6,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
+                            style: const TextStyle(fontSize: 18),
+                            decoration: textInputStyle(hint: "전화번호"),
+                            controller: provider.verifyTextController,
+                            onSubmitted: (_) {},
                           ),
                           heightSizeBox(40),
                         ],
@@ -97,7 +119,10 @@ class SignupView extends StatelessWidget {
                                   maxLength: 1,
                                   focusNode: provider.jumin2FocusNode,
                                   controller: provider.jumin2TextController,
-                                  onChanged: (value) {},
+                                  onChanged: (value) {
+                                    provider.allInputCheck();
+                                    provider.showHpnoInput();
+                                  },
                                 ),
                               ),
                               widthSizeBox(3),
@@ -118,15 +143,23 @@ class SignupView extends StatelessWidget {
                     autofocus: true,
                     controller: provider.nameTextController,
                     onSubmitted: (_) {
-                      //setState(() {
-                      //  _visiableJumin = true;
-                      //  _explanText = "주민번호를 입력해주세요.";
-                      //});
+                      provider.allInputCheck();
+                      provider.showJuminnoInput();
                     },
                   ),
                   emptyExpanded(),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      if (!provider.allinput) {
+                        return;
+                      }
+
+                      if (provider.visiableVerify) {
+                        provider.checkVrifyNumber();
+                      } else {
+                        provider.sendVrifyNumber();
+                      }
+                    },
                     child: Container(
                       margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                       width: double.infinity,
@@ -134,12 +167,14 @@ class SignupView extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10.0)),
-                        color: buttonDisableColor,
+                        color: provider.allinput
+                            ? buttonActiveColor
+                            : buttonDisableColor,
                       ),
-                      child: const Center(
+                      child: Center(
                           child: Text(
-                        "인증하기",
-                        style: TextStyle(color: Color(0xFFFFFFFF)),
+                        provider.visiableVerify ? "인증하기" : "인증번호 발송",
+                        style: const TextStyle(color: Color(0xFFFFFFFF)),
                       )),
                     ),
                   ),

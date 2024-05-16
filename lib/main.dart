@@ -1,3 +1,4 @@
+import 'package:bakery_time/util/firebase_options.dart';
 import 'package:bakery_time/util/pref_handler.dart';
 import 'package:bakery_time/view/agree_view.dart';
 import 'package:bakery_time/static_page/enter_page.dart';
@@ -10,11 +11,15 @@ import 'package:bakery_time/view/login_view.dart';
 import 'package:bakery_time/view/shop_view.dart';
 import 'package:bakery_time/view/signup_view.dart';
 import 'package:bakery_time/util/theme.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   PreferencesHandler pref = PreferencesHandler();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   /* 앱 내 사용하는 전역 기능 초기화 */
   pref.initSharedPreferences();
